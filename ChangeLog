@@ -1,3 +1,11 @@
+1.1.0
+  121025
+  Bugfix
+  * #42405: t3lib_div::view_array is deprecated
+            Update for TYPO3 4.7
+            Effected file:
+            pi1/class.tx_seodynamictag_pi1.php
+
 1.0.0
   10-02-20
   New Main Version

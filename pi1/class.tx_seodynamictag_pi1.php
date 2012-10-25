@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2007 Dirk Wildt <dirk.wildt@think-visually.com>
+*  (c) 2007-2012 Dirk Wildt <dirk.wildt@think-visually.com>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -31,6 +31,9 @@ require_once(PATH_tslib.'class.tslib_pibase.php');
  * @author  Dirk Wildt <dirk.wildt@think-visually.com>
  * @package TYPO3
  * @subpackage  tx_seodynamictag
+ * 
+ * @version   1.1.0
+ * @since     0.0.1
  */
 class tx_seodynamictag_pi1 extends tslib_pibase {
   var $prefixId      = 'tx_seodynamictag_pi1';    // Same as class name

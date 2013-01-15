@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2007-2012 Dirk Wildt <dirk.wildt@think-visually.com>
+*  (c) 2007-2013 Dirk Wildt <dirk.wildt@think-visually.com>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -32,7 +32,7 @@ require_once(PATH_tslib.'class.tslib_pibase.php');
  * @package TYPO3
  * @subpackage  tx_seodynamictag
  * 
- * @version   1.1.0
+ * @version   1.1.1
  * @since     0.0.1
  */
 class tx_seodynamictag_pi1 extends tslib_pibase {
@@ -52,8 +52,13 @@ class tx_seodynamictag_pi1 extends tslib_pibase {
    * @param string    $content: The PlugIn content
    * @param array   $conf: The PlugIn configuration
    * @return  The content that is displayed on the website
+   * 
+   * @version 1.1.1
    */
-  function main($content,$conf) {
+  function main( $content, $conf ) 
+  {
+    unset( $content );
+    
     $this->conf = $conf;
     $this->substitute();
     $this->debug($conf);
@@ -86,6 +91,8 @@ class tx_seodynamictag_pi1 extends tslib_pibase {
    * @param string    $content: The PlugIn content
    * @param array   $conf: The PlugIn configuration
    * @return  The content that is displayed on the website
+   * 
+   * @version 1.1.1
    */
   function debug($conf) {
     if(!$this->conf['debug']) return;
@@ -159,6 +166,8 @@ class tx_seodynamictag_pi1 extends tslib_pibase {
    * @param string    $content: The PlugIn content
    * @param array   $conf: The PlugIn configuration
    * @return  The content that is displayed on the website
+   * 
+   * @version 1.1.1
    */
   function register() {
     $register = $this->conf['register'];
@@ -260,6 +269,8 @@ class tx_seodynamictag_pi1 extends tslib_pibase {
    * @param string    $content: The PlugIn content
    * @param array   $conf: The PlugIn configuration
    * @return  The content that is displayed on the website
+   * 
+   * @version 1.1.1
    */
   function substitute() {
     // check, if there are values which should be substituted
@@ -349,6 +360,8 @@ class tx_seodynamictag_pi1 extends tslib_pibase {
    */
   function getValue() {
 
+    $strKeywords  = null;
+    
     $select_fields  = $this->conf['query.']['select'];
     $from_table     = $this->conf['query.']['from'];
     $where_clause   = $this->conf['query.']['where'];
@@ -402,7 +415,11 @@ class tx_seodynamictag_pi1 extends tslib_pibase {
       $strPositiveList = str_replace(' ','', $this->conf['keywords.']['positiveList']);
       $arrPositiveList = explode(',', $strPositiveList);
       $intAmount = 0;
-      foreach($arrValue as $keyKeyword => $valKeyword) {
+        // 130115, dwildt, 1-
+//      foreach($arrValue as $keyKeyword => $valKeyword)
+        // 130115, dwildt, 1+
+      foreach( array_keys( $arrValue ) as $keyKeyword )
+      {
         $boolKeyword = FALSE;
         switch(TRUE) {
           case(strlen($keyKeyword) >= $minLength):
@@ -419,12 +436,16 @@ class tx_seodynamictag_pi1 extends tslib_pibase {
           if($intAmount++ >= $intMaxAmount) break;
         }
       }
-      if($strKeywords != '') {
+      if( $strKeywords != '' )
+      {
         $strKeywords = substr($strKeywords, 0, strlen($strKeywords) - 1);
       }
       $value = $strKeywords;
       $value = str_replace(',,',' ', $value);
     }
+    
+    unset( $arrPositiveList );
+    
     $maxLength = $this->conf['query.']['maxLength'];
     if($maxLength > 0) {
       if(strlen($value) > $maxLength) {

@@ -96,18 +96,29 @@ class tx_seodynamictag_pi1 extends tslib_pibase {
 //      <h2>Debug Mode is on</h2>
 //      <h3>Typoscript before passing the method</h3>
 //      '.t3lib_div::view_array($conf).'<br />'."\n";
-      // #42405, dwildt, 5+
+      // #44545, dwildt, 6-
+//      // #42405, dwildt, 5+
+//    $strReturn = '<div style="padding:10px;border:2px solid red;">
+//      <h1>'.$this->prefixId.'</h1>
+//      <h2>Debug Mode is on</h2>
+//      <h3>Typoscript before passing the method</h3>
+//      ' . t3lib_utility_Debug::viewArray( $conf ) . '<br />'."\n";
+      // #44545, dwildt, 5+
     $strReturn = '<div style="padding:10px;border:2px solid red;">
       <h1>'.$this->prefixId.'</h1>
       <h2>Debug Mode is on</h2>
       <h3>Typoscript before passing the method</h3>
-      ' . t3lib_utility_Debug::viewArray( $conf ) . '<br />'."\n";
+      <pre>' . var_export( $conf, true ) . '</pre><br />'."\n";
       // #42405, dwildt, 2-
 //    $strReturn .= '<h3>TypoScript after passing the method</h3>
 //      '.t3lib_div::view_array($this->conf).'<br />'."\n";
-      // #42405, dwildt, 2+
+      // #44545, dwildt, 3-
+//      // #42405, dwildt, 2+
+//    $strReturn .= '<h3>TypoScript after passing the method</h3>
+//      ' . t3lib_utility_Debug::viewArray( $this->conf ) . '<br />'."\n";
+      // #44545, dwildt, 2+
     $strReturn .= '<h3>TypoScript after passing the method</h3>
-      ' . t3lib_utility_Debug::viewArray( $this->conf ) . '<br />'."\n";
+      <pre>' . var_export( $this->conf, true ) . '</pre><br />'."\n";
 
     if($this->promptSubstitute) {
       $strReturn .= $this->promptSubstitute.'<br />'."\n";
@@ -166,7 +177,21 @@ class tx_seodynamictag_pi1 extends tslib_pibase {
 //          The register array
 //        </h3>
 //        '.t3lib_div::view_array($GLOBALS['TSFE']->register);
-        // #42405, dwildt, 13+
+        // #44545, dwildt, 14-
+//        // #42405, dwildt, 13+
+//      echo '<h1>Register Error!</h1>
+//        <p>
+//          You want load a register, which is existing!<br />
+//          Please define another name.
+//        </p>
+//        <p>
+//          Your register name is "'.$register.'"
+//        </p>
+//        <h3>
+//          The register array
+//        </h3>
+//        ' . t3lib_utility_Debug::viewArray( $GLOBALS['TSFE']->register );
+        // #44545, dwildt, 13+
       echo '<h1>Register Error!</h1>
         <p>
           You want load a register, which is existing!<br />
@@ -178,7 +203,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase {
         <h3>
           The register array
         </h3>
-        ' . t3lib_utility_Debug::viewArray( $GLOBALS['TSFE']->register );
+        <pre>' . var_export( $GLOBALS['TSFE']->register, true ) . '</pre>';
       exit;
     }
 
@@ -306,9 +331,13 @@ class tx_seodynamictag_pi1 extends tslib_pibase {
       // #42405, dwildt, 2-
 //    $this->promptSubstitute .= '<h3>This is the array['.$method.']</h3>
 //    '.t3lib_div::view_array($GLOBALS[$method]);
-      // #42405, dwildt, 2+
+      // #44545, dwildt, 3-
+//      // #42405, dwildt, 2+
+//    $this->promptSubstitute .= '<h3>This is the array['.$method.']</h3>
+//    ' . t3lib_utility_Debug::viewArray( $GLOBALS[$method] );
+      // #44545, dwildt, 2+
     $this->promptSubstitute .= '<h3>This is the array['.$method.']</h3>
-    ' . t3lib_utility_Debug::viewArray( $GLOBALS[$method] );
+    <pre>' . var_export( $GLOBALS[$method], true ) . '</pre>';
   }
 
   /**

@@ -48,7 +48,7 @@ plugin.tx_seodynamictag_pi1 {
               where   = `uid` = $1 && `deleted` = 0 && `hidden` = 0
               var.1   = tx_ttnews[tt_news]
             }
-            debug   = {$plugin.tx_seodynamictag.debugging.tt_news.title}
+            debug   = {$plugin.tx_seodynamictag.tt_news.debugging.title}
           }
             // meta tag description
           20 < plugin.tx_seodynamictag_pi1
@@ -63,7 +63,7 @@ plugin.tx_seodynamictag_pi1 {
               var.1     = tx_ttnews[tt_news]
               maxLength = 200
             }
-            debug   = {$plugin.tx_seodynamictag.debugging.tt_news.description}
+            debug   = {$plugin.tx_seodynamictag.tt_news.debugging.description}
           }
             // meta tag keywords
           30 < plugin.tx_seodynamictag_pi1
@@ -78,7 +78,7 @@ plugin.tx_seodynamictag_pi1 {
               var.1     = tx_ttnews[tt_news]
               keywords  = 0
             }
-            debug   = {$plugin.tx_seodynamictag.debugging.tt_news.keywords}
+            debug   = {$plugin.tx_seodynamictag.tt_news.debugging.keywords}
           }
             // meta tag author
           40 < plugin.tx_seodynamictag_pi1
@@ -92,7 +92,7 @@ plugin.tx_seodynamictag_pi1 {
               where     = `uid` = $1 && `deleted` = 0 && `hidden` = 0
               var.1     = tx_ttnews[tt_news]
             }
-            debug   = {$plugin.tx_seodynamictag.debugging.tt_news.author}
+            debug   = {$plugin.tx_seodynamictag.tt_news.debugging.author}
           }
         }
       }

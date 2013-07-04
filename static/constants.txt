@@ -3,16 +3,16 @@ plugin.tx_seodynamictag {
   # cat=Seo Dynamic Tag - Debugging/enable/100;   type=boolean;   label= Debugging all: If enabled, you will get a report in the frontend
   debugging = 0
 
-  # cat=Seo Dynamic Tag - Debugging tt_news/enable/200;   type=boolean;   label= Debugging tt_news author: If enabled, you will get a report in the frontend for the tt_news author
-  debugging.tt_news.author        = 0
-  # cat=Seo Dynamic Tag - Debugging tt_news/enable/201;   type=boolean;   label= Debugging tt_news description: If enabled, you will get a report in the frontend for the tt_news description
-  debugging.tt_news.description   = 0
-  # cat=Seo Dynamic Tag - Debugging tt_news/enable/202;   type=boolean;   label= Debugging tt_news keywords: If enabled, you will get a report in the frontend for the tt_news keywords
-  debugging.tt_news.keywords      = 0
-  # cat=Seo Dynamic Tag - Debugging tt_news/enable/203;   type=boolean;   label= Debugging tt_news title: If enabled, you will get a report in the frontend for the tt_news title
-  debugging.tt_news.title         = 0
-
   # cat=Seo Dynamic Tag - Phrases//100;   type=string;   label= Default keywords: Keywords in case of an empty keyword field
   phrases.keywords  = TYPO3 Agency
+
+  # cat=Seo Dynamic Tag - tt_news/enable/200;   type=boolean;   label= Debugging tt_news author: If enabled, you will get a report in the frontend for the tt_news author
+  tt_news.debugging.author        = 0
+  # cat=Seo Dynamic Tag - tt_news/enable/201;   type=boolean;   label= Debugging tt_news description: If enabled, you will get a report in the frontend for the tt_news description
+  tt_news.debugging.description   = 0
+  # cat=Seo Dynamic Tag - tt_news/enable/202;   type=boolean;   label= Debugging tt_news keywords: If enabled, you will get a report in the frontend for the tt_news keywords
+  tt_news.debugging.keywords      = 0
+  # cat=Seo Dynamic Tag - tt_news/enable/203;   type=boolean;   label= Debugging tt_news title: If enabled, you will get a report in the frontend for the tt_news title
+  tt_news.debugging.title         = 0
 
 }

@@ -1,4 +1,5 @@
 plugin.tx_seodynamictag_pi1 {
+  debug = {$plugin.tx_seodynamictag.debugging}
     // extensions
   templates =
   templates {
@@ -30,7 +31,7 @@ plugin.tx_seodynamictag_pi1 {
           keywords {
             field   >
             data    = register:keywords
-            ifEmpty = Internetagentur, Internetdienstleister, Content Management, Typo3
+            ifEmpty = {$plugin.tx_seodynamictag.phrases.keywords}
           }
         }
           // title, meta tag description, meta tag keywords, meta tag author
@@ -47,7 +48,7 @@ plugin.tx_seodynamictag_pi1 {
               where   = `uid` = $1 && `deleted` = 0 && `hidden` = 0
               var.1   = tx_ttnews[tt_news]
             }
-            debug   = {$plugin.tx_seodynamictag.debugging}
+            debug   = {$plugin.tx_seodynamictag.debugging.tt_news.title}
           }
             // meta tag description
           20 < plugin.tx_seodynamictag_pi1
@@ -62,7 +63,7 @@ plugin.tx_seodynamictag_pi1 {
               var.1     = tx_ttnews[tt_news]
               maxLength = 200
             }
-            debug   = {$plugin.tx_seodynamictag.debugging}
+            debug   = {$plugin.tx_seodynamictag.debugging.tt_news.description}
           }
             // meta tag keywords
           30 < plugin.tx_seodynamictag_pi1
@@ -77,7 +78,7 @@ plugin.tx_seodynamictag_pi1 {
               var.1     = tx_ttnews[tt_news]
               keywords  = 0
             }
-            debug   = {$plugin.tx_seodynamictag.debugging}
+            debug   = {$plugin.tx_seodynamictag.debugging.tt_news.keywords}
           }
             // meta tag author
           40 < plugin.tx_seodynamictag_pi1
@@ -91,7 +92,7 @@ plugin.tx_seodynamictag_pi1 {
               where     = `uid` = $1 && `deleted` = 0 && `hidden` = 0
               var.1     = tx_ttnews[tt_news]
             }
-            debug   = {$plugin.tx_seodynamictag.debugging}
+            debug   = {$plugin.tx_seodynamictag.debugging.tt_news.author}
           }
         }
       }

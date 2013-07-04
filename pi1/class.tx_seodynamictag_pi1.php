@@ -82,7 +82,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase {
     if($this->conf['debug']) {
       $strReturn .= '</div>';
     }
-    var_dump( __METHOD__, __LINE__, $this->strReturn.$strReturn.$strValue );
+    //var_dump( __METHOD__, __LINE__, $this->strReturn.$strReturn.$strValue );
     return $this->strReturn.$strReturn.$strValue;
   }
 

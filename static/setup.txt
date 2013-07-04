@@ -13,21 +13,21 @@ plugin.tx_seodynamictag_pi1 {
         metaTags =
         metaTags {
             // field >, ifEmpty >, data
-          author =
+          author = TEXT
           author {
             field   >
             ifEmpty >
             data    = register:author
           }
             // field >, ifEmpty >, data
-          description =
+          description = TEXT
           description {
             field   >
             ifEmpty >
             data    = register:description
           }
             // field >, ifEmpty >, data
-          keywords =
+          keywords = TEXT
           keywords {
             field   >
             data    = register:keywords

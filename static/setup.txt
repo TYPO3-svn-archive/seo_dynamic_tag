@@ -9,23 +9,31 @@ plugin.tx_seodynamictag_pi1 {
       tt_news =
       tt_news {
           // author, description, keywords
+        metaTags =
         metaTags {
+            // field >, ifEmpty >, data
+          author =
           author {
             field   >
             ifEmpty >
             data    = register:author
           }
+            // field >, ifEmpty >, data
+          description =
           description {
             field   >
             ifEmpty >
             data    = register:description
           }
+            // field >, ifEmpty >, data
+          keywords =
           keywords {
             field   >
             data    = register:keywords
             ifEmpty = Internetagentur, Internetdienstleister, Content Management, Typo3
           }
         }
+          // title, meta tag description, meta tag keywords, meta tag author
         belowTheContent = COA
         belowTheContent {
             // title

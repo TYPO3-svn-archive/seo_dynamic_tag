@@ -34,26 +34,29 @@ plugin.tx_seodynamictag_pi1 {
             ifEmpty = {$plugin.tx_seodynamictag.phrases.keywords}
           }
         }
-          // title, meta tag description, meta tag keywords, meta tag author
+          // meta tag author, meta tag description, meta tag keywords, title 
         belowTheContent = COA
         belowTheContent {
-            // title
-          10 < plugin.tx_seodynamictag_pi1
+            // meta tag author
+          10 = USER
           10 {
-            # Example for the page title
-            special = title
+            includeLibs = typo3conf/ext/seo_dynamic_tag/pi1/class.tx_seodynamictag_pi1.php
+            userFunc    = tx_seodynamictag_pi1->main
+            special   = register
+            register  = author
             query {
-              select  = CONCAT(`title`, ': ', `short`)
-              from    = `tt_news`
-              where   = `uid` = $1 && `deleted` = 0 && `hidden` = 0
-              var.1   = tx_ttnews[tt_news]
+              select    = `author`
+              from      = `tt_news`
+              where     = `uid` = $1 && `deleted` = 0 && `hidden` = 0
+              var.1     = tx_ttnews[tt_news]
             }
-            debug   = {$plugin.tx_seodynamictag.tt_news.debugging.title}
+            debug   = {$plugin.tx_seodynamictag.tt_news.debugging.author}
           }
             // meta tag description
-          20 < plugin.tx_seodynamictag_pi1
+          20 = USER
           20 {
-            # Example for a meta tag
+            includeLibs = typo3conf/ext/seo_dynamic_tag/pi1/class.tx_seodynamictag_pi1.php
+            userFunc    = tx_seodynamictag_pi1->main
             special   = register
             register  = description
             query {
@@ -66,9 +69,10 @@ plugin.tx_seodynamictag_pi1 {
             debug   = {$plugin.tx_seodynamictag.tt_news.debugging.description}
           }
             // meta tag keywords
-          30 < plugin.tx_seodynamictag_pi1
+          30 = USER
           30 {
-            # Example for a meta tag
+            includeLibs = typo3conf/ext/seo_dynamic_tag/pi1/class.tx_seodynamictag_pi1.php
+            userFunc    = tx_seodynamictag_pi1->main
             special   = register
             register  = keywords
             query {
@@ -80,19 +84,19 @@ plugin.tx_seodynamictag_pi1 {
             }
             debug   = {$plugin.tx_seodynamictag.tt_news.debugging.keywords}
           }
-            // meta tag author
-          40 < plugin.tx_seodynamictag_pi1
+            // title
+          40 = USER
           40 {
-            # Example for a meta tag
-            special   = register
-            register  = author
+            includeLibs = typo3conf/ext/seo_dynamic_tag/pi1/class.tx_seodynamictag_pi1.php
+            userFunc    = tx_seodynamictag_pi1->main
+            special = title
             query {
-              select    = `author`
-              from      = `tt_news`
-              where     = `uid` = $1 && `deleted` = 0 && `hidden` = 0
-              var.1     = tx_ttnews[tt_news]
+              select  = CONCAT(`title`, ': ', `short`)
+              from    = `tt_news`
+              where   = `uid` = $1 && `deleted` = 0 && `hidden` = 0
+              var.1   = tx_ttnews[tt_news]
             }
-            debug   = {$plugin.tx_seodynamictag.tt_news.debugging.author}
+            debug   = {$plugin.tx_seodynamictag.tt_news.debugging.title}
           }
         }
       }

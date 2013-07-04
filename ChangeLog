@@ -1,7 +1,13 @@
 1.2.0
   130626
-  Feature
+  Features
   * #49442: Canonical tag
+  * #i0001: Integration of the constant editor
+            Effected files:
+            * ext_tables.php      ( new )
+            * static              ( new )
+              * constants.txt
+              * setup.txt
 
 1.1.1
   130115

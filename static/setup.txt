@@ -1,0 +1,92 @@
+plugin.tx_seodynamictag_pi1 {
+    // extensions
+  templates =
+  templates {
+      // tt_news
+    extensions =
+    extensions {
+        // metaTags, belowTheContent
+      tt_news =
+      tt_news {
+          // author, description, keywords
+        metaTags {
+          author {
+            field   >
+            ifEmpty >
+            data    = register:author
+          }
+          description {
+            field   >
+            ifEmpty >
+            data    = register:description
+          }
+          keywords {
+            field   >
+            data    = register:keywords
+            ifEmpty = Internetagentur, Internetdienstleister, Content Management, Typo3
+          }
+        }
+        belowTheContent = COA
+        belowTheContent {
+            // title
+          10 < plugin.tx_seodynamictag_pi1
+          10 {
+            # Example for the page title
+            special = title
+            query {
+              select  = CONCAT(`title`, ': ', `short`)
+              from    = `tt_news`
+              where   = `uid` = $1 && `deleted` = 0 && `hidden` = 0
+              var.1   = tx_ttnews[tt_news]
+            }
+            debug   = {$plugin.tx_seodynamictag.debugging}
+          }
+            // meta tag description
+          20 < plugin.tx_seodynamictag_pi1
+          20 {
+            # Example for a meta tag
+            special   = register
+            register  = description
+            query {
+              select    = `bodytext`
+              from      = `tt_news`
+              where     = `uid` = $1 && `deleted` = 0 && `hidden` = 0
+              var.1     = tx_ttnews[tt_news]
+              maxLength = 200
+            }
+            debug   = {$plugin.tx_seodynamictag.debugging}
+          }
+            // meta tag keywords
+          30 < plugin.tx_seodynamictag_pi1
+          30 {
+            # Example for a meta tag
+            special   = register
+            register  = keywords
+            query {
+              select    = `keywords`
+              from      = `tt_news`
+              where     = `uid` = $1 && `deleted` = 0 && `hidden` = 0
+              var.1     = tx_ttnews[tt_news]
+              keywords  = 0
+            }
+            debug   = {$plugin.tx_seodynamictag.debugging}
+          }
+            // meta tag author
+          40 < plugin.tx_seodynamictag_pi1
+          40 {
+            # Example for a meta tag
+            special   = register
+            register  = author
+            query {
+              select    = `author`
+              from      = `tt_news`
+              where     = `uid` = $1 && `deleted` = 0 && `hidden` = 0
+              var.1     = tx_ttnews[tt_news]
+            }
+            debug   = {$plugin.tx_seodynamictag.debugging}
+          }
+        }
+      }
+    }
+  }
+}

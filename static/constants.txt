@@ -1,0 +1,6 @@
+plugin.tx_seodynamictag {
+
+  # cat=Seo Dynamic Tag - Debugging/enable/100;   type=boolean;   label= Debugging: If enabled, you will get a report in the frontend
+  debugging = 0
+
+}

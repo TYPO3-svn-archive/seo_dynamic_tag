@@ -2,17 +2,39 @@ plugin.tx_seodynamictag {
 
   canonical {
     list {
+        // Only the pointer parameter is allowed
       additionalParams  = &tx_ttnews[pointer]={GP:tx_ttnews|pointer}
+        // I don't like the pointer in the URL
+      additionalParams  = 
     }
     single {
+        // Only the uid parameter is allowed
       additionalParams  = &tx_ttnews[tt_news]={GP:tx_ttnews|tt_news}
     }
   }
 
   condition {
+    list {
+        // Please replace xxx with the uid of the page with the news plugin for the list view
+        // Please use the Constant Editor
+      begin = globalVar = TSFE:id = xxx
+    }
     single {
+        // Please replace xxx with the uid of the page with the news plugin for the single view
+        // Please use the Constant Editor
       begin = globalVar = GP:tx_ttnews|tt_news > 0] && [globalVar = TSFE:id = xxx
     }
   }
 
+  database {
+    table = tt_news
+    var.1 = tx_ttnews[tt_news]
+    field {
+      author        = author 
+      description   = bodytext
+      keywords      = keywords 
+      title         = title 
+      short         = short 
+    }
+  }
 }

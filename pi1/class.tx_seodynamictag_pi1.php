@@ -216,6 +216,9 @@ class tx_seodynamictag_pi1 extends tslib_pibase
  */
   private function canonicalGetPath( ) 
   {
+    $cObj = t3lib_div::makeInstance('tslib_cObj');
+    $cObj->start($GLOBALS['TSFE']->page, 'pages');
+
     $coa  = $this->conf[ 'path' ];
     $conf = $this->conf[ 'path.' ];
     $path = $cObj->cObjGetSingle( $coa, $conf );

@@ -138,16 +138,27 @@ plugin.tx_seodynamictag_pi1 {
 }
 
   // Global condition for the single view
-//{$plugin.tx_seodynamictag.condition.single.begin}
+[{$plugin.tx_seodynamictag.condition.single.begin}]
   {$plugin.tx_seodynamictag.page.tsProperty} {
     meta {
-      author      >
-      description >
-      keywords    >
-      author      < plugin.tx_seodynamictag_pi1.templates.extensions.tt_news.metaTags.author
-      description < plugin.tx_seodynamictag_pi1.templates.extensions.tt_news.metaTags.description
-      keywords    < plugin.tx_seodynamictag_pi1.templates.extensions.tt_news.metaTags.keywords
+      author {
+        field   >
+        ifEmpty >
+        data    = register:author
+      }
+        // field >, ifEmpty >, data
+      description {
+        field   >
+        ifEmpty >
+        data    = register:description
+      }
+        // field >, ifEmpty >, data
+      keywords {
+        field   >
+        data    = register:keywords
+        ifEmpty = {$plugin.tx_seodynamictag.phrases.keywords}
+      }
     }
     {$plugin.tx_seodynamictag.page.object} < plugin.tx_seodynamictag_pi1.templates.extensions.tt_news.belowTheContent
   }
-//{$plugin.tx_seodynamictag.condition.single.end}
+[{$plugin.tx_seodynamictag.condition.single.end}]

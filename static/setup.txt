@@ -1,5 +1,13 @@
 plugin.tx_seodynamictag_pi1 {
-  debug = {$plugin.tx_seodynamictag.debugging}
+  xxx_debug = {$plugin.tx_seodynamictag.debugging.all}
+  xxx_debug {
+    all         = {$plugin.tx_seodynamictag.debugging.all}
+    author      = {$plugin.tx_seodynamictag.debugging.author}
+    canonical   = {$plugin.tx_seodynamictag.debugging.canonical}
+    description = {$plugin.tx_seodynamictag.debugging.description}
+    keywords    = {$plugin.tx_seodynamictag.debugging.keywords}
+    title       = {$plugin.tx_seodynamictag.debugging.title}
+  }
     // extensions
   templates =
   templates {
@@ -34,28 +42,56 @@ plugin.tx_seodynamictag_pi1 {
           // meta tag author, meta tag description, meta tag keywords, title 
         belowTheContent = COA
         belowTheContent {
-            // meta tag author
+            // canonical tag
           10 = USER
           10 {
             includeLibs = typo3conf/ext/seo_dynamic_tag/pi1/class.tx_seodynamictag_pi1.php
             userFunc    = tx_seodynamictag_pi1->main
-            special   = register
-            register  = author
+            special     = canonical
+            host        = {$plugin.tx_seodynamictag.canonical.host}
+            path        = TEXT
+            path {
+              typolink {
+                parameter {
+                  data = {page:uid}
+                }
+                additionalParams = &tx_ttnews[tt_news]={GP:tx_ttnews|tt_news}
+                additionalParams {
+                  insertData = 1
+                } 
+                //addQueryString = 1
+                //addQueryString {
+                //  method  = GET
+                //  exclude = L,id,cHash,no_cache,tx_ttnews%5BbackPid%5D,best
+                //}
+                useCacheHash = 1
+                returnLast = url
+              }
+            }
+            debug = {$plugin.tx_seodynamictag.debugging.canonical}
+          }
+            // meta tag author
+          20 = USER
+          20 {
+            includeLibs = typo3conf/ext/seo_dynamic_tag/pi1/class.tx_seodynamictag_pi1.php
+            userFunc    = tx_seodynamictag_pi1->main
+            special     = register
+            register    = author
             query {
               select    = `author`
               from      = `tt_news`
               where     = `uid` = $1 && `deleted` = 0 && `hidden` = 0
               var.1     = tx_ttnews[tt_news]
             }
-            debug   = {$plugin.tx_seodynamictag.tt_news.debugging.author}
+            debug   = {$plugin.tx_seodynamictag.debugging.author}
           }
             // meta tag description
-          20 = USER
-          20 {
+          30 = USER
+          30 {
             includeLibs = typo3conf/ext/seo_dynamic_tag/pi1/class.tx_seodynamictag_pi1.php
             userFunc    = tx_seodynamictag_pi1->main
-            special   = register
-            register  = description
+            special     = register
+            register    = description
             query {
               select    = `bodytext`
               from      = `tt_news`
@@ -63,15 +99,15 @@ plugin.tx_seodynamictag_pi1 {
               var.1     = tx_ttnews[tt_news]
               maxLength = 200
             }
-            debug   = {$plugin.tx_seodynamictag.tt_news.debugging.description}
+            debug = {$plugin.tx_seodynamictag.debugging.description}
           }
             // meta tag keywords
-          30 = USER
-          30 {
+          40 = USER
+          40 {
             includeLibs = typo3conf/ext/seo_dynamic_tag/pi1/class.tx_seodynamictag_pi1.php
             userFunc    = tx_seodynamictag_pi1->main
-            special   = register
-            register  = keywords
+            special     = register
+            register    = keywords
             query {
               select    = `keywords`
               from      = `tt_news`
@@ -79,24 +115,39 @@ plugin.tx_seodynamictag_pi1 {
               var.1     = tx_ttnews[tt_news]
               keywords  = 0
             }
-            debug   = {$plugin.tx_seodynamictag.tt_news.debugging.keywords}
+            debug = {$plugin.tx_seodynamictag.debugging.keywords}
           }
             // title
-          40 = USER
-          40 {
+          50 = USER
+          50 {
             includeLibs = typo3conf/ext/seo_dynamic_tag/pi1/class.tx_seodynamictag_pi1.php
             userFunc    = tx_seodynamictag_pi1->main
-            special = title
+            special     = title
             query {
               select  = CONCAT(`title`, ': ', `short`)
               from    = `tt_news`
               where   = `uid` = $1 && `deleted` = 0 && `hidden` = 0
               var.1   = tx_ttnews[tt_news]
             }
-            debug   = {$plugin.tx_seodynamictag.tt_news.debugging.title}
+            debug = {$plugin.tx_seodynamictag.debugging.title}
           }
         }
       }
     }
   }
 }
+
+  // Global condition for the single view
+{$plugin.tx_seodynamictag.condition.single.begin}
+  {$plugin.tx_seodynamictag.page.tsProperty} {
+    meta {
+      author      >
+      description >
+      keywords    >
+      author      < plugin.tx_seodynamictag_pi1.templates.extensions.tt_news.metaTags.author
+      description < plugin.tx_seodynamictag_pi1.templates.extensions.tt_news.metaTags.description
+      keywords    < plugin.tx_seodynamictag_pi1.templates.extensions.tt_news.metaTags.keywords
+    }
+    {$plugin.tx_seodynamictag.page.object} < plugin.tx_seodynamictag_pi1.templates.extensions.tt_news.belowTheContent
+  }
+{$plugin.tx_seodynamictag.condition.single.end}

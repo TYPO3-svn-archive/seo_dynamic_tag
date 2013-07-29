@@ -1,0 +1,16 @@
+plugin.tx_seodynamictag {
+
+  canonical {
+    list {
+      additionalParams  = 
+    }
+    single {
+      additionalParams  = &tx_ttnews[tt_news]={GP:tx_ttnews|tt_news}
+    }
+  }
+
+  condition {
+    single = [globalVar = GP:tx_ttnews|tt_news > 0] && [globalVar = TSFE:id = xxx]
+  }
+
+}

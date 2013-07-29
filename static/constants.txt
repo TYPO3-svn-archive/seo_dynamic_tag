@@ -1,18 +1,40 @@
 plugin.tx_seodynamictag {
 
-  # cat=Seo Dynamic Tag - Debugging/enable/100;   type=boolean;   label= Debugging all: If enabled, you will get a report in the frontend
-  debugging = 0
+  # cat=Seo Dynamic Tag - Canonical*//100;   type=string;        label= Host: Host, if it differs in the host of the frontend
+  canonical.host              = 
+  # cat=Seo Dynamic Tag - Canonical*//200;   type=string;        label= Allowed parameter:Allowed URL parameter for the list view. An empty value is recommended!
+  canonical.list.additionalParams  = 
+  # cat=Seo Dynamic Tag - Canonical*//201;   type=string;        label= Allowed parameter*:*Obligate! Allowed URL parameter for the single view
+  canonical.single.additionalParams  = &table[field]={GP:table|field}
 
-  # cat=Seo Dynamic Tag - Phrases//100;   type=string;   label= Default keywords: Keywords in case of an empty keyword field
+  # cat=Seo Dynamic Tag - Conditions*//100;   type=string;        label= List view begin*:*Obligate! Global condition beginning for the list view. Replace 'xxx' with the id of the page with your plugin for the list view. 
+  condition.list.begin    = [globalVar = TSFE:id = xxx]
+  # cat=Seo Dynamic Tag - Conditions*//101;   type=string;        label= List view end*:*Obligate! Global condition ending. Usually: [global]
+  condition.list.end      = [global]
+  # cat=Seo Dynamic Tag - Conditions*//200;   type=string;        label= Single view begin*:*Obligate! Global condition beginning for the single view. Replace 'xxx' with the id of the page with your plugin for the single view.
+  condition.single.begin  = [globalVar = GP:table|field > 0] && [globalVar = TSFE:id = xxx]
+  # cat=Seo Dynamic Tag - Conditions*//201;   type=string;        label= Single view end*:*Obligate! Global condition ending. Usually: [global]
+  condition.single.end    = [global]
+
+  # cat=Seo Dynamic Tag - Debugging/enable/100;   type=boolean;   label= all: If enabled, you will get a report in the frontend for all debug properties
+  debugging.all = 0
+  # cat=Seo Dynamic Tag - Debugging/enable/200;   type=boolean;   label= author: If enabled, you will get a report in the frontend for the meta tag author
+  debugging.author      = 0
+  # cat=Seo Dynamic Tag - Debugging/enable/201;   type=boolean;   label= canonical tag: If enabled, you will get a report in the frontend for the canonical tag
+  debugging.canonical   = 0
+  # cat=Seo Dynamic Tag - Debugging/enable/202;   type=boolean;   label= description: If enabled, you will get a report in the frontend for the meta tag description
+  debugging.description = 0
+  # cat=Seo Dynamic Tag - Debugging/enable/203;   type=boolean;   label= keywords: If enabled, you will get a report in the frontend for the meta tag keywords
+  debugging.keywords    = 0
+  # cat=Seo Dynamic Tag - Debugging/enable/204;   type=boolean;   label= title: If enabled, you will get a report in the frontend for the title
+  debugging.title       = 0
+
+  # cat=Seo Dynamic Tag - page object//100;   type=string;        label= Label*:*Obligate! The label of your page in your TypoSCript configuration. Usually: page
+  page.tsProperty = page 
+  # cat=Seo Dynamic Tag - page object//200;   type=int;           label= SEO element*:*Obligate! The seo_dynamic_tag element of your page object like page.49442. 49442 is the number of the issue on TYPO3 forge and should be unique.
+  page.object = 49442
+
+  # cat=Seo Dynamic Tag - Phrases//100;   type=string;          label= Default keywords: Keywords in case of an empty keyword field
   phrases.keywords  = TYPO3 Agency
-
-  # cat=Seo Dynamic Tag - tt_news/enable/200;   type=boolean;   label= Debugging tt_news author: If enabled, you will get a report in the frontend for the tt_news author
-  tt_news.debugging.author        = 0
-  # cat=Seo Dynamic Tag - tt_news/enable/201;   type=boolean;   label= Debugging tt_news description: If enabled, you will get a report in the frontend for the tt_news description
-  tt_news.debugging.description   = 0
-  # cat=Seo Dynamic Tag - tt_news/enable/202;   type=boolean;   label= Debugging tt_news keywords: If enabled, you will get a report in the frontend for the tt_news keywords
-  tt_news.debugging.keywords      = 0
-  # cat=Seo Dynamic Tag - tt_news/enable/203;   type=boolean;   label= Debugging tt_news title: If enabled, you will get a report in the frontend for the tt_news title
-  tt_news.debugging.title         = 0
 
 }

@@ -5,12 +5,12 @@ plugin.tx_seodynamictag_pi1 {
       // meta tag author, meta tag description, meta tag keywords, title 
     49442 = COA
     49442 {
-        // canonical tag
-      10 = USER
-      10 {
         if {
           isTrue = 0
         }
+        // canonical tag
+      10 = USER
+      10 {
         includeLibs = typo3conf/ext/seo_dynamic_tag/pi1/class.tx_seodynamictag_pi1.php
         userFunc    = tx_seodynamictag_pi1->main
         special     = canonical

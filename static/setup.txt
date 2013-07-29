@@ -95,8 +95,6 @@ plugin.tx_seodynamictag_pi1 {
         debug = {$plugin.tx_seodynamictag.debugging.title}
       }
     }
-      }
-    }
   }
 }
 

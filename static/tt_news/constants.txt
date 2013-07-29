@@ -10,7 +10,7 @@ plugin.tx_seodynamictag {
   }
 
   condition {
-    single = [globalVar = GP:tx_ttnews|tt_news > 0] && [globalVar = TSFE:id = xxx]
+    single = globalVar = GP:tx_ttnews|tt_news > 0] && [globalVar = TSFE:id = xxx
   }
 
 }

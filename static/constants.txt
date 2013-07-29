@@ -7,14 +7,14 @@ plugin.tx_seodynamictag {
   # cat=Seo Dynamic Tag - Canonical*//201;   type=string;        label= Allowed parameter*:*Obligate! Allowed URL parameter for the single view
   canonical.single.additionalParams  = &table[field]={GP:table|field}
 
-  # cat=Seo Dynamic Tag - Conditions*//100;   type=string;        label= List view begin*:*Obligate! Global condition beginning for the list view. Replace 'xxx' with the id of the page with your plugin for the list view. 
-  condition.list.begin    = [globalVar = TSFE:id = xxx]
+  # cat=Seo Dynamic Tag - Conditions*//100;   type=string;        label= List view begin*:*Obligate! Global condition beginning for the list view. Without outer square brackets (!). Replace 'xxx' with the id of the page with your plugin for the list view. 
+  condition.list.begin    = globalVar = TSFE:id = xxx
   # cat=Seo Dynamic Tag - Conditions*//101;   type=string;        label= List view end*:*Obligate! Global condition ending. Usually: [global]
-  condition.list.end      = [global]
-  # cat=Seo Dynamic Tag - Conditions*//200;   type=string;        label= Single view begin*:*Obligate! Global condition beginning for the single view. Replace 'xxx' with the id of the page with your plugin for the single view.
-  condition.single.begin  = [globalVar = GP:table|field > 0] && [globalVar = TSFE:id = xxx]
+  condition.list.end      = global
+  # cat=Seo Dynamic Tag - Conditions*//200;   type=string;        label= Single view begin*:*Obligate! Global condition beginning for the single view. Without outer square brackets (!). Replace 'xxx' with the id of the page with your plugin for the single view.
+  condition.single.begin  = globalVar = GP:table|field > 0] && [globalVar = TSFE:id = xxx
   # cat=Seo Dynamic Tag - Conditions*//201;   type=string;        label= Single view end*:*Obligate! Global condition ending. Usually: [global]
-  condition.single.end    = [global]
+  condition.single.end    = global
 
   # cat=Seo Dynamic Tag - Debugging/enable/100;   type=boolean;   label= all: If enabled, you will get a report in the frontend for all debug properties
   debugging.all = 0

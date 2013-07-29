@@ -154,7 +154,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       $pageRenderer->addMetaTag( '<link rel="canonical" href="' . $this->canonicalGetUrl( $host ) . '"/>' );
     }
 
-    if( ! $this->conf[ 'debug.' ]['canonical'] ) 
+    if( ! $this->conf[ 'debug' ] ) 
     {
       return;
     }
@@ -223,7 +223,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     $conf = $this->conf[ 'path.' ];
     $path = $cObj->cObjGetSingle( $coa, $conf );
 
-    if( ! $this->conf[ 'debug.' ]['canonical'] ) 
+    if( ! $this->conf[ 'debug' ] ) 
     {
       return $path;
     }
@@ -306,7 +306,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     }
     
       // RETURN : debug mode is off
-    if( ! $this->conf[ 'debug.' ]['register'] ) 
+    if( ! $this->conf[ 'debug' ] ) 
     {
       return;
     }
@@ -385,7 +385,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       $GLOBALS[ 'TSFE' ]->page['title'] = $strValue;
     }
 
-    if( ! $this->conf[ 'debug.' ]['title'] ) 
+    if( ! $this->conf[ 'debug' ] ) 
     {
       return;
     }
@@ -421,7 +421,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
    */
   private function zzDebug( $conf ) 
   {
-    if( ! $this->conf[ 'debug.' ]['typoscript'] )
+    if( ! $this->conf[ 'debug' ] )
     {
       return;
     }
@@ -496,7 +496,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     $orderBy        = $this->orderBy;
     $limit          = $this->limit;
 
-    if($this->conf[ 'debug.' ]['sql']) {
+    if($this->conf[ 'debug' ]) {
       $this->query = $GLOBALS['TYPO3_DB']->SELECTquery($select_fields,$from_table,$where_clause,$groupBy,$orderBy,$limit);
       $this->strReturn .= '<h3>The query</h3>
         '.$this->query.'<br />' . PHP_EOL;
@@ -512,7 +512,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
 
     $strPoints      = '...';
     $strPointsSpace = ' ...';
-    if($this->conf['query.']['keywords'] && $this->conf[ 'debug.' ]['sql']) {
+    if($this->conf['query.']['keywords'] && $this->conf[ 'debug' ]) {
       $this->strReturn .= '<h3>OBSOLTE</h3>
         <span style="color:red;font-weight:bold;">You use the typoscript variable "query.keywords = 1"<br />
         Since Version 0.0.2 this varibale is substituted with "keywords = 1" only.</span>

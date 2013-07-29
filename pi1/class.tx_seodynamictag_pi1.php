@@ -265,8 +265,8 @@ var_dump( __METHOD__, __LINE__, $host, $path );
 
     switch( true )
     {
-      case( ! ( strpos( $path, 'http://' ) === false ) ):
-      case( ! ( strpos( $path, 'https://' ) === false )  ):
+      case( ! ( strpos( $host, 'http://' ) === false ) ):
+      case( ! ( strpos( $host, 'https://' ) === false )  ):
         // follow the workflow
         break;
       default:

@@ -1,11 +1,15 @@
 plugin.tx_seodynamictag {
 
-  # cat=Seo Dynamic Tag - Canonical*//100;   type=string;        label= Host: Host, if it differs in the host of the frontend
-  canonical.host              = 
-  # cat=Seo Dynamic Tag - Canonical*//200;   type=string;        label= Allowed parameter:Allowed URL parameter for the list view. An empty value is recommended!
-  canonical.list.additionalParams  = 
-  # cat=Seo Dynamic Tag - Canonical*//201;   type=string;        label= Allowed parameter*:*Obligate! Allowed URL parameter for the single view
-  canonical.single.additionalParams  = &table[field]={GP:table|field}
+  # cat=Seo Dynamic Tag - Canonical*//100;   type=string;        label= Host: Host. Leave it empty, if you are using the host of the frontend. I.e: http://easy-typo3.com/
+  canonical.host                    = 
+  # cat=Seo Dynamic Tag - Canonical*//200;   type=boolean;       label= Enabled (list view): If you don't like the canonical tag in list views, disable it.
+  canonical.list.enabled            = 1 
+  # cat=Seo Dynamic Tag - Canonical*//201;   type=string;        label= Allowed parameter (list view):Allowed URL parameter for the list view. An empty value is recommended!
+  canonical.list.additionalParams   = 
+  # cat=Seo Dynamic Tag - Canonical*//300;   type=boolean;       label= Enabled (single view): If you don't like the canonical tag in single views, disable it.
+  canonical.single.enabled          = 1 
+  # cat=Seo Dynamic Tag - Canonical*//301;   type=string;        label= Allowed parameter (list view)*:*Obligate! Allowed URL parameter for the single view
+  canonical.single.additionalParams = &table[field]={GP:table|field}
 
   # cat=Seo Dynamic Tag - Conditions*//100;   type=string;        label= List view begin*:*Obligate! Global condition beginning for the list view. Without outer square brackets (!). Replace 'xxx' with the id of the page with your plugin for the list view. 
   condition.list.begin    = globalVar = TSFE:id = xxx
@@ -27,11 +31,11 @@ plugin.tx_seodynamictag {
   # cat=Seo Dynamic Tag - Debugging/enable/204;   type=boolean;   label= title: If enabled, you will get a report in the frontend for the title
   debugging.title       = 0
 
-  # cat=Seo Dynamic Tag - Default values//100;   type=string;     label= Author: Default author, if current record doesn't contain any author.
+  # cat=Seo Dynamic Tag - Default values//100;   type=string;     label= Author: Default author, if current record doesn't contain any author. Leave it empty, if you don't like a default author.
   default.author  = TYPO3 SEO Dynamic Tag (seo_dynamic tag)
-  # cat=Seo Dynamic Tag - Default values//101;   type=string;     label= Description: Default description, if current record doesn't contain any description.
+  # cat=Seo Dynamic Tag - Default values//101;   type=string;     label= Description: Default description, if current record doesn't contain any description. Leave it empty, if you don't like a default description.
   default.description  = You have a bug in your SEO Dynamic Tag configuration: description is empty!
-  # cat=Seo Dynamic Tag - Default values//102;   type=string;     label= Keywords: Default keywords, if current record doesn't contain any keyword.
+  # cat=Seo Dynamic Tag - Default values//102;   type=string;     label= Keywords: Default keywords, if current record doesn't contain any keyword. Leave it empty, if you don't like default keywords.
   default.keywords  = TYPO3, SEO, Dynamic Tag, Bug
 
   # cat=Seo Dynamic Tag - page object//100;   type=string;        label= Label*:*Obligate! The label of your page in your TypoSCript configuration. Usually: page

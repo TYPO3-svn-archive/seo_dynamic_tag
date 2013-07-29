@@ -63,7 +63,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
   private $arrDebug           = null;
   private $promptSubstitute;  // In debug mode there will be a prompt, if there is any substitution of values
   private $query;             // Array for a sql query
-  private $strReturn;         // This is the prompt in debugging mode
+  private $debugPrompt;         // This is the prompt in debugging mode
   
   
   
@@ -109,7 +109,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       case( $this->conf[ 'special' ] != '' ):
         if( $this->conf[ 'debug' ] ) 
         {
-          $this->strReturn  = $this->strReturn
+          $this->debugPrompt  = $this->debugPrompt
                             . '<h3>Error special</h3>
                               <p>
                                 <span style="color:red;font-weight:bold;">The special value "' . $this->conf[ 'special' ] . '" isn\'t defined!</span>
@@ -127,8 +127,8 @@ class tx_seodynamictag_pi1 extends tslib_pibase
                   . '</div>';
     }
     
-    //var_dump( __METHOD__, __LINE__, $this->strReturn.$strReturn.$strValue );
-    return $this->strReturn . $strReturn . $strValue;
+    //var_dump( __METHOD__, __LINE__, $this->debugPrompt.$strReturn.$strValue );
+    return $this->debugPrompt . $strReturn . $strValue;
   }
  
   
@@ -162,13 +162,13 @@ var_dump( __METHOD__, __LINE__, $this->conf );
 
     if( $host ) 
     {
-      $this->strReturn .= '<h3>Result string of the method</h3>
+      $this->debugPrompt .= '<h3>Result string of the method</h3>
         ' . $host . '
         ';
     } 
     else
     {
-      $this->strReturn .= '<h3>Result of the method</h3>
+      $this->debugPrompt .= '<h3>Result of the method</h3>
         <span style="color:red;font-weight:bold;">The page title won\'t be changed, because the returned value is empty!</span>
         ';
     }
@@ -187,6 +187,7 @@ var_dump( __METHOD__, __LINE__, $this->conf );
     switch( true )
     {
       case( ! empty( $this->conf[ 'host' ] ) ):
+var_dump( __METHOD__, __LINE__, $host );    
         $host = $this->conf[ 'host' ];
         break;
       case( empty( $this->conf[ 'host' ] ) ):
@@ -194,9 +195,11 @@ var_dump( __METHOD__, __LINE__, $this->conf );
         $host = $GLOBALS[ 'TSFE' ]->baseUrl;
         if( ! empty ( $host ) )
         { 
+var_dump( __METHOD__, __LINE__, $host );    
           break;
         }
         $host = $_SERVER[ 'HTTP_HOST' ];
+var_dump( __METHOD__, __LINE__, $host );    
         break;
     }
 
@@ -231,13 +234,13 @@ var_dump( __METHOD__, __LINE__, $this->conf );
 
     if( $path ) 
     {
-      $this->strReturn .= '<h3>Result of ' . __METHOD__ . '</h3>
+      $this->debugPrompt .= '<h3>Result of ' . __METHOD__ . '</h3>
         ' . $path . '
         ';
     }
     else 
     {
-      $this->strReturn .= '<h3>Result of ' . __METHOD__ . '</h3>
+      $this->debugPrompt .= '<h3>Result of ' . __METHOD__ . '</h3>
         <span style="color:red;font-weight:bold;">Path is empty!</span>
         <pre>' . var_export( $conf, true ) . '</pre>
         ';
@@ -263,6 +266,7 @@ var_dump( __METHOD__, __LINE__, $this->conf );
     {
       case( strpos( $path, 'http://' ) ):
       case( strpos( $path, 'https://' ) ):
+var_dump( __METHOD__, __LINE__, $path );    
         // follow the workflow
         break;
       default:
@@ -315,7 +319,7 @@ var_dump( __METHOD__, __LINE__, $this->conf );
 
     if( $strValue )
     {
-      $this->strReturn .= '<h3>Result string of the method</h3>
+      $this->debugPrompt .= '<h3>Result string of the method</h3>
         '.$strValue.'<br />
         <br />
         <strong>Info:</strong> This value is stored in the register "'.$register.'"<br />
@@ -325,7 +329,7 @@ var_dump( __METHOD__, __LINE__, $this->conf );
     }
     else
     {
-      $this->strReturn .= '<h3>Result of the method</h3>
+      $this->debugPrompt .= '<h3>Result of the method</h3>
         <span style="color:red;font-weight:bold;">The value is empty, there won\'t be any register "'.$register.'"</span>
         ';
     }
@@ -393,11 +397,11 @@ var_dump( __METHOD__, __LINE__, $this->conf );
 
     if( $strValue ) 
     {
-      $this->strReturn .= '<h3>Result string of the method</h3>
+      $this->debugPrompt .= '<h3>Result string of the method</h3>
         '.$strValue.'
         ';
     } else {
-      $this->strReturn .= '<h3>Result of the method</h3>
+      $this->debugPrompt .= '<h3>Result of the method</h3>
         <span style="color:red;font-weight:bold;">The page title won\'t be changed, because the returned value is empty!</span>
         ';
     }
@@ -442,7 +446,7 @@ var_dump( __METHOD__, __LINE__, $this->conf );
                   . $this->promptSubstitute . '<br />' . PHP_EOL;
     }
     
-    $this->strReturn = $strReturn;
+    $this->debugPrompt = $strReturn;
   }
 
 //  /**
@@ -475,7 +479,7 @@ var_dump( __METHOD__, __LINE__, $this->conf );
 //                  . $this->promptSubstitute . '<br />' . PHP_EOL;
 //    }
 //    
-//    $this->strReturn = $strReturn;
+//    $this->debugPrompt = $strReturn;
 //  }
 
   /**
@@ -499,7 +503,7 @@ var_dump( __METHOD__, __LINE__, $this->conf );
 
     if($this->conf[ 'debug' ]) {
       $this->query = $GLOBALS['TYPO3_DB']->SELECTquery($select_fields,$from_table,$where_clause,$groupBy,$orderBy,$limit);
-      $this->strReturn .= '<h3>The query</h3>
+      $this->debugPrompt .= '<h3>The query</h3>
         '.$this->query.'<br />' . PHP_EOL;
       $GLOBALS['TYPO3_DB']->zzDebug($GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy,$orderBy,$limit));
     }
@@ -514,7 +518,7 @@ var_dump( __METHOD__, __LINE__, $this->conf );
     $strPoints      = '...';
     $strPointsSpace = ' ...';
     if($this->conf['query.']['keywords'] && $this->conf[ 'debug' ]) {
-      $this->strReturn .= '<h3>OBSOLTE</h3>
+      $this->debugPrompt .= '<h3>OBSOLTE</h3>
         <span style="color:red;font-weight:bold;">You use the typoscript variable "query.keywords = 1"<br />
         Since Version 0.0.2 this varibale is substituted with "keywords = 1" only.</span>
         ';
@@ -610,13 +614,13 @@ var_dump( __METHOD__, __LINE__, $this->conf );
     
     if( $strValue ) 
     {
-      $this->strReturn .= '<h3>Result string of the method</h3>
+      $this->debugPrompt .= '<h3>Result string of the method</h3>
                           ' . $strValue . '<br />
                           ';
     } 
     else 
     {
-      $this->strReturn .= '<h3>Result of the method</h3>
+      $this->debugPrompt .= '<h3>Result of the method</h3>
                           <span style="color:red;font-weight:bold;">The value is empty!</span>
                           ';
     }

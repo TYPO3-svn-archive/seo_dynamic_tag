@@ -2,7 +2,7 @@ plugin.tx_seodynamictag {
 
   canonical {
     list {
-      additionalParams  = 
+      additionalParams  = &tx_ttnews[pointer]={GP:tx_ttnews|pointer}
     }
     single {
       additionalParams  = &tx_ttnews[tt_news]={GP:tx_ttnews|tt_news}

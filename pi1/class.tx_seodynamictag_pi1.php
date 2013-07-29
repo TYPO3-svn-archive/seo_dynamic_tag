@@ -147,12 +147,14 @@ class tx_seodynamictag_pi1 extends tslib_pibase
   */
   private function canonical( ) 
   {
-var_dump( __METHOD__, __LINE__, $this->conf );    
     $host = $this->canonicalGetHost( );
+var_dump( __METHOD__, __LINE__, $host );    
     if( ! empty( $host ) ) 
     {
+      $url = $this->canonicalGetUrl( $host );
+var_dump( __METHOD__, __LINE__, $url );    
       $pageRenderer = $GLOBALS[ 'TSFE' ]->getPageRenderer( );
-      $pageRenderer->addMetaTag( '<link rel="canonical" href="' . $this->canonicalGetUrl( $host ) . '"/>' );
+      $pageRenderer->addMetaTag( '<link rel="canonical" href="' . $url . '"/>' );
     }
 
     if( ! $this->conf[ 'debug' ] ) 
@@ -172,6 +174,7 @@ var_dump( __METHOD__, __LINE__, $this->conf );
         <span style="color:red;font-weight:bold;">The page title won\'t be changed, because the returned value is empty!</span>
         ';
     }
+var_dump( __METHOD__, __LINE__, $this->debugPrompt );    
   }
   
 /**
@@ -187,7 +190,6 @@ var_dump( __METHOD__, __LINE__, $this->conf );
     switch( true )
     {
       case( ! empty( $this->conf[ 'host' ] ) ):
-var_dump( __METHOD__, __LINE__, $host );    
         $host = $this->conf[ 'host' ];
         break;
       case( empty( $this->conf[ 'host' ] ) ):
@@ -195,11 +197,9 @@ var_dump( __METHOD__, __LINE__, $host );
         $host = $GLOBALS[ 'TSFE' ]->baseUrl;
         if( ! empty ( $host ) )
         { 
-var_dump( __METHOD__, __LINE__, $host );    
           break;
         }
         $host = $_SERVER[ 'HTTP_HOST' ];
-var_dump( __METHOD__, __LINE__, $host );    
         break;
     }
 

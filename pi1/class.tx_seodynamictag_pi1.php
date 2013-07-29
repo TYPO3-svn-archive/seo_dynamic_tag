@@ -52,13 +52,13 @@ require_once(PATH_tslib.'class.tslib_pibase.php');
 class tx_seodynamictag_pi1 extends tslib_pibase 
 {
 
-  protected $prefixId      = 'tx_seodynamictag_pi1';    // Same as class name
-  protected $scriptRelPath = 'pi1/class.tx_seodynamictag_pi1.php';  // Path to this script relative to the extension dir.
-  protected $extKey        = 'seo_dynamic_tag'; // The extension key.
-  protected $pi_checkCHash = true;
+  public $prefixId      = 'tx_seodynamictag_pi1';    // Same as class name
+  public $scriptRelPath = 'pi1/class.tx_seodynamictag_pi1.php';  // Path to this script relative to the extension dir.
+  public $extKey        = 'seo_dynamic_tag'; // The extension key.
+  public $pi_checkCHash = true;
 
-  protected $conf;
-  protected $content;
+  public $conf;
+  public $content;
   
   private $arrDebug           = null;
   private $promptSubstitute;  // In debug mode there will be a prompt, if there is any substitution of values

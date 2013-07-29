@@ -159,6 +159,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       $url = $this->canonicalGetUrl( $host );
       $pageRenderer = $GLOBALS[ 'TSFE' ]->getPageRenderer( );
       $pageRenderer->addMetaTag( '<link rel="canonical" href="' . $url . '"/>' );
+      $pageRenderer->addInlineComment( 'Dirk Wildt XYZ' );
     }
 
     if( ! $this->conf[ 'debug' ] ) 

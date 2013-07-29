@@ -1,13 +1,11 @@
 plugin.tx_seodynamictag {
 
-  # cat=Seo Dynamic Tag - Canonical*//100;   type=string;        label= Host: Host. Leave it empty, if you are using the host of the frontend. I.e: http://easy-typo3.com/
+  # cat=Seo Dynamic Tag - Canonical*//100;   type=boolean;       label= Enabled: If you don't like the canonical tag, disable it.
+  canonical.enabled                 = 1 
+  # cat=Seo Dynamic Tag - Canonical*//101;   type=string;        label= Host: Host. Leave it empty, if you are using the host of the frontend. I.e: http://easy-typo3.com/
   canonical.host                    = 
-  # cat=Seo Dynamic Tag - Canonical*//200;   type=boolean;       label= Enabled (list view): If you don't like the canonical tag in list views, disable it.
-  canonical.list.enabled            = 1 
   # cat=Seo Dynamic Tag - Canonical*//201;   type=string;        label= Allowed parameter (list view):Allowed URL parameter for the list view. An empty value is recommended!
   canonical.list.additionalParams   = 
-  # cat=Seo Dynamic Tag - Canonical*//300;   type=boolean;       label= Enabled (single view): If you don't like the canonical tag in single views, disable it.
-  canonical.single.enabled          = 1 
   # cat=Seo Dynamic Tag - Canonical*//301;   type=string;        label= Allowed parameter (list view)*:*Obligate! Allowed URL parameter for the single view
   canonical.single.additionalParams = &table[field]={GP:table|field}
 

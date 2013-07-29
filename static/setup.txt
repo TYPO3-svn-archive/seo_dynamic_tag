@@ -138,7 +138,7 @@ plugin.tx_seodynamictag_pi1 {
 }
 
   // Global condition for the single view
-{$plugin.tx_seodynamictag.condition.single.begin}
+//{$plugin.tx_seodynamictag.condition.single.begin}
   {$plugin.tx_seodynamictag.page.tsProperty} {
     meta {
       author      >
@@ -150,4 +150,4 @@ plugin.tx_seodynamictag_pi1 {
     }
     {$plugin.tx_seodynamictag.page.object} < plugin.tx_seodynamictag_pi1.templates.extensions.tt_news.belowTheContent
   }
-{$plugin.tx_seodynamictag.condition.single.end}
+//{$plugin.tx_seodynamictag.condition.single.end}

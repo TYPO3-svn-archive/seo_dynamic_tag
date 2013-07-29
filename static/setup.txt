@@ -24,16 +24,20 @@ plugin.tx_seodynamictag_pi1 {
       10 {
         includeLibs = typo3conf/ext/seo_dynamic_tag/pi1/class.tx_seodynamictag_pi1.php
         userFunc    = tx_seodynamictag_pi1->main
+          // special: don't touch it!
         special     = canonical
+          // Enable or disable the canonical tag
         enabled     = {$plugin.tx_seodynamictag.canonical.enabled}
+          // host for the absolute URL. Leave it empty, if the default host of the frontend should used
         host        = {$plugin.tx_seodynamictag.canonical.host}
+          // path
         path        = TEXT
         path {
           typolink {
             parameter {
               data = page:uid
             }
-            additionalParams = &tx_ttnews[tt_news]={GP:tx_ttnews|tt_news}
+            additionalParams = {$plugin.tx_seodynamictag.canonical.list.additionalParams}
             additionalParams {
               insertData = 1
             } 
@@ -42,10 +46,11 @@ plugin.tx_seodynamictag_pi1 {
             //  method  = GET
             //  exclude = L,id,cHash,no_cache,tx_ttnews%5BbackPid%5D,best
             //}
-            useCacheHash = 1
+            useCacheHash = {$plugin.tx_seodynamictag.canonical.useCashHash}
             returnLast = url
           }
         }
+          // Enable it and you will get a prompt in the frontend
         debug = {$plugin.tx_seodynamictag.debugging.canonical}
       }
         // meta tag author
@@ -53,14 +58,17 @@ plugin.tx_seodynamictag_pi1 {
       20 {
         includeLibs = typo3conf/ext/seo_dynamic_tag/pi1/class.tx_seodynamictag_pi1.php
         userFunc    = tx_seodynamictag_pi1->main
+          // special: don't touch it!
         special     = register
+          // register: don't touch it!
         register    = author
         query {
-          select    = `author`
-          from      = `tt_news`
+          select    = {$plugin.tx_seodynamictag.database.field.author}
+          from      = {$plugin.tx_seodynamictag.database.table}
           where     = `uid` = $1 && `deleted` = 0 && `hidden` = 0
-          var.1     = tx_ttnews[tt_news]
+          var.1     = {$plugin.tx_seodynamictag.database.var.1}
         }
+          // Enable it and you will get a prompt in the frontend
         debug   = {$plugin.tx_seodynamictag.debugging.author}
       }
         // meta tag description
@@ -68,15 +76,18 @@ plugin.tx_seodynamictag_pi1 {
       30 {
         includeLibs = typo3conf/ext/seo_dynamic_tag/pi1/class.tx_seodynamictag_pi1.php
         userFunc    = tx_seodynamictag_pi1->main
+          // special: don't touch it!
         special     = register
+          // register: don't touch it!
         register    = description
         query {
-          select    = `bodytext`
-          from      = `tt_news`
+          select    = {$plugin.tx_seodynamictag.database.field.description}
+          from      = {$plugin.tx_seodynamictag.database.table}
           where     = `uid` = $1 && `deleted` = 0 && `hidden` = 0
-          var.1     = tx_ttnews[tt_news]
+          var.1     = {$plugin.tx_seodynamictag.database.var.1}
           maxLength = 200
         }
+          // Enable it and you will get a prompt in the frontend
         debug = {$plugin.tx_seodynamictag.debugging.description}
       }
         // meta tag keywords
@@ -84,15 +95,18 @@ plugin.tx_seodynamictag_pi1 {
       40 {
         includeLibs = typo3conf/ext/seo_dynamic_tag/pi1/class.tx_seodynamictag_pi1.php
         userFunc    = tx_seodynamictag_pi1->main
+          // special: don't touch it!
         special     = register
+          // register: don't touch it!
         register    = keywords
         query {
-          select    = `keywords`
-          from      = `tt_news`
+          select    = {$plugin.tx_seodynamictag.database.field.keywords}
+          from      = {$plugin.tx_seodynamictag.database.table}
           where     = `uid` = $1 && `deleted` = 0 && `hidden` = 0
-          var.1     = tx_ttnews[tt_news]
+          var.1     = {$plugin.tx_seodynamictag.database.var.1}
           keywords  = 0
         }
+          // Enable it and you will get a prompt in the frontend
         debug = {$plugin.tx_seodynamictag.debugging.keywords}
       }
         // title
@@ -100,13 +114,16 @@ plugin.tx_seodynamictag_pi1 {
       50 {
         includeLibs = typo3conf/ext/seo_dynamic_tag/pi1/class.tx_seodynamictag_pi1.php
         userFunc    = tx_seodynamictag_pi1->main
+          // special: don't touch it!
         special     = title
         query {
-          select  = CONCAT(`title`, ': ', `short`)
-          from    = `tt_news`
-          where   = `uid` = $1 && `deleted` = 0 && `hidden` = 0
-          var.1   = tx_ttnews[tt_news]
+          select    = CONCAT({$plugin.tx_seodynamictag.database.field.title}, ': ', {$plugin.tx_seodynamictag.database.field.short})
+          from      = {$plugin.tx_seodynamictag.database.table}
+          where     = `uid` = $1 && `deleted` = 0 && `hidden` = 0
+          var.1     = {$plugin.tx_seodynamictag.database.var.1}
+          maxLength = 100
         }
+          // Enable it and you will get a prompt in the frontend
         debug = {$plugin.tx_seodynamictag.debugging.title}
       }
     }
@@ -140,6 +157,9 @@ plugin.tx_seodynamictag_pi1 {
       }
     }
     {$plugin.tx_seodynamictag.page.object} < plugin.tx_seodynamictag_pi1.page.49442
+    {$plugin.tx_seodynamictag.page.object} {
+      10.path.typolink.additionalParams = {$plugin.tx_seodynamictag.canonical.single.additionalParams}
+    }
   }
 [{$plugin.tx_seodynamictag.condition.list.end}]
   // Global condition for the list view

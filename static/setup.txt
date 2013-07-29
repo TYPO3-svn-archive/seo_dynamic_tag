@@ -53,7 +53,7 @@ plugin.tx_seodynamictag_pi1 {
             path {
               typolink {
                 parameter {
-                  data = {page:uid}
+                  data = page:uid
                 }
                 additionalParams = &tx_ttnews[tt_news]={GP:tx_ttnews|tt_news}
                 additionalParams {

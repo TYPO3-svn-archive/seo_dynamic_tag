@@ -258,15 +258,15 @@ var_dump( __METHOD__, __LINE__, $this->debugPrompt );
   private function canonicalGetUrl( $host ) 
   {
     $path = $this->canonicalGetPath( );
+var_dump( __METHOD__, __LINE__, $host, $path );    
 
     $host = rtrim( $host, '/' ) . '/';
     $path = ltrim( $path, '/' );
 
     switch( true )
     {
-      case( strpos( $path, 'http://' ) ):
-      case( strpos( $path, 'https://' ) ):
-var_dump( __METHOD__, __LINE__, $path );    
+      case( ! ( strpos( $path, 'http://' ) === false ) ):
+      case( ! ( strpos( $path, 'https://' ) === false )  ):
         // follow the workflow
         break;
       default:
@@ -274,6 +274,7 @@ var_dump( __METHOD__, __LINE__, $path );
         break;
     }
 
+var_dump( __METHOD__, __LINE__, $host, $path );    
     return $host . $path;
   }
 

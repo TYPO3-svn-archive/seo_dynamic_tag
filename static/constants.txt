@@ -16,8 +16,6 @@ plugin.tx_seodynamictag {
   # cat=Seo Dynamic Tag - Conditions*//201;   type=string;        label= Single view end*:*Obligate! Global condition ending. Without outer square brackets (!). Usually: global
   condition.single.end    = global
 
-  # cat=Seo Dynamic Tag - Debugging/enable/100;   type=boolean;   label= all: If enabled, you will get a report in the frontend for all debug properties
-  debugging.all = 0
   # cat=Seo Dynamic Tag - Debugging/enable/200;   type=boolean;   label= author: If enabled, you will get a report in the frontend for the meta tag author
   debugging.author      = 0
   # cat=Seo Dynamic Tag - Debugging/enable/201;   type=boolean;   label= canonical tag: If enabled, you will get a report in the frontend for the canonical tag

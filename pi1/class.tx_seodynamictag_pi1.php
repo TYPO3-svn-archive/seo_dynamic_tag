@@ -147,6 +147,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
   */
   private function canonical( ) 
   {
+var_dump( __METHOD__, __LINE__, $this->conf );    
     $host = $this->canonicalGetHost( );
     if( ! empty( $host ) ) 
     {

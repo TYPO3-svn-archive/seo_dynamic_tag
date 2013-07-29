@@ -224,7 +224,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     $coa  = $this->conf[ 'path' ];
     $conf = $this->conf[ 'path.' ];
     $path = $cObj->cObjGetSingle( $coa, $conf );
-var_dump( __METHOD__, __LINE__, $cObj->data, $coa, $conf, $path );    
+//var_dump( __METHOD__, __LINE__, $cObj->data, $coa, $conf, $path );    
 
     if( ! $this->conf[ 'debug' ] ) 
     {
@@ -244,6 +244,8 @@ var_dump( __METHOD__, __LINE__, $cObj->data, $coa, $conf, $path );
         <pre>' . var_export( $conf, true ) . '</pre>
         ';
     }
+
+    return $path;
   }
 
 /**
@@ -622,6 +624,8 @@ var_dump( __METHOD__, __LINE__, $cObj->data, $coa, $conf, $path );
                           <span style="color:red;font-weight:bold;">The value is empty!</span>
                           ';
     }
+
+    return $strValue; 
   }
 
   /**

@@ -148,11 +148,10 @@ class tx_seodynamictag_pi1 extends tslib_pibase
   private function canonical( ) 
   {
     $host = $this->canonicalGetHost( );
-var_dump( __METHOD__, __LINE__, $host );    
+
     if( ! empty( $host ) ) 
     {
       $url = $this->canonicalGetUrl( $host );
-var_dump( __METHOD__, __LINE__, $url );    
       $pageRenderer = $GLOBALS[ 'TSFE' ]->getPageRenderer( );
       $pageRenderer->addMetaTag( '<link rel="canonical" href="' . $url . '"/>' );
     }
@@ -174,7 +173,6 @@ var_dump( __METHOD__, __LINE__, $url );
         <span style="color:red;font-weight:bold;">The page title won\'t be changed, because the returned value is empty!</span>
         ';
     }
-var_dump( __METHOD__, __LINE__, $this->debugPrompt );    
   }
   
 /**
@@ -220,12 +218,13 @@ var_dump( __METHOD__, __LINE__, $this->debugPrompt );
  */
   private function canonicalGetPath( ) 
   {
-    $cObj = t3lib_div::makeInstance('tslib_cObj');
-    $cObj->start($GLOBALS['TSFE']->page, 'pages');
+    $cObj = t3lib_div::makeInstance( 'tslib_cObj' );
+    $cObj->start( $GLOBALS['TSFE']->page, 'pages' );
 
     $coa  = $this->conf[ 'path' ];
     $conf = $this->conf[ 'path.' ];
     $path = $cObj->cObjGetSingle( $coa, $conf );
+var_dump( __METHOD__, __LINE__, $cObj->data, $coa, $conf, $path );    
 
     if( ! $this->conf[ 'debug' ] ) 
     {
@@ -258,7 +257,6 @@ var_dump( __METHOD__, __LINE__, $this->debugPrompt );
   private function canonicalGetUrl( $host ) 
   {
     $path = $this->canonicalGetPath( );
-var_dump( __METHOD__, __LINE__, $host, $path );    
 
     $host = rtrim( $host, '/' ) . '/';
     $path = ltrim( $path, '/' );
@@ -274,7 +272,6 @@ var_dump( __METHOD__, __LINE__, $host, $path );
         break;
     }
 
-var_dump( __METHOD__, __LINE__, $host, $path );    
     return $host . $path;
   }
 

@@ -785,6 +785,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     {
       $value = strip_tags( $value );
     }
+    $value = str_replace( '  ', ' ', $value );
 
     return $value;
   }

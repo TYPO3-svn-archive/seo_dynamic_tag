@@ -118,7 +118,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
         }
         break;
       default:
-        $strValue = $this->zzStandard( );
+        $value = $this->zzStandard( );
     }
     
     if( $this->conf[ 'debug' ] ) 
@@ -127,8 +127,8 @@ class tx_seodynamictag_pi1 extends tslib_pibase
                   . '</div>';
     }
     
-    //var_dump( __METHOD__, __LINE__, $this->debugPrompt.$strReturn.$strValue );
-    return $this->debugPrompt . $strReturn . $strValue;
+    //var_dump( __METHOD__, __LINE__, $this->debugPrompt.$strReturn.$value );
+    return $this->debugPrompt . $strReturn . $value;
   }
  
   
@@ -159,7 +159,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       $url = $this->canonicalGetUrl( $host );
       $pageRenderer = $GLOBALS[ 'TSFE' ]->getPageRenderer( );
       $pageRenderer->addMetaTag( '<link rel="canonical" href="' . $url . '"/>' );
-      $pageRenderer->addInlineComment( 'Dirk Wildt XYZ' . PHP_EOL . PHP_EOL );
+      //$pageRenderer->addInlineComment( 'Dirk Wildt XYZ' . PHP_EOL . PHP_EOL );
     }
 
     if( ! $this->conf[ 'debug' ] ) 
@@ -308,12 +308,15 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     $register = $this->conf[ 'register' ];
 
       // register value
-    $strValue = $this->zzGetValueBySQLQuery( );
+    $value = $this->zzValueFromSQL( );
+    $value = $this->zzKeywords( $value );
+    $value = $this->zzMaxLength( $value );
+    
 
       // Set the regsiter
-    if( $strValue )
+    if( $value )
     {
-      $GLOBALS[ 'TSFE' ]->register[$register] = $strValue;
+      $GLOBALS[ 'TSFE' ]->register[$register] = $value;
     }
     
       // RETURN : debug mode is off
@@ -323,10 +326,10 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     }
       // RETURN : debug mode is off
 
-    if( $strValue )
+    if( $value )
     {
       $this->debugPrompt .= '<h3>Result string of the method</h3>
-        '.$strValue.'<br />
+        '.$value.'<br />
         <br />
         <strong>Info:</strong> This value is stored in the register "'.$register.'"<br />
         You can use it with this typoscript e.g.:<br />
@@ -390,10 +393,12 @@ class tx_seodynamictag_pi1 extends tslib_pibase
   private function title( ) 
   {
 
-    $strValue = $this->zzGetValueBySQLQuery( );
-    if( $strValue ) 
+    $value = $this->zzValueFromSQL( );
+    $value = $this->zzMaxLength( $value );
+    
+    if( $value ) 
     {
-      $GLOBALS[ 'TSFE' ]->page['title'] = $strValue;
+      $GLOBALS[ 'TSFE' ]->page['title'] = $value;
     }
 
     if( ! $this->conf[ 'debug' ] ) 
@@ -401,10 +406,10 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       return;
     }
 
-    if( $strValue ) 
+    if( $value ) 
     {
       $this->debugPrompt .= '<h3>Result string of the method</h3>
-        '.$strValue.'
+        '.$value.'
         ';
     } else {
       $this->debugPrompt .= '<h3>Result of the method</h3>
@@ -489,112 +494,133 @@ class tx_seodynamictag_pi1 extends tslib_pibase
 //  }
 
   /**
-   * zzGetValueBySQLQuery( )  : Get the result from the database
+   * zzKeywords( )  : 
    *
+   * @param   string    $value  :
    * @return  string    $value  : 
    * @access    private
-   * @version   1.1.1
+   * @version   1.2.0
    */
-  private function zzGetValueBySQLQuery( ) 
+  private function zzKeywords( $value ) 
   {
+    $strKeywords = null;
 
-    $strKeywords  = null;
+    if( $this->conf['query.']['keywords'] && $this->conf[ 'debug' ] )
+    {
+      $this->debugPrompt  = $this->debugPrompt
+                          . '<h3>OBSOLTE</h3>
+                            <span style="color:red;font-weight:bold;">You use the typoscript variable "query.keywords = 1"<br />
+                            Since Version 0.0.2 this varibale is substituted with "keywords = 1" only.</span>
+                            ';
+    }
     
-    $select_fields  = $this->conf['query.']['select'];
-    $from_table     = $this->conf['query.']['from'];
-    $where_clause   = $this->conf['query.']['where'];
-    $groupBy        = $this->groupBy;
-    $orderBy        = $this->orderBy;
-    $limit          = $this->limit;
+    if( ! ( $this->conf['query.']['keywords'] || $this->conf['keywords'] ) )
+    {
+      return $value;
+    }
+    
+    $value    = str_replace( ', ',     ' ',  $value );
+    $value    = str_replace( ' ',      ',',  $value );
+    $value    = str_replace( '.',      ',',  $value );
+    $value    = str_replace( ':',      null, $value );
+    $value    = str_replace( '"',      null, $value );
+    $value    = str_replace( PHP_EOL,  ',',  $value );
 
-    if($this->conf[ 'debug' ]) {
-      $this->query = $GLOBALS['TYPO3_DB']->SELECTquery($select_fields,$from_table,$where_clause,$groupBy,$orderBy,$limit);
-      $this->debugPrompt .= '<h3>The query</h3>
-        '.$this->query.'<br />' . PHP_EOL;
-      $GLOBALS['TYPO3_DB']->zzDebug($GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy,$orderBy,$limit));
+    $arrValue = explode( ',', $value );
+    $arrValue = array_count_values( $arrValue );
+    arsort($arrValue);
+    
+    $minLength = $this->conf['keywords.']['minLength'];
+    if( $minLength === null )
+    {
+      $minLength = 4;
     }
-    $res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy,$orderBy,$limit);
-    if($res) $row = mysql_fetch_row($res);
-    if($this->conf['query.']['dontStripTags']) {
-      $value = $row[0];
-    } else {
-      $value = strip_tags($row[0]);
+    
+    $intMaxAmount = $this->conf['keywords.']['amount'];
+    if( $intMaxAmount === null || ( int ) $intMaxAmount == 0 )
+    {
+      $intMaxAmount = 10;
     }
+    
+      // 130730, dwildt, 1-
+    //$strPositiveList = str_replace( ' ', null, $this->conf['keywords.']['positiveList'] );
+      // 130730, dwildt, 1+
+    $strPositiveList = $this->conf['keywords.']['positiveList'];
+    $arrPositiveList = explode( ',', $strPositiveList );
 
-    $strPoints      = '...';
-    $strPointsSpace = ' ...';
-    if($this->conf['query.']['keywords'] && $this->conf[ 'debug' ]) {
-      $this->debugPrompt .= '<h3>OBSOLTE</h3>
-        <span style="color:red;font-weight:bold;">You use the typoscript variable "query.keywords = 1"<br />
-        Since Version 0.0.2 this varibale is substituted with "keywords = 1" only.</span>
-        ';
-    }
-    if($this->conf['query.']['keywords'] || $this->conf['keywords']) {
-      $strPoints = $strPointsSpace = '';
-      $value    = str_replace(', ', ' ',  $value);
-      $value    = str_replace(' ',  ',',  $value);
-      $value    = str_replace('.',  ',',  $value);
-      $value    = str_replace(':',  '',   $value);
-      $value    = str_replace('"',  '',   $value);
-      $value    = str_replace(PHP_EOL, ',',  $value);
-      $arrValue = explode(',', $value);
-      $arrValue = array_count_values($arrValue);
-      arsort($arrValue);
-      if($this->conf['keywords.']['minLength']) {
-        $minLength = $this->conf['keywords.']['minLength'];
-      } else {
-        $minLength = 4;
-      }
-      if($this->conf['keywords.']['amount'] != '') {
-        $intMaxAmount = $this->conf['keywords.']['amount'];
-      } else {
-        $intMaxAmount = 10;
-      }
-      $strPositiveList = str_replace(' ','', $this->conf['keywords.']['positiveList']);
-      $arrPositiveList = explode(',', $strPositiveList);
-      $intAmount = 0;
-        // 130115, dwildt, 1-
-//      foreach($arrValue as $keyKeyword => $valKeyword)
-        // 130115, dwildt, 1+
-      foreach( array_keys( $arrValue ) as $keyKeyword )
+    $intAmount = 0;
+    foreach( array_keys( $arrValue ) as $keyKeyword )
+    {
+      $boolKeyword = false;
+      switch( true ) 
       {
-        $boolKeyword = false;
-        switch(true) {
-          case(strlen($keyKeyword) >= $minLength):
-            $boolKeyword = true;
-            break;
-          case(in_array($keyKeyword, $arrPositiveList)):
-            $boolKeyword = true;
-            break;
-        }
-        if(strpos($keyKeyword, $strKeywords) == 0 && $boolKeyword && $keyKeyword != '') {
-          $strKeywords .= $keyKeyword.',';
-        }
-        if($boolKeyword) {
-          if($intAmount++ >= $intMaxAmount) break;
-        }
+        case( strlen( $keyKeyword ) >= $minLength ):
+          $boolKeyword = true;
+          break;
+        case( in_array( $keyKeyword, $arrPositiveList ) ):
+          $boolKeyword = true;
+          break;
       }
-      if( $strKeywords != '' )
+      if( strpos( $keyKeyword, $strKeywords ) == 0 && $boolKeyword && $keyKeyword != null )
       {
-        $strKeywords = substr($strKeywords, 0, strlen($strKeywords) - 1);
+        $strKeywords = $strKeywords . $keyKeyword . ',';
       }
-      $value = $strKeywords;
-      $value = str_replace(',,',' ', $value);
+      if( $boolKeyword ) 
+      {
+        if( $intAmount++ >= $intMaxAmount ) break;
+      }
     }
+    
+    if( $strKeywords != '' )
+    {
+      $strKeywords = substr( $strKeywords, 0, strlen( $strKeywords ) - 1 );
+    }
+    $value = $strKeywords;
+    $value = str_replace( ',,', ' ', $value );
     
     unset( $arrPositiveList );
     
+    return $value;
+  }
+
+  /**
+   * zzMaxLength( )  : 
+   *
+   * @param   string    $value  :
+   * @return  string    $value  : 
+   * @access    private
+   * @version   1.2.0
+   */
+  private function zzMaxLength( $value ) 
+  {
+    $strPoints      = '...';
+    $strPointsSpace = ' ...';
+
+    if( $this->conf['query.']['keywords'] || $this->conf['keywords'] ) 
+    {
+      $strPoints = $strPointsSpace = '';
+    }
+    
     $maxLength = $this->conf['query.']['maxLength'];
-    if($maxLength > 0) {
-      if(strlen($value) > $maxLength) {
-        $value = substr($value, 0, $maxLength).$strPoints;
-        $lastSpace = strrpos($value, ' ');
-        if($lastSpace > 0) {
-          $value = substr($value, 0, $lastSpace).$strPointsSpace;
-        } else {
-          $value = $value.$strPoints;
-        }
-      }
+    
+    if( $maxLength <= 0 ) 
+    {
+      return $value;
+    }
+    
+    if( strlen( $value ) <= $maxLength ) 
+    {
+      return $value;
+    }
+    
+    $value = substr( $value, 0, $maxLength ) . $strPoints;
+
+    $lastSpace = strrpos( $value, ' ' );
+    if( $lastSpace > 0 ) 
+    {
+      $value = substr( $value, 0, $lastSpace ) . $strPointsSpace;
+    } else {
+      $value = $value . $strPoints;
     }
     return $value;
   }
@@ -610,18 +636,20 @@ class tx_seodynamictag_pi1 extends tslib_pibase
   private function zzStandard( ) 
   {
 
-    $strValue = $this->zzGetValueBySQLQuery( );
-    
+    $value = $this->zzValueFromSQL( );
+    $value = $this->zzKeywords( $value );
+    $value = $this->zzMaxLength( $value );
+        
     if( ! $this->conf[ 'debug' ] ) 
     {
-      return $strValue; 
+      return $value; 
     }
     
     
-    if( $strValue ) 
+    if( $value ) 
     {
       $this->debugPrompt .= '<h3>Result string of the method</h3>
-                          ' . $strValue . '<br />
+                          ' . $value . '<br />
                           ';
     } 
     else 
@@ -631,7 +659,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
                           ';
     }
 
-    return $strValue; 
+    return $value; 
   }
 
   /**
@@ -720,6 +748,77 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       // #44545, dwildt, 2+
     $this->promptSubstitute .= '<h3>This is the array['.$method.']</h3>
     <pre>' . var_export( $GLOBALS[$method], true ) . '</pre>';
+  }
+
+  /**
+   * zzValueFromSQL( )  : Get the result from the database
+   *
+   * @return  string    $value  : 
+   * @access    private
+   * @version   1.1.1
+   */
+  private function zzValueFromSQL( ) 
+  {
+    $select_fields  = $this->conf['query.']['select'];
+    $from_table     = $this->conf['query.']['from'];
+    $where_clause   = $this->conf['query.']['where'];
+    $groupBy        = $this->groupBy;
+    $orderBy        = $this->orderBy;
+    $limit          = $this->limit;
+
+    $query = $GLOBALS['TYPO3_DB']->SELECTquery($select_fields,$from_table,$where_clause,$groupBy,$orderBy,$limit);
+
+    if( $this->conf[ 'debug' ] )
+    {
+      $this->debugPrompt .= '<h3>The query</h3>
+        ' . $query . '<br />' . PHP_EOL;
+      $GLOBALS['TYPO3_DB']->zzDebug($GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy,$orderBy,$limit));
+    }
+    
+    $res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy,$orderBy,$limit);
+        
+    $this->zzValueFromSQLError( $query ); 
+
+    if( $res ) $row = mysql_fetch_row( $res );
+    if( $this->conf[ 'query.' ][ 'dontStripTags' ] ) 
+    {
+      $value = $row[ 0 ];
+    } else {
+      $value = strip_tags( $row[ 0 ] );
+    }
+
+    return $value;
+  }
+
+  /**
+   * zzValueFromSQLError( )  : Get the result from the database
+   * 
+   * @param   string    $query
+   *
+   * @return  void
+   * @access    private
+   * @version   1.2.0
+   */
+  private function zzValueFromSQLError( $query ) 
+  {
+    if( ! $this->conf[ 'debug' ] )
+    {
+      return;
+    }
+
+    $error  = $GLOBALS['TYPO3_DB']->sql_error( );
+    if( ! $error )
+    {
+      return;
+    }
+
+    $this->debugPrompt  = $this->debugPrompt
+                        . '<h3>SQL ERROR</h3>' . PHP_EOL
+                        . '<br />' . PHP_EOL
+                        . $query . '<br />' . PHP_EOL
+                        . '<br />' . PHP_EOL
+                        . $error . '<br />' . PHP_EOL
+                        ;
   }
 
 }

@@ -443,7 +443,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     }
 
     $strReturn = '
-<div style="padding:10px;border:2px solid red;">
+<div style="background:white;padding:10px;border:2px solid red;">
   <h1>' . $this->prefixId . '</h1>
   <h2>Debug Mode is on</h2>
   <h3>Typoscript before passing the method</h3>
@@ -812,11 +812,13 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     }
 
     $this->debugPrompt  = $this->debugPrompt
-                        . '<h3>SQL ERROR</h3>' . PHP_EOL
-                        . '<br />' . PHP_EOL
-                        . $query . '<br />' . PHP_EOL
-                        . '<br />' . PHP_EOL
-                        . $error . '<br />' . PHP_EOL
+                        . '<div style="background:white;color:red;padding:10px;border:1em solid red;">' . PHP_EOL
+                        . '  <h1>SQL ERROR</h1>' . PHP_EOL
+                        . '  <br />' . PHP_EOL
+                        .   $query . '<br />' . PHP_EOL
+                        .   '<br />' . PHP_EOL
+                        .   $error . '<br />' . PHP_EOL
+                        . '<div />' . PHP_EOL
                         ;
   }
 

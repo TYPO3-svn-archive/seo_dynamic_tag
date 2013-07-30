@@ -58,10 +58,14 @@ plugin.tx_seodynamictag {
   default.description.appendix  = 
   # cat=Seo Dynamic Tag - Default values//300;   type=string;     label= Keywords: Default keywords, if current record doesn't contain any keyword. For single views only. Leave it empty, if you don't like default keywords.
   default.keywords  = TYPO3, SEO, Dynamic Tag, Bug
-  # cat=Seo Dynamic Tag - Default values//301;   type=string;     label= Keywords prefix: Value will prefixed the keywords. Prefix needs an ending comma. I.e: my first default keyword,my second default keyword,
-  default.keywords.prefix  = 
-  # cat=Seo Dynamic Tag - Default values//302;   type=string;     label= Keywords appendix: Value will appended the keywords. Appendix needs a beginning comma. I.e: ,my last keyword
-  default.keywords.appendix  = 
+  # cat=Seo Dynamic Tag - Default values//301;   type=int;        label= Keywords amount: Maximum amount of keywords. Recommended: less is more!
+  default.keywords.amount  = 10
+  # cat=Seo Dynamic Tag - Default values//302;   type=int;        label= Keyword minimum length: Minimum length of a single keyword
+  default.keywords.minLength  = 6
+  # cat=Seo Dynamic Tag - Default values//303;   type=string;     label= Keywords positive list: List with keyword which will used, if they are parte of the keyword list but are shorter than the minimum word length. 
+  default.keywords.positiveList  = 
+  # cat=Seo Dynamic Tag - Default values//304;   type=string;     label= Keywords negative list: List with keyword which will excluded from the list of found keywords.
+  default.keywords.negativeList  = 
 
   # cat=Seo Dynamic Tag - page object//100;   type=string;        label= Label*:*Obligate! The label of your page in your TypoScript configuration. Usually: page
   page.tsProperty = page 

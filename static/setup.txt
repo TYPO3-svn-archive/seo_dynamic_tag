@@ -110,9 +110,10 @@ plugin.tx_seodynamictag_pi1 {
         debug = {$plugin.tx_seodynamictag.debugging.keywords}{$plugin.tx_seodynamictag.debugging.all}
         keywords = 1
         keywords {
-          amount     = 10
-          minLength  = 6
-          positiveList  = {$plugin.tx_seodynamictag.default.keywords.prefix},{$plugin.tx_seodynamictag.default.keywords.appendix}
+          amount        = {$plugin.tx_seodynamictag.default.keywords.amount}
+          minLength     = {$plugin.tx_seodynamictag.default.keywords.minLength}
+          positiveList  = {$plugin.tx_seodynamictag.default.keywords.positiveList}
+          negativeList  = {$plugin.tx_seodynamictag.default.keywords.negativeList}
         }
       }
         // title

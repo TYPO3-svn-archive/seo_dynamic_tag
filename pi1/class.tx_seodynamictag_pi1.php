@@ -547,7 +547,12 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     //$strPositiveList = str_replace( ' ', null, $this->conf['keywords.']['positiveList'] );
       // 130730, dwildt, 1+
     $strPositiveList = $this->conf['keywords.']['positiveList'];
+    $strPositiveList = str_replace( ', ', ',', $strPositiveList );
     $arrPositiveList = explode( ',', $strPositiveList );
+      // 130730, dwildt, 2+
+    $strNegativeList = $this->conf['keywords.']['negativeList'];
+    $strNegativeList = str_replace( ', ', ',', $strNegativeList );
+    $arrNegativeList = explode( ',', $strNegativeList );
 
     $intAmount = 0;
     foreach( array_keys( $arrValue ) as $keyKeyword )
@@ -555,6 +560,9 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       $boolKeyword = false;
       switch( true ) 
       {
+        case( in_array( $keyKeyword, $arrNegativeList ) ):
+          $boolKeyword = false;
+          break;
         case( strlen( $keyKeyword ) >= $minLength ):
           $boolKeyword = true;
           break;
@@ -580,6 +588,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     $value = str_replace( ',,', ' ', $value );
     
     unset( $arrPositiveList );
+    unset( $arrNegativeList );
     
     return $value;
   }

@@ -107,6 +107,12 @@ plugin.tx_seodynamictag_pi1 {
         }
           // Enable it and you will get a prompt in the frontend
         debug = {$plugin.tx_seodynamictag.debugging.keywords}{$plugin.tx_seodynamictag.debugging.all}
+        keywords = 1
+        keywords {
+          amount     = 10
+          minLength  = 6
+          //positiveList  = CMC, Nokia
+        }
       }
         // title
       50 = USER

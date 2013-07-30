@@ -819,6 +819,8 @@ class tx_seodynamictag_pi1 extends tslib_pibase
 
     if( $res ) $row = mysql_fetch_row( $res );
 
+    $value = $row[ 0 ];
+
     return $value;
   }
 

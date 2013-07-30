@@ -44,7 +44,7 @@ plugin.tx_seodynamictag_pi1 {
             //addQueryString = 1
             //addQueryString {
             //  method  = GET
-            //  exclude = L,cHash,no_cache,tx_ttnews%5BbackPid%5D
+            //  exclude = L,id,cHash,no_cache,tx_ttnews%5BbackPid%5D
             //}
             useCacheHash = {$plugin.tx_seodynamictag.canonical.useCashHash}
             returnLast = url

@@ -35,15 +35,17 @@ plugin.tx_seodynamictag {
   # cat=Seo Dynamic Tag - Database*//304;   type=string;          label= Short field:*Obligate! The label of the short field. I.e: short
   database.field.short     = short 
 
-  # cat=Seo Dynamic Tag - Debugging/enable/200;   type=boolean;   label= author: If enabled, you will get a report in the frontend for the meta tag author
+  # cat=Seo Dynamic Tag - Debugging/enable/100;   type=boolean;   label= all: If enabled, you will get a report for all options from below in the frontend
+  debugging.all         = 
+  # cat=Seo Dynamic Tag - Debugging/enable/200;   type=boolean;   label= author: If enabled, you will get a report for the meta tag author in the frontend 
   debugging.author      = 
-  # cat=Seo Dynamic Tag - Debugging/enable/201;   type=boolean;   label= canonical tag: If enabled, you will get a report in the frontend for the canonical tag
+  # cat=Seo Dynamic Tag - Debugging/enable/201;   type=boolean;   label= canonical tag: If enabled, you will get a report for the canonical tag in the frontend
   debugging.canonical   = 
-  # cat=Seo Dynamic Tag - Debugging/enable/202;   type=boolean;   label= description: If enabled, you will get a report in the frontend for the meta tag description
+  # cat=Seo Dynamic Tag - Debugging/enable/202;   type=boolean;   label= description: If enabled, you will get a report for the meta tag description in the frontend
   debugging.description = 
-  # cat=Seo Dynamic Tag - Debugging/enable/203;   type=boolean;   label= keywords: If enabled, you will get a report in the frontend for the meta tag keywords
+  # cat=Seo Dynamic Tag - Debugging/enable/203;   type=boolean;   label= keywords: If enabled, you will get a report for the meta tag keywords in the frontend
   debugging.keywords    = 
-  # cat=Seo Dynamic Tag - Debugging/enable/204;   type=boolean;   label= title: If enabled, you will get a report in the frontend for the title
+  # cat=Seo Dynamic Tag - Debugging/enable/204;   type=boolean;   label= title: If enabled, you will get a report for the title in the frontend 
   debugging.title       = 
 
   # cat=Seo Dynamic Tag - Default values//100;   type=string;     label= Author: Default author, if current record doesn't contain any author. Leave it empty, if you don't like a default author.

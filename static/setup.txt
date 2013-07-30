@@ -51,7 +51,7 @@ plugin.tx_seodynamictag_pi1 {
           }
         }
           // Enable it and you will get a prompt in the frontend
-        debug = {$plugin.tx_seodynamictag.debugging.canonical}
+        debug = {$plugin.tx_seodynamictag.debugging.canonical}{$plugin.tx_seodynamictag.debugging.all}
       }
         // meta tag author
       20 = USER
@@ -69,7 +69,7 @@ plugin.tx_seodynamictag_pi1 {
           var.1     = {$plugin.tx_seodynamictag.database.var.1}
         }
           // Enable it and you will get a prompt in the frontend
-        debug   = {$plugin.tx_seodynamictag.debugging.author}
+        debug   = {$plugin.tx_seodynamictag.debugging.author}{$plugin.tx_seodynamictag.debugging.all}
       }
         // meta tag description
       30 = USER
@@ -88,7 +88,7 @@ plugin.tx_seodynamictag_pi1 {
           maxLength = 200
         }
           // Enable it and you will get a prompt in the frontend
-        debug = {$plugin.tx_seodynamictag.debugging.description}
+        debug = {$plugin.tx_seodynamictag.debugging.description}{$plugin.tx_seodynamictag.debugging.all}
       }
         // meta tag keywords
       40 = USER
@@ -104,10 +104,9 @@ plugin.tx_seodynamictag_pi1 {
           from      = {$plugin.tx_seodynamictag.database.table}
           where     = `uid` = $1 && `deleted` = 0 && `hidden` = 0
           var.1     = {$plugin.tx_seodynamictag.database.var.1}
-          keywords  = 0
         }
           // Enable it and you will get a prompt in the frontend
-        debug = {$plugin.tx_seodynamictag.debugging.keywords}
+        debug = {$plugin.tx_seodynamictag.debugging.keywords}{$plugin.tx_seodynamictag.debugging.all}
       }
         // title
       50 = USER
@@ -124,7 +123,7 @@ plugin.tx_seodynamictag_pi1 {
           maxLength = 100
         }
           // Enable it and you will get a prompt in the frontend
-        debug = {$plugin.tx_seodynamictag.debugging.title}
+        debug = {$plugin.tx_seodynamictag.debugging.title}{$plugin.tx_seodynamictag.debugging.all}
       }
     }
   }

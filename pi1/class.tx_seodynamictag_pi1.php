@@ -781,7 +781,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
  */
   private function zzValueCleanUp( $value ) 
   {
-    $value = str_replace( array( "\r\n", "\r", "\n", "<br />", "<br>", "&nbsp;" ), ' ', $value );
+    $value = str_replace( array( "\r\n", "\r", "\n", "<br />", "<br>", "&nbsp;", "</li>" ), ' ', $value );
     
     if( ! $this->conf[ 'query.' ][ 'dontStripTags' ] ) 
     {

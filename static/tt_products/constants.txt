@@ -9,7 +9,7 @@ plugin.tx_seodynamictag {
     }
     single {
         // Only the uid parameter is allowed
-      additionalParams  = &tx_ttproducts_pi1[product]={GP:tx_ttproducts_pi1|product}
+      additionalParams  = &tt_products[product]={GP:tt_products|product}
     }
   }
 
@@ -22,7 +22,7 @@ plugin.tx_seodynamictag {
     single {
         // Please replace xxx with the uid of the page with the news plugin for the single view
         // Please use the Constant Editor
-      begin = globalVar = GP:tx_ttproducts_pi1|product > 0] && [globalVar = TSFE:id = xxx
+      begin = globalVar = GP:tt_products|product > 0] && [globalVar = TSFE:id = xxx
     }
   }
 

@@ -23,7 +23,7 @@ plugin.tx_seodynamictag_pi1 {
           select    = `subtitle`
           from      = `tt_products`
           where     = `uid` = $1 && `deleted` = 0 && `hidden` = 0
-          var.1     = tx_ttproducts_pi1[product]
+          var.1     = tt_products[product]
           maxLength = 200
         }
       }
@@ -33,7 +33,7 @@ plugin.tx_seodynamictag_pi1 {
           select    = CONCAT('Dentalgerät ', product.title, ' ', category.title) as value
           from      = tt_products as product, tt_products_cat as category
           where     = product.uid = $1 AND product.category = category.uid AND product.deleted = 0 AND product.hidden = 0
-          var.1     = tx_ttproducts_pi1[product]
+          var.1     = tt_products[product]
         }
         keywords = 1
         keywords {
@@ -48,7 +48,7 @@ plugin.tx_seodynamictag_pi1 {
           select    = CONCAT(product.title, ' (', category.title, ')') as value
           from      = tt_products as product, tt_products_cat as category
           where     = product.uid = $1 AND product.category = category.uid AND product.deleted = 0 AND product.hidden = 0
-          var.1     = tx_ttproducts_pi1[product]
+          var.1     = tt_products[product]
           maxLength = 100
         }
       }

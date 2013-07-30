@@ -1,0 +1,35 @@
+plugin.tx_seodynamictag {
+
+  canonical {
+    list {
+        // Only the pointer parameter is allowed
+      additionalParams  = &tx_ttnews[pointer]={GP:tx_ttnews|pointer}
+        // I don't like the pointer in the URL
+      additionalParams  = 
+    }
+    single {
+        // Only the uid parameter is allowed
+      additionalParams = &tx_cal_controller[view]=event&tx_cal_controller[type]=tx_cal_phpicalendar&tx_cal_controller[uid]={GP:tx_cal_controller|uid}
+    }
+  }
+
+  condition {
+    single {
+        // Please replace xxx with the uid of the page with the news plugin for the single view
+        // Please use the Constant Editor
+      begin = globalVar = GP:tx_ttnews|tt_news > 0] && [globalVar = TSFE:id = xxx
+    }
+  }
+
+  database {
+    table = tx_cal_event
+    var.1 = tx_cal_controller[uid]
+    field {
+      author        = author 
+      description   = description
+      keywords      = description 
+      title         = title 
+      short         = description 
+    }
+  }
+}

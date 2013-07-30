@@ -547,11 +547,11 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       // 130730, dwildt, 1-
     //$strPositiveList = str_replace( ' ', null, $this->conf['keywords.']['positiveList'] );
       // 130730, dwildt, 1+
-    $strPositiveList  = $this->conf['keywords.']['positiveList'];
+    $strPositiveList  = strtolower( $this->conf['keywords.']['positiveList'] );
     $strPositiveList  = str_replace( ', ', ',', $strPositiveList );
     $arrPositiveList  = explode( ',', $strPositiveList );
       // 130730, dwildt, 3+
-    $strNegativeList  = $this->conf['keywords.']['negativeList'];
+    $strNegativeList  = strtolower( $this->conf['keywords.']['negativeList'] );
     $strNegativeList  = str_replace( ', ', ',', $strNegativeList );
     $arrNegativeList  = explode( ',', $strNegativeList );
 
@@ -561,13 +561,13 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       $boolKeyword = false;
       switch( true ) 
       {
-        case( in_array( $keyKeyword, $arrNegativeList ) ):
+        case( in_array( strtolower( $keyKeyword ), $arrNegativeList ) ):
           $boolKeyword = false;
           break;
-        case( strlen( $keyKeyword ) >= $minLength ):
+        case( in_array( strtolower( $keyKeyword ), $arrPositiveList ) ):
           $boolKeyword = true;
           break;
-        case( in_array( $keyKeyword, $arrPositiveList ) ):
+        case( strlen( $keyKeyword ) >= $minLength ):
           $boolKeyword = true;
           break;
       }
@@ -781,9 +781,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
  */
   private function zzValueCleanUp( $value ) 
   {
-    $value = html_entity_decode( $value, ENT_COMPAT, 'UTF8' );
-
-    $value = str_replace( array( "\r\n", "\r", "\n", "<br />", "<br>" ), ' ', $value );
+    $value = str_replace( array( "\r\n", "\r", "\n", "<br />", "<br>", "&nbsp;" ), ' ', $value );
     
     if( ! $this->conf[ 'query.' ][ 'dontStripTags' ] ) 
     {

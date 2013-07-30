@@ -781,6 +781,8 @@ class tx_seodynamictag_pi1 extends tslib_pibase
  */
   private function zzValueCleanUp( $value ) 
   {
+    $value = html_entity_decode( $value );
+
     $value = str_replace( array( "\r\n", "\r", "\n", "<br />", "<br>" ), ' ', $value );
     
     if( ! $this->conf[ 'query.' ][ 'dontStripTags' ] ) 
@@ -792,7 +794,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     {
       $value = strip_tags( $value );
     }
-
+    
     $value = str_replace( '  ', ' ', $value );
 
     return $value;

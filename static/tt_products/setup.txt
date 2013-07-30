@@ -35,12 +35,6 @@ plugin.tx_seodynamictag_pi1 {
           where     = product.uid = $1 AND product.category = category.uid AND product.deleted = 0 AND product.hidden = 0
           var.1     = tt_products[product]
         }
-        keywords = 1
-        keywords {
-          amount     = 10
-          minLength  = 6
-          //positiveList  = CMC, Nokia
-        }
       }
       50 {
         //special     = title

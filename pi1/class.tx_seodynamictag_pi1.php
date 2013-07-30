@@ -772,7 +772,6 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     {
       $this->debugPrompt .= '<h3>The query</h3>
         ' . $query . '<br />' . PHP_EOL;
-      $GLOBALS['TYPO3_DB']->zzDebug($GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy,$orderBy,$limit));
     }
     
     $res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy,$orderBy,$limit);

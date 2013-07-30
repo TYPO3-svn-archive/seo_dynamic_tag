@@ -12,10 +12,10 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'SEO dynamic tag',
-	'description' => 'Get any value out of the database for the title-tag or the meta-tags e.g.',
+	'description' => 'Search Engine Optimization for the title tag, the canonical tag and the meta tags author, description and keywords.',
 	'category' => 'plugin',
 	'shy' => 0,
-	'version' => '1.2.0',
+	'version' => '2.0.0',
 	'dependencies' => '',
 	'conflicts' => '',
 	'priority' => '',

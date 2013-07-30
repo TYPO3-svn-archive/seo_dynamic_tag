@@ -66,7 +66,7 @@ plugin.tx_seodynamictag {
   default.keywords.positiveList  = 
   # cat=Seo Dynamic Tag - Default values//304;   type=string;     label= Keywords negative list: List with keywords, which will excluded from the list of found keywords.
   default.keywords.negativeList  = 
-  # cat=Seo Dynamic Tag - Default values//304;   type=string;     label= Keywords forced list: List with keywords, which will prepend to the list of keywords. List is independent of amount of keywords and minimum length for a keyword.
+  # cat=Seo Dynamic Tag - Default values//305;   type=string;     label= Keywords forced list: List with keywords, which will prepend to the list of keywords. List is independent of amount of keywords and minimum length for a keyword.
   default.keywords.forcedList  = 
 
   # cat=Seo Dynamic Tag - page object//100;   type=string;        label= Label*:*Obligate! The label of your page in your TypoScript configuration. Usually: page

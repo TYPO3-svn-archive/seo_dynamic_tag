@@ -587,11 +587,11 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     $value = $strKeywords;
 
       // 130730, dwildt, 5+
-    $strForceList     = $this->conf['keywords.']['forceList'];
-    $strForceList     = str_replace( ', ', ',', $strForceList );
-    if( $$strForceList )
+    $strForcedList  = $this->conf['keywords.']['forcedList'];
+    $strForcedList  = str_replace( ', ', ',', $strForcedList );
+    if( $$strForcedList )
     {
-      $value = $strForceList . ',' . $strKeywords;
+      $value = $strForcedList . ',' . $strKeywords;
     }
     
     $value = str_replace( ',,', ' ', $value );

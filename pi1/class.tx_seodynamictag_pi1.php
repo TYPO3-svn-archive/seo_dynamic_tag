@@ -309,6 +309,8 @@ class tx_seodynamictag_pi1 extends tslib_pibase
 
       // register value
     $value = $this->zzValueFromSQL( );
+    $value = str_replace( array( "\r\n", "\r", "\n" ), null, $value );
+    $value = strip_tags( $value );
     $value = $this->zzKeywords( $value );
     $value = $this->zzMaxLength( $value );
     

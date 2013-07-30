@@ -309,8 +309,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
 
       // register value
     $value = $this->zzValueFromSQL( );
-    $value = str_replace( array( "\r\n", "\r", "\n" ), ' ', $value );
-    $value = strip_tags( $value );
+    $value = $this->zzValueCleanUp( $value );
     $value = $this->zzKeywords( $value );
     $value = $this->zzMaxLength( $value );
     
@@ -752,6 +751,23 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     <pre>' . var_export( $GLOBALS[$method], true ) . '</pre>';
   }
 
+/**
+ * zzValueCleanUp( ) 
+ *
+ * @param     string      $value
+ * @return    string      $value  
+ *
+ * @access  private 
+ * @version 1.2.0
+ */
+  private function zzValueCleanUp( $value ) 
+  {
+    $value = str_replace( array( "\r\n", "\r", "\n" ), ' ', $value );
+    $value = strip_tags( $value );
+
+    return $value
+  }
+  
   /**
    * zzValueFromSQL( )  : Get the result from the database
    *

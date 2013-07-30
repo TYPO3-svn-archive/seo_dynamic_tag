@@ -14,11 +14,6 @@ plugin.tx_seodynamictag {
   }
 
   condition {
-    list {
-        // Please replace xxx with the uid of the page with the news plugin for the list view
-        // Please use the Constant Editor
-      begin = globalVar = TSFE:id = xxx
-    }
     single {
         // Please replace xxx with the uid of the page with the news plugin for the single view
         // Please use the Constant Editor

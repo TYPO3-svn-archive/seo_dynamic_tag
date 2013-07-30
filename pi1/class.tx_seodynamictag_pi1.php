@@ -589,7 +589,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       // 130730, dwildt, 5+
     $strForcedList  = $this->conf['keywords.']['forcedList'];
     $strForcedList  = str_replace( ', ', ',', $strForcedList );
-    if( $$strForcedList )
+    if( $strForcedList )
     {
       $value = $strForcedList . ',' . $strKeywords;
     }

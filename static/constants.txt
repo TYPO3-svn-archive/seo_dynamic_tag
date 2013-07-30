@@ -63,7 +63,7 @@ plugin.tx_seodynamictag {
   # cat=Seo Dynamic Tag - Default values//302;   type=int;        label= Keyword minimum length: Minimum length of a single keyword
   default.keywords.minLength  = 6
   # cat=Seo Dynamic Tag - Default values//303;   type=string;     label= Keywords positive list: List with keywords, which will used, if they are part of the keyword list but are shorter than the minimum word length. List is not independent of amount of keywords.
-  default.keywords.positiveList  = 
+  default.keywords.positiveList  = TYPO3, SEO
   # cat=Seo Dynamic Tag - Default values//304;   type=string;     label= Keywords negative list: List with keywords, which will excluded from the list of found keywords.
   default.keywords.negativeList  = 
   # cat=Seo Dynamic Tag - Default values//305;   type=string;     label= Keywords forced list: List with keywords, which will prepend to the list of keywords. List is independent of amount of keywords and minimum length for a keyword.

@@ -27,5 +27,7 @@ plugin.tx_seodynamictag {
   }
 
   database >
+  # cat=Seo Dynamic Tag - Database*//100;   type=boolean;          label= Info*:*Obligate! Database values are configured in the setup directly!
+  database.dummy = 
 
 }

@@ -765,7 +765,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     $value = str_replace( array( "\r\n", "\r", "\n" ), ' ', $value );
     $value = strip_tags( $value );
 
-    return $value
+    return $value;
   }
   
   /**

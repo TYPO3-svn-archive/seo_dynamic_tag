@@ -1,0 +1,59 @@
+  ////////////////////////////////////////////////
+  //
+  // INDEX
+  //
+  // plugin.tx_seodynamictag_pi1
+
+
+
+  ////////////////////////////////////////////////
+  //
+  // plugin.tx_seodynamictag_pi1
+
+plugin.tx_seodynamictag_pi1 {
+  page {
+    49442 {
+      20 {
+        query {
+          select    = {$plugin.tx_seodynamictag.database.field.author}
+          from      = {$plugin.tx_seodynamictag.database.table}
+          where     = `uid` = $1 && `deleted` = 0 && `hidden` = 0
+          var.1     = {$plugin.tx_seodynamictag.database.var.1}
+        }
+      }
+      30 {
+        query {
+          select    = `subtitle`
+          from      = `tt_products`
+          where     = `uid` = $1 && `deleted` = 0 && `hidden` = 0
+          var.1     = tx_ttproducts_pi1[product]
+          maxLength = 200
+        }
+      }
+      40 {
+        query {
+          select    = CONCAT('Dentalgerät ', product.title, ' ', category.title) as value
+          from      = tt_products as product, tt_products_cat as category
+          where     = product.uid = $1 AND product.category = category.uid AND product.deleted = 0 AND product.hidden = 0
+          var.1     = tx_ttproducts_pi1[product]
+        }
+        keywords = 1
+        keywords {
+          amount     = 10
+          minLength  = 6
+          //positiveList  = CMC, Nokia
+        }
+      }
+      50 {
+        query {
+          select    = CONCAT(product.title, ' (', category.title, ')') as value
+          from      = tt_products as product, tt_products_cat as category
+          where     = product.uid = $1 AND product.category = category.uid AND product.deleted = 0 AND product.hidden = 0
+          var.1     = tx_ttproducts_pi1[product]
+          maxLength = 100
+        }
+      }
+    }
+  }
+}
+  // plugin.tx_seodynamictag_pi1

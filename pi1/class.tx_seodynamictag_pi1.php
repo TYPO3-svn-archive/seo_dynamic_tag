@@ -812,13 +812,13 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     }
 
     $this->debugPrompt  = $this->debugPrompt
-                        . '<div style="background:white;color:red;padding:10px;border:1em solid red;">' . PHP_EOL
+                        . '<div style="background:white;color:red;padding:10px;border:2em solid red;">' . PHP_EOL
                         . '  <h1>SQL ERROR</h1>' . PHP_EOL
                         . '  <br />' . PHP_EOL
                         .   $query . '<br />' . PHP_EOL
                         .   '<br />' . PHP_EOL
                         .   $error . '<br />' . PHP_EOL
-                        . '<div />' . PHP_EOL
+                        . '</div>' . PHP_EOL
                         ;
   }
 

@@ -48,11 +48,11 @@ plugin.tx_seodynamictag {
   # cat=Seo Dynamic Tag - Debugging/enable/204;   type=boolean;   label= title: If enabled, you will get a report for the title in the frontend 
   debugging.title       = 
 
-  # cat=Seo Dynamic Tag - Default values//100;   type=string;     label= Author: Default author, if current record doesn't contain any author. Leave it empty, if you don't like a default author.
+  # cat=Seo Dynamic Tag - Default values//100;   type=string;     label= Author: Default author, if current record doesn't contain any author. For single views only. Leave it empty, if you don't like a default author.
   default.author  = TYPO3 SEO Dynamic Tag (seo_dynamic tag)
-  # cat=Seo Dynamic Tag - Default values//101;   type=string;     label= Description: Default description, if current record doesn't contain any description. Leave it empty, if you don't like a default description.
+  # cat=Seo Dynamic Tag - Default values//101;   type=string;     label= Description: Default description, if current record doesn't contain any description. For single views only. Leave it empty, if you don't like a default description.
   default.description  = You have a bug in your SEO Dynamic Tag configuration: description is empty!
-  # cat=Seo Dynamic Tag - Default values//102;   type=string;     label= Keywords: Default keywords, if current record doesn't contain any keyword. Leave it empty, if you don't like default keywords.
+  # cat=Seo Dynamic Tag - Default values//102;   type=string;     label= Keywords: Default keywords, if current record doesn't contain any keyword. For single views only. Leave it empty, if you don't like default keywords.
   default.keywords  = TYPO3, SEO, Dynamic Tag, Bug
 
   # cat=Seo Dynamic Tag - page object//100;   type=string;        label= Label*:*Obligate! The label of your page in your TypoSCript configuration. Usually: page

@@ -138,23 +138,6 @@ plugin.tx_seodynamictag_pi1 {
 
 [{$plugin.tx_seodynamictag.condition.list.begin}]
   {$plugin.tx_seodynamictag.page.tsProperty} {
-    XXX_meta {
-      author {
-        field   >
-        ifEmpty = {$plugin.tx_seodynamictag.default.author}
-        data    = register:author
-      }
-      description {
-        field   >
-        ifEmpty = {$plugin.tx_seodynamictag.default.description}
-        data    = register:description
-      }
-      keywords {
-        field   >
-        data    = register:keywords
-        ifEmpty = {$plugin.tx_seodynamictag.default.keywords}
-      }
-    }
     {$plugin.tx_seodynamictag.page.object} < plugin.tx_seodynamictag_pi1.page.49442
     {$plugin.tx_seodynamictag.page.object} {
       10.path.typolink.additionalParams = {$plugin.tx_seodynamictag.canonical.list.additionalParams}

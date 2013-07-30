@@ -3,6 +3,8 @@
   // INDEX
   //
   // plugin.tx_seodynamictag_pi1
+  // Global condition for the list view
+  // Global condition for the single view
 
 
 
@@ -16,6 +18,7 @@ plugin.tx_seodynamictag_pi1 {
         // No author
       20 >
       30 {
+        //register    = description
         query {
           select    = `subtitle`
           from      = `tt_products`
@@ -25,6 +28,7 @@ plugin.tx_seodynamictag_pi1 {
         }
       }
       40 {
+        //register    = keywords
         query {
           select    = CONCAT('Dentalgerät ', product.title, ' ', category.title) as value
           from      = tt_products as product, tt_products_cat as category
@@ -39,6 +43,7 @@ plugin.tx_seodynamictag_pi1 {
         }
       }
       50 {
+        //special     = title
         query {
           select    = CONCAT(product.title, ' (', category.title, ')') as value
           from      = tt_products as product, tt_products_cat as category
@@ -51,3 +56,33 @@ plugin.tx_seodynamictag_pi1 {
   }
 }
   // plugin.tx_seodynamictag_pi1
+  // plugin.tx_seodynamictag_pi1
+
+
+
+  ////////////////////////////////////////////////
+  //
+  // Global condition for the list view
+
+[{$plugin.tx_seodynamictag.condition.list.begin}]
+  {$plugin.tx_seodynamictag.page.tsProperty} {
+    {$plugin.tx_seodynamictag.page.object} < plugin.tx_seodynamictag_pi1.page.49442
+    {$plugin.tx_seodynamictag.page.object} {
+      10.path.typolink.additionalParams = {$plugin.tx_seodynamictag.canonical.list.additionalParams}
+    }
+  }
+[{$plugin.tx_seodynamictag.condition.list.end}]
+  // Global condition for the list view
+
+
+
+  ////////////////////////////////////////////////
+  //
+  // Global condition for the single view
+
+[{$plugin.tx_seodynamictag.condition.single.begin}]
+  {$plugin.tx_seodynamictag.page.tsProperty} {
+    {$plugin.tx_seodynamictag.page.object} < plugin.tx_seodynamictag_pi1.page.49442
+  }
+[{$plugin.tx_seodynamictag.condition.single.end}]
+  // Global condition for the single view

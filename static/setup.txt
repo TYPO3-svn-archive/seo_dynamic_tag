@@ -101,8 +101,7 @@ plugin.tx_seodynamictag_pi1 {
           // register: don't touch it!
         register    = keywords
         query {
-          //select    = {$plugin.tx_seodynamictag.database.field.keywords}
-          select    = CONCAT('{$plugin.tx_seodynamictag.default.keywords.prefix},', {$plugin.tx_seodynamictag.database.field.keywords}, ',{$plugin.tx_seodynamictag.default.appendix.appendix}') as value
+          select    = {$plugin.tx_seodynamictag.database.field.keywords}
           from      = {$plugin.tx_seodynamictag.database.table}
           where     = uid = $1 AND deleted = 0 AND hidden = 0
           var.1     = {$plugin.tx_seodynamictag.database.var.1}
@@ -113,7 +112,7 @@ plugin.tx_seodynamictag_pi1 {
         keywords {
           amount     = 10
           minLength  = 6
-          //positiveList  = CMC, Nokia
+          positiveList  = {$plugin.tx_seodynamictag.database.field.keywords},{$plugin.tx_seodynamictag.default.appendix.appendix}
         }
       }
         // title

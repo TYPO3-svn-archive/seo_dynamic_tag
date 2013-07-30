@@ -20,7 +20,7 @@ plugin.tx_seodynamictag_pi1 {
       30 {
         //register    = description
         query {
-          select    = CONCAT('{$plugin.tx_seodynamictag.default.description.prefix} ', subtitle, ' {$plugin.tx_seodynamictag.default.description.appendix}') as value
+          select    = CONCAT('{$plugin.tx_seodynamictag.default.description.prefix} ', note, ' {$plugin.tx_seodynamictag.default.description.appendix}') as value
           from      = tt_products
           where     = uid = $1 AND deleted = 0 AND hidden = 0
           var.1     = tt_products[product]
@@ -29,7 +29,7 @@ plugin.tx_seodynamictag_pi1 {
       40 {
         //register    = keywords
         query {
-          select    = CONCAT(product.title, ' ', category.title) as value
+          select    = CONCAT(product.title, ' ', category.title, ' ', product.note) as value
           from      = tt_products as product, tt_products_cat as category
           where     = product.uid = $1 AND product.category = category.uid AND product.deleted = 0 AND product.hidden = 0
           var.1     = tt_products[product]

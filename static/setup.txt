@@ -112,6 +112,7 @@ plugin.tx_seodynamictag_pi1 {
         keywords {
           amount        = {$plugin.tx_seodynamictag.default.keywords.amount}
           minLength     = {$plugin.tx_seodynamictag.default.keywords.minLength}
+          forcedList    = {$plugin.tx_seodynamictag.default.keywords.forcedList}
           positiveList  = {$plugin.tx_seodynamictag.default.keywords.positiveList}
           negativeList  = {$plugin.tx_seodynamictag.default.keywords.negativeList}
         }

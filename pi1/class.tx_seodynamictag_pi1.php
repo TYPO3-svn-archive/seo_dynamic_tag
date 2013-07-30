@@ -546,13 +546,13 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       // 130730, dwildt, 1-
     //$strPositiveList = str_replace( ' ', null, $this->conf['keywords.']['positiveList'] );
       // 130730, dwildt, 1+
-    $strPositiveList = $this->conf['keywords.']['positiveList'];
-    $strPositiveList = str_replace( ', ', ',', $strPositiveList );
-    $arrPositiveList = explode( ',', $strPositiveList );
-      // 130730, dwildt, 2+
-    $strNegativeList = $this->conf['keywords.']['negativeList'];
-    $strNegativeList = str_replace( ', ', ',', $strNegativeList );
-    $arrNegativeList = explode( ',', $strNegativeList );
+    $strPositiveList  = $this->conf['keywords.']['positiveList'];
+    $strPositiveList  = str_replace( ', ', ',', $strPositiveList );
+    $arrPositiveList  = explode( ',', $strPositiveList );
+      // 130730, dwildt, 3+
+    $strNegativeList  = $this->conf['keywords.']['negativeList'];
+    $strNegativeList  = str_replace( ', ', ',', $strNegativeList );
+    $arrNegativeList  = explode( ',', $strNegativeList );
 
     $intAmount = 0;
     foreach( array_keys( $arrValue ) as $keyKeyword )
@@ -585,6 +585,15 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       $strKeywords = substr( $strKeywords, 0, strlen( $strKeywords ) - 1 );
     }
     $value = $strKeywords;
+
+      // 130730, dwildt, 5+
+    $strForceList     = $this->conf['keywords.']['forceList'];
+    $strForceList     = str_replace( ', ', ',', $strForceList );
+    if( $$strForceList )
+    {
+      $value = $strForceList . ',' . $strKeywords;
+    }
+    
     $value = str_replace( ',,', ' ', $value );
     
     unset( $arrPositiveList );

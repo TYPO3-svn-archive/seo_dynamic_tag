@@ -109,11 +109,11 @@ plugin.tx_seodynamictag_pi1 {
         debug = {$plugin.tx_seodynamictag.debugging.keywords}{$plugin.tx_seodynamictag.debugging.all}
         keywords = 1
         keywords {
-          amount        = {$plugin.tx_seodynamictag.default.keywords.amount}
-          minLength     = {$plugin.tx_seodynamictag.default.keywords.minLength}
-          forcedList    = {$plugin.tx_seodynamictag.default.keywords.forcedList}
-          positiveList  = {$plugin.tx_seodynamictag.default.keywords.positiveList}
-          negativeList  = {$plugin.tx_seodynamictag.default.keywords.negativeList}
+          amount        = {$plugin.tx_seodynamictag.keywords.amount}
+          minLength     = {$plugin.tx_seodynamictag.keywords.minLength}
+          forcedList    = {$plugin.tx_seodynamictag.keywords.forcedList}
+          positiveList  = {$plugin.tx_seodynamictag.keywords.positiveList}
+          negativeList  = {$plugin.tx_seodynamictag.keywords.negativeList}
         }
       }
         // title
@@ -176,7 +176,7 @@ plugin.tx_seodynamictag_pi1 {
       keywords {
         field   >
         data    = register:keywords
-        ifEmpty = {$plugin.tx_seodynamictag.default.keywords}
+        ifEmpty = {$plugin.tx_seodynamictag.keywords.default}
       }
     }
     {$plugin.tx_seodynamictag.page.object} < plugin.tx_seodynamictag_pi1.page.49442

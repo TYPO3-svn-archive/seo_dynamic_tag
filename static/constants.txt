@@ -56,18 +56,19 @@ plugin.tx_seodynamictag {
   default.description.prefix  = 
   # cat=Seo Dynamic Tag - Default values//202;   type=string;     label= Description appendix: Value will appendixed the description. I.e: - my product categorie
   default.description.appendix  = 
-  # cat=Seo Dynamic Tag - Default values//300;   type=string;     label= Keywords: Default keywords, if current record doesn't contain any keyword. For single views only. Leave it empty, if you don't like default keywords.
-  default.keywords  = TYPO3, SEO, Dynamic Tag, Bug
-  # cat=Seo Dynamic Tag - Default values//301;   type=int;        label= Keywords amount: Maximum amount of keywords. Recommended: less is more!
-  default.keywords.amount  = 10
-  # cat=Seo Dynamic Tag - Default values//302;   type=int;        label= Keyword minimum length: Minimum length of a single keyword
-  default.keywords.minLength  = 6
-  # cat=Seo Dynamic Tag - Default values//303;   type=string;     label= Keywords positive list: List with keywords, which will used, if they are part of the keyword list but are shorter than the minimum word length. List is not independent of amount of keywords.
-  default.keywords.positiveList  = TYPO3, SEO
-  # cat=Seo Dynamic Tag - Default values//304;   type=string;     label= Keywords negative list: List with keywords, which will excluded from the list of found keywords.
-  default.keywords.negativeList  = 
-  # cat=Seo Dynamic Tag - Default values//305;   type=string;     label= Keywords forced list: List with keywords, which will prepend to the list of keywords. List is independent of amount of keywords and minimum length for a keyword.
-  default.keywords.forcedList  = 
+
+  # cat=Seo Dynamic Tag - Keywords//300;   type=string;           label= Default: Default keywords, if current record doesn't contain any keyword. For single views only. Leave it empty, if you don't like default keywords.
+  keywords.default  = TYPO3, SEO, Dynamic Tag, Bug
+  # cat=Seo Dynamic Tag - Keywords//301;   type=int;              label= Amount: Maximum amount of keywords. Recommended: less is more!
+  keywords.amount  = 10
+  # cat=Seo Dynamic Tag - Keywords//302;   type=int;              label= Minimum length: Minimum length of a single keyword
+  keywords.minLength  = 6
+  # cat=Seo Dynamic Tag - Keywords//303;   type=string;           label= Positive list: List with keywords, which will used, if they are part of the keyword list but are shorter than the minimum word length. List is not independent of amount of keywords.
+  keywords.positiveList  = TYPO3, SEO
+  # cat=Seo Dynamic Tag - Keywords//304;   type=string;           label= Negative list: List with keywords, which will excluded from the list of found keywords.
+  keywords.negativeList  = 
+  # cat=Seo Dynamic Tag - Keywords//305;   type=string;           label= Forced list: List with keywords, which will prepend to the list of keywords. List is independent of amount of keywords and minimum length for a keyword.
+  keywords.forcedList  = 
 
   # cat=Seo Dynamic Tag - page object//100;   type=string;        label= Label*:*Obligate! The label of your page in your TypoScript configuration. Usually: page
   page.tsProperty = page 

@@ -112,7 +112,7 @@ plugin.tx_seodynamictag_pi1 {
         keywords {
           amount     = 10
           minLength  = 6
-          positiveList  = {$plugin.tx_seodynamictag.database.field.keywords},{$plugin.tx_seodynamictag.default.appendix.appendix}
+          positiveList  = {$plugin.tx_seodynamictag.default.keywords.prefix},{$plugin.tx_seodynamictag.default.keywords.appendix}
         }
       }
         // title

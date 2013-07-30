@@ -52,15 +52,15 @@ plugin.tx_seodynamictag {
   default.author  = TYPO3 SEO Dynamic Tag (seo_dynamic tag)
   # cat=Seo Dynamic Tag - Default values//200;   type=string;     label= Description: Default description, if current record doesn't contain any description. For single views only. Leave it empty, if you don't like a default description.
   default.description  = You have a bug in your SEO Dynamic Tag configuration: description is empty!
-  # cat=Seo Dynamic Tag - Default values//101;   type=string;     label= Description prefix: Value will prefixed the description. I.e: My product categorie:
+  # cat=Seo Dynamic Tag - Default values//201;   type=string;     label= Description prefix: Value will prefixed the description. I.e: My product categorie:
   default.description.prefix  = 
-  # cat=Seo Dynamic Tag - Default values//102;   type=string;     label= Description appendix: Value will appendixed the description. I.e: - my product categorie
+  # cat=Seo Dynamic Tag - Default values//202;   type=string;     label= Description appendix: Value will appendixed the description. I.e: - my product categorie
   default.description.appendix  = 
   # cat=Seo Dynamic Tag - Default values//300;   type=string;     label= Keywords: Default keywords, if current record doesn't contain any keyword. For single views only. Leave it empty, if you don't like default keywords.
   default.keywords  = TYPO3, SEO, Dynamic Tag, Bug
   # cat=Seo Dynamic Tag - Default values//101;   type=string;     label= Keywords prefix: Value will prefixed the keywords. Prefix needs an ending comma. I.e: my first default keyword,my second default keyword,
   default.keywords.prefix  = 
-  # cat=Seo Dynamic Tag - Default values//102;   type=string;     label= Keywords appendix: Value will appendixed the keywords. Appendix needs a beginning comma. I.e: ,my last keyword
+  # cat=Seo Dynamic Tag - Default values//102;   type=string;     label= Keywords appendix: Value will appended the keywords. Appendix needs a beginning comma. I.e: ,my last keyword
   default.keywords.appendix  = 
 
   # cat=Seo Dynamic Tag - page object//100;   type=string;        label= Label*:*Obligate! The label of your page in your TypoScript configuration. Usually: page

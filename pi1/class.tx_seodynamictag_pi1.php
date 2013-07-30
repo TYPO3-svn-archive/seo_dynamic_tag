@@ -395,6 +395,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
   {
 
     $value = $this->zzValueFromSQL( );
+    $value = $this->zzValueCleanUp( $value );
     $value = $this->zzMaxLength( $value );
     
     if( $value ) 

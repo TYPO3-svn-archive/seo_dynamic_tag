@@ -138,7 +138,7 @@ plugin.tx_seodynamictag_pi1 {
 
 [{$plugin.tx_seodynamictag.condition.list.begin}]
   {$plugin.tx_seodynamictag.page.tsProperty} {
-    meta {
+    XXX_meta {
       author {
         field   >
         ifEmpty = {$plugin.tx_seodynamictag.default.author}

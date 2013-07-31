@@ -316,6 +316,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       // register value
     $value = $this->zzValueFromSQL( );
     $value = $this->zzValueCleanUp( $value );
+    $value = $this->zzMaxLength( $value );
 
       // Set the regsiter
     if( $value )
@@ -369,7 +370,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       // register value
     $value = $this->zzValueFromSQL( );
     $value = $this->zzValueCleanUp( $value );
-    
+    $value = $this->zzMaxLength( $value );    
 
       // Set the regsiter
     if( $value )

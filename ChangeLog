@@ -1,12 +1,18 @@
-1.2.0
-  130626
+2.0.0
+  130731
   Features
   * #49442: Canonical tag
+  * #i0004: Dynamic page object
   * #i0001: Integration of the constant editor
             Effected files:
             * ext_tables.php      ( new )
             * static              ( new )
               * constants.txt
+              * setup.txt
+  Improvement
+  * #i0003: The labels of registers got the prefix tx_seodynamic_tag_
+            Effected files:
+            * static        
               * setup.txt
 
 1.1.1

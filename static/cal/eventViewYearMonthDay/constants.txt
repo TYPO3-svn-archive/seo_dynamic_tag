@@ -17,7 +17,7 @@ plugin.tx_seodynamictag {
     single {
         // Please replace xxx with the uid of the page with the news plugin for the single view
         // Please use the Constant Editor
-      begin = globalVar = GP:tx_ttnews|tt_news > 0] && [globalVar = TSFE:id = xxx
+      begin = globalVar = GP:tx_cal_controller|uid > 0] && [globalVar = TSFE:id = xxx
     }
   }
 

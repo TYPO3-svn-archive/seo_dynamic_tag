@@ -18,7 +18,7 @@ plugin.tx_seodynamictag_pi1 {
         // No author
       20 >
       30 {
-        //register    = description
+        //register    = tx_seodynamictag_description
         query {
           select    = CONCAT('{$plugin.tx_seodynamictag.default.description.prefix} ', note, ' {$plugin.tx_seodynamictag.default.description.appendix}') as value
           from      = tt_products
@@ -27,7 +27,7 @@ plugin.tx_seodynamictag_pi1 {
         }
       }
       40 {
-        //register    = keywords
+        //register    = tx_seodynamictag_keywords
         query {
           select    = CONCAT(product.title, ' ', category.title, ' ', product.note) as value
           from      = tt_products as product, tt_products_cat as category

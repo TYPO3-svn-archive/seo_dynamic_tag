@@ -61,7 +61,7 @@ plugin.tx_seodynamictag_pi1 {
           // special: don't touch it!
         special     = register
           // register: don't touch it!
-        register    = author
+        register    = tx_seodynamictag_author
         query {
           select    = {$plugin.tx_seodynamictag.database.field.author}
           from      = {$plugin.tx_seodynamictag.database.table}
@@ -79,7 +79,7 @@ plugin.tx_seodynamictag_pi1 {
           // special: don't touch it!
         special     = register
           // register: don't touch it!
-        register    = description
+        register    = tx_seodynamictag_description
         query {
           select    = CONCAT('{$plugin.tx_seodynamictag.default.description.prefix} ', {$plugin.tx_seodynamictag.database.field.description}, ' {$plugin.tx_seodynamictag.default.description.appendix}') as value
           from      = {$plugin.tx_seodynamictag.database.table}
@@ -98,7 +98,7 @@ plugin.tx_seodynamictag_pi1 {
           // special: don't touch it!
         special     = register
           // register: don't touch it!
-        register    = keywords
+        register    = tx_seodynamictag_keywords
         query {
           select    = {$plugin.tx_seodynamictag.database.field.keywords}
           from      = {$plugin.tx_seodynamictag.database.table}
@@ -166,16 +166,16 @@ plugin.tx_seodynamictag_pi1 {
       author {
         field   >
         ifEmpty = {$plugin.tx_seodynamictag.default.author}
-        data    = register:author
+        data    = register:tx_seodynamictag_author
       }
       description {
         field   >
         ifEmpty = {$plugin.tx_seodynamictag.default.description}
-        data    = register:description
+        data    = register:tx_seodynamictag_description
       }
       keywords {
         field   >
-        data    = register:keywords
+        data    = register:tx_seodynamictag_keywords
         ifEmpty = {$plugin.tx_seodynamictag.keywords.default}
       }
     }

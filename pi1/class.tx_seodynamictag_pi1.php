@@ -104,7 +104,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
         $strReturn = $this->canonical( );
         break;
       case( $this->conf[ 'special' ] == 'description' ):
-        $strReturn = $this->metaDescription( );
+        $strReturn = $this->metaTagDescription( );
         break;
       case( $this->conf[ 'special' ] == 'keywords' ):
         $strReturn = $this->metaTagKeywords( );
@@ -358,7 +358,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
  * @access  private 
  * @version 1.2.0
  */
-  private function metaDescription( ) 
+  private function metaTagDescription( ) 
   {
       // EXIT if register is still existing
     $this->registerExistExit( );
@@ -942,7 +942,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
  */
   private function zzValueCleanUp( $value ) 
   {
-    $value = str_replace( array( "\r\n", "\r", "\n", "<br />", "<br>", "&nbsp;", "</li>" ), ' ', $value );
+    $value = str_replace( array( "\r\n", "\r", "\n", "<br />", "<br>", "&nbsp;", "</li>", "\t" ), ' ', $value );
     
     if( ! $this->conf[ 'query.' ][ 'dontStripTags' ] ) 
     {

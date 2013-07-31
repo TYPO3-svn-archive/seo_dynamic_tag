@@ -439,7 +439,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
    */
   private function zzDebug( $conf ) 
   {
-    if( ! $this->conf[ 'debug' ] )
+    if( ! ( ( int ) $this->conf[ 'debug' ] ) )
     {
       return;
     }

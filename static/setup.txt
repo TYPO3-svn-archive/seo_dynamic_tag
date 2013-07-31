@@ -50,7 +50,7 @@ plugin.tx_seodynamictag_pi1 {
             returnLast = url
           }
         }
-          // Enable it and you will get a prompt in the frontend
+          // Enable it with the Constant Editor and you will get a prompt in the frontend
         debug = {$plugin.tx_seodynamictag.debugging.canonical}{$plugin.tx_seodynamictag.debugging.all}
       }
         // meta tag author
@@ -68,7 +68,7 @@ plugin.tx_seodynamictag_pi1 {
           where     = uid = $1 AND deleted = 0 AND hidden = 0
           var.1     = {$plugin.tx_seodynamictag.database.var.1}
         }
-          // Enable it and you will get a prompt in the frontend
+          // Enable it with the Constant Editor and you will get a prompt in the frontend
         debug   = {$plugin.tx_seodynamictag.debugging.author}{$plugin.tx_seodynamictag.debugging.all}
       }
         // meta tag description
@@ -87,7 +87,7 @@ plugin.tx_seodynamictag_pi1 {
           var.1     = {$plugin.tx_seodynamictag.database.var.1}
           maxLength = 200
         }
-          // Enable it and you will get a prompt in the frontend
+          // Enable it with the Constant Editor and you will get a prompt in the frontend
         debug = {$plugin.tx_seodynamictag.debugging.description}{$plugin.tx_seodynamictag.debugging.all}
       }
         // meta tag keywords
@@ -105,7 +105,7 @@ plugin.tx_seodynamictag_pi1 {
           where     = uid = $1 AND deleted = 0 AND hidden = 0
           var.1     = {$plugin.tx_seodynamictag.database.var.1}
         }
-          // Enable it and you will get a prompt in the frontend
+          // Enable it with the Constant Editor and you will get a prompt in the frontend
         debug = {$plugin.tx_seodynamictag.debugging.keywords}{$plugin.tx_seodynamictag.debugging.all}
         keywords = {$plugin.tx_seodynamictag.keywords.moveToKeywords}
         keywords {
@@ -130,7 +130,7 @@ plugin.tx_seodynamictag_pi1 {
           var.1     = {$plugin.tx_seodynamictag.database.var.1}
           maxLength = 100
         }
-          // Enable it and you will get a prompt in the frontend
+          // Enable it with the Constant Editor and you will get a prompt in the frontend
         debug = {$plugin.tx_seodynamictag.debugging.title}{$plugin.tx_seodynamictag.debugging.all}
       }
     }

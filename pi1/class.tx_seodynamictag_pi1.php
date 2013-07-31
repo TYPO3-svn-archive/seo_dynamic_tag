@@ -507,14 +507,18 @@ class tx_seodynamictag_pi1 extends tslib_pibase
   {
     $strKeywords = null;
 
+      // RETURN : Don't handle current value for keywords
     if( ! $this->conf['keywords'] )
     {
-      if( empty ( $value ) )
+        // IF current value isn't empty, prepend forced list
+      if( ! empty ( $value ) )
       {
-        $value = $this->zzKeywordsForcedList( null );
+        $value = $this->zzKeywordsForcedList( $value );
       }
+        // IF current value isn't empty, prepend forced list
       return $value;
     }
+      // RETURN : Don't handle current value for keywords
     
     $value    = str_replace( ', ',     ' ',  $value );
     $value    = str_replace( ' ',      ',',  $value );
@@ -673,8 +677,8 @@ class tx_seodynamictag_pi1 extends tslib_pibase
   {
 
     $value = $this->zzValueFromSQL( );
-    $value = $this->zzKeywords( $value );
-    $value = $this->zzMaxLength( $value );
+//    $value = $this->zzKeywords( $value );
+//    $value = $this->zzMaxLength( $value );
         
     if( ! $this->conf[ 'debug' ] ) 
     {

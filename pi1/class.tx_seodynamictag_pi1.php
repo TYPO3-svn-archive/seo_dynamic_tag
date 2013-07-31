@@ -598,18 +598,18 @@ class tx_seodynamictag_pi1 extends tslib_pibase
   private function zzKeywordsForcedList( $value ) 
   {
       // 130730, dwildt, 5+
-    $strForcedList  = $this->conf['keywords.']['forcedList'];
-    if( empty ( $strForcedList ) )
+    $forcedList  = $this->conf['keywords.']['forcedList'];
+    if( empty ( $forcedList ) )
     {
       return $value;
     }
     
-    $strForcedList  = str_replace( ', ', ',', $strForcedList );
-    if( $strForcedList )
+    if( $forcedList )
     {
-      $value = $strForcedList . ',' . $strKeywords;
+      $value = $forcedList . ',' . $value;
     }
     
+    $value = str_replace( ', ', ',', $value );
     $value = str_replace( ',,', ' ', $value );
     $value = rtrim( $value, ',' );
     

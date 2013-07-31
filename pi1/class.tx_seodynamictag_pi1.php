@@ -507,17 +507,9 @@ class tx_seodynamictag_pi1 extends tslib_pibase
   {
     $strKeywords = null;
 
-    if( $this->conf['query.']['keywords'] && $this->conf[ 'debug' ] )
+    if( ! $this->conf['keywords'] )
     {
-      $this->debugPrompt  = $this->debugPrompt
-                          . '<h3>OBSOLTE</h3>
-                            <span style="color:red;font-weight:bold;">You use the typoscript variable "query.keywords = 1"<br />
-                            Since Version 0.0.2 this varibale is substituted with "keywords = 1" only.</span>
-                            ';
-    }
-    
-    if( ! ( $this->conf['query.']['keywords'] || $this->conf['keywords'] ) )
-    {
+      $value = $this->zzKeywordsForcedList( $value );
       return $value;
     }
     
@@ -587,8 +579,31 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     }
     $value = $strKeywords;
 
+    $value = $this->zzKeywordsForcedList( $value );
+    
+    unset( $arrPositiveList );
+    unset( $arrNegativeList );
+    
+    return $value;
+  }
+
+  /**
+   * zzKeywordsForcedList( )  : 
+   *
+   * @param   string    $value  :
+   * @return  string    $value  : 
+   * @access    private
+   * @version   1.2.0
+   */
+  private function zzKeywordsForcedList( $value ) 
+  {
       // 130730, dwildt, 5+
     $strForcedList  = $this->conf['keywords.']['forcedList'];
+    if( empty ( $strForcedList ) )
+    {
+      return $value;
+    }
+    
     $strForcedList  = str_replace( ', ', ',', $strForcedList );
     if( $strForcedList )
     {
@@ -596,9 +611,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     }
     
     $value = str_replace( ',,', ' ', $value );
-    
-    unset( $arrPositiveList );
-    unset( $arrNegativeList );
+    $value = rtrim( $value, ',' );
     
     return $value;
   }

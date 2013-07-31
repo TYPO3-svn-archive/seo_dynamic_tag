@@ -124,7 +124,11 @@ plugin.tx_seodynamictag_pi1 {
           // special: don't touch it!
         special     = title
         query {
-          select    = CONCAT({$plugin.tx_seodynamictag.database.field.title}, ': ', {$plugin.tx_seodynamictag.database.field.short})
+          select    (
+            CONCAT(IFNULL({$plugin.tx_seodynamictag.database.field.title}, '{$plugin.tx_seodynamictag.database.field.title} is empty!')
+              , ': '
+              , IFNULL({$plugin.tx_seodynamictag.database.field.short}, '{$plugin.tx_seodynamictag.database.field.short} is empty!'))
+)
           from      = {$plugin.tx_seodynamictag.database.table}
           where     = uid = $1 AND deleted = 0 AND hidden = 0
           var.1     = {$plugin.tx_seodynamictag.database.var.1}

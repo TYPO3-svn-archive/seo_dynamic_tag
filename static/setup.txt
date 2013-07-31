@@ -173,7 +173,7 @@ plugin.tx_seodynamictag_pi1 {
 [{$plugin.tx_seodynamictag.condition.single.begin}]
   {$plugin.tx_seodynamictag.page.tsProperty} {
     config {
-      noPageTitle = 2
+      //noPageTitle = 2
     }
     meta {
       author >

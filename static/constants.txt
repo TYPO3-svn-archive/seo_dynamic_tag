@@ -57,12 +57,14 @@ plugin.tx_seodynamictag {
   # cat=Seo Dynamic Tag - Default values//202;   type=string;     label= Description appendix: Value will appendixed the description. I.e: - my product categorie
   default.description.appendix  = 
 
-  # cat=Seo Dynamic Tag - Keywords//300;   type=string;           label= Default: Default keywords, if current record doesn't contain any keyword. For single views only. Leave it empty, if you don't like default keywords.
+  # cat=Seo Dynamic Tag - Keywords//100;   type=string;           label= Default: Default keywords, if current record doesn't contain any keyword. For single views only. Leave it empty, if you don't like default keywords.
   keywords.default  = TYPO3, SEO, Dynamic Tag, Bug
-  # cat=Seo Dynamic Tag - Keywords//301;   type=int;              label= Amount: Maximum amount of keywords. Recommended: less is more!
+  # cat=Seo Dynamic Tag - Keywords//101;   type=int;              label= Amount: Maximum amount of keywords. Recommended: less is more!
   keywords.amount  = 10
-  # cat=Seo Dynamic Tag - Keywords//302;   type=int;              label= Minimum length: Minimum length of a single keyword
+  # cat=Seo Dynamic Tag - Keywords//102;   type=int;              label= Minimum length: Minimum length of a single keyword
   keywords.minLength  = 6
+  # cat=Seo Dynamic Tag - Keywords//200;   type=string;           label= Move to keywords: Move source to keywords. Recommended, if your field for keywords doesn't contain a keyword list. This is the case, if you are using a field like bodytext or description for generating keywords. That isn't the case, if you using a field like keywords for keywords.
+  keywords.moveToKeywords  = 1
   # cat=Seo Dynamic Tag - Keywords//303;   type=string;           label= Positive list: List with keywords, which will used, if they are part of the keyword list but are shorter than the minimum word length. List is not independent of amount of keywords.
   keywords.positiveList  = TYPO3, SEO
   # cat=Seo Dynamic Tag - Keywords//304;   type=string;           label= Negative list: List with keywords, which will excluded from the list of found keywords.

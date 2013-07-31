@@ -1,14 +1,12 @@
 plugin.tx_seodynamictag {
 
   canonical {
-    list {
-        // Only the pointer parameter is allowed
-      additionalParams  = &tx_ttnews[pointer]={GP:tx_ttnews|pointer}
-        // I don't like the pointer in the URL
-      additionalParams  = 
-    }
     single {
-        // Only the uid parameter is allowed
+        // Only this parameter are allowed: 
+        // * tx_cal_controller[view]
+        // * tx_cal_controller[type]
+        // * tx_cal_controller[uid]
+        // * tx_cal_controller[getdate]
       additionalParams = &tx_cal_controller[view]=event&tx_cal_controller[type]=tx_cal_phpicalendar&tx_cal_controller[uid]={GP:tx_cal_controller|uid}&tx_cal_controller[getdate]={GP:tx_cal_controller|getdate}
     }
   }
@@ -32,4 +30,9 @@ plugin.tx_seodynamictag {
       short         = description 
     }
   }
+
+  keywords {
+    moveToKeywords = 1
+  }
+
 }

@@ -107,7 +107,7 @@ plugin.tx_seodynamictag_pi1 {
         }
           // Enable it and you will get a prompt in the frontend
         debug = {$plugin.tx_seodynamictag.debugging.keywords}{$plugin.tx_seodynamictag.debugging.all}
-        keywords = 1
+        keywords = {$plugin.tx_seodynamictag.keywords.moveToKeywords}
         keywords {
           amount        = {$plugin.tx_seodynamictag.keywords.amount}
           minLength     = {$plugin.tx_seodynamictag.keywords.minLength}

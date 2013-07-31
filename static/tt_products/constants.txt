@@ -1,12 +1,6 @@
 plugin.tx_seodynamictag {
 
   canonical {
-    list {
-        // Only the pointer parameter is allowed
-      additionalParams  = &tx_ttnews[pointer]={GP:tx_ttnews|pointer}
-        // I don't like the pointer in the URL
-      additionalParams  = 
-    }
     single {
         // Only the uid parameter is allowed
       additionalParams  = &tt_products[product]={GP:tt_products|product}
@@ -22,7 +16,11 @@ plugin.tx_seodynamictag {
   }
 
   database >
-  # cat=Seo Dynamic Tag - Database*//100;   type=boolean;          label= Info*:*Obligate! Database values are configured in the setup directly!
+    // databse is configured in setup.txt
   database.dummy = 
+
+  keywords {
+    moveToKeywords = 1
+  }
 
 }

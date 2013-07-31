@@ -32,4 +32,8 @@ plugin.tx_seodynamictag {
       short         = short 
     }
   }
+
+  keywords {
+    moveToKeywords = 0
+  }
 }

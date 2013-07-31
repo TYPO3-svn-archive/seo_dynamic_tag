@@ -2,7 +2,7 @@ plugin.tx_seodynamictag {
 
   # cat=Seo Dynamic Tag - Canonical*//100;   type=boolean;       label= Enabled: If you don't like the canonical tag, disable it.
   canonical.enabled                 = 1 
-  # cat=Seo Dynamic Tag - Canonical*//101;   type=string;        label= Host: Host. Leave it empty, if you are using the host of the frontend. I.e: http://easy-typo3.com/
+  # cat=Seo Dynamic Tag - Canonical*//101;   type=string;        label= Host: Host. Leave it empty, if you are using the host of the frontend. Example: http://easy-typo3.com/
   canonical.host                    = 
   # cat=Seo Dynamic Tag - Canonical*//201;   type=string;        label= Allowed parameter (list view):Allowed URL parameter for the list view. An empty value is recommended!
   canonical.list.additionalParams   = 
@@ -11,52 +11,52 @@ plugin.tx_seodynamictag {
   # cat=Seo Dynamic Tag - Canonical*//401;   type=boolean;       label= Use cash hash: Recommended. Use a cash hash parameter for a unique URL. Allowed URL parameter for the single view
   canonical.useCashHash = 1
 
-  # cat=Seo Dynamic Tag - Conditions*//100;   type=string;        label= List view begin*:*Obligate! Global condition beginning for the list view. Without outer square brackets (!). Replace 'xxx' with the id of the page with your plugin for the list view. You can use PIDinRootline among others but this is dangerous. I.e: globalVar = TSFE:id = 123
+  # cat=Seo Dynamic Tag - Conditions*//100;   type=string;        label= List view begin*:*Obligate! Global condition beginning for the list view. Without outer square brackets (!). Replace 'xxx' with the id of the page with your plugin for the list view. You can use PIDinRootline among others but this is dangerous. Example: globalVar = TSFE:id = 123
   condition.list.begin    = globalVar = TSFE:id = xxx
   # cat=Seo Dynamic Tag - Conditions*//101;   type=string;        label= List view end*:*Obligate! Global condition ending. Without outer square brackets (!). Usually: global
   condition.list.end      = global
-  # cat=Seo Dynamic Tag - Conditions*//200;   type=string;        label= Single view begin*:*Obligate! Global condition beginning for the single view. Without outer square brackets (!). Replace 'xxx' with the id of the page with your plugin for the single view. You can use PIDinRootline among others but this is dangerous. I.e: GP:tx_ttnews|tt_news > 0] && [globalVar = TSFE:id = 123
+  # cat=Seo Dynamic Tag - Conditions*//200;   type=string;        label= Single view begin*:*Obligate! Global condition beginning for the single view. Without outer square brackets (!). Replace 'xxx' with the id of the page with your plugin for the single view. You can use PIDinRootline among others but this is dangerous. Example: GP:tx_ttnews|tt_news > 0] && [globalVar = TSFE:id = 123
   condition.single.begin  = globalVar = GP:table|field > 0] && [globalVar = TSFE:id = xxx
   # cat=Seo Dynamic Tag - Conditions*//201;   type=string;        label= Single view end*:*Obligate! Global condition ending. Without outer square brackets (!). Usually: global
   condition.single.end    = global
 
-  # cat=Seo Dynamic Tag - Database*//100;   type=string;          label= Table*:*Obligate! The from table in the SQL query. I.e: tt_news
+  # cat=Seo Dynamic Tag - Database*//100;   type=string;          label= Table*:*Obligate! The from table in the SQL query. Example: tt_news
   database.table              = 
-  # cat=Seo Dynamic Tag - Database*//200;   type=string;          label= Get parameter for uid:*Obligate! The GET parameter with the uid. I.e: tx_ttnews[tt_news] 
+  # cat=Seo Dynamic Tag - Database*//200;   type=string;          label= Get parameter for uid:*Obligate! The GET parameter with the uid. Example: tx_ttnews[tt_news] 
   database.var.1              = 
-  # cat=Seo Dynamic Tag - Database*//300;   type=string;          label= Author field:*Obligate! The label of the author field. It is used in the meta tag author. I.e: author
+  # cat=Seo Dynamic Tag - Database*//300;   type=string;          label= Author field: The label of the author field. It is used in the meta tag author. Example: author
   database.field.author       = author 
-  # cat=Seo Dynamic Tag - Database*//301;   type=string;          label= Description field:*Obligate! The label of the description field. It is used in the meta tag description. I.e: description
+  # cat=Seo Dynamic Tag - Database*//301;   type=string;          label= Description field: The label of the description field. It is used in the meta tag description. Example: description
   database.field.description  = description 
-  # cat=Seo Dynamic Tag - Database*//302;   type=string;          label= Keywords field:*Obligate! The label of the keywords field. It is used in the meta tag keywords. I.e: keywords
+  # cat=Seo Dynamic Tag - Database*//302;   type=string;          label= Keywords field: The label of the keywords field. It is used in the meta tag keywords. Example: keywords
   database.field.keywords     = keywords 
-  # cat=Seo Dynamic Tag - Database*//303;   type=string;          label= Title field:*Obligate! The label of the title field. It is used in the title tag. I.e: title
+  # cat=Seo Dynamic Tag - Database*//303;   type=string;          label= Title field:*Obligate! The label of the title field. It is used in the title tag. Example: title
   database.field.title        = title 
-  # cat=Seo Dynamic Tag - Database*//304;   type=string;          label= Short field:*Obligate! The label of the short field. It is used in the title tag. I.e: short
+  # cat=Seo Dynamic Tag - Database*//304;   type=string;          label= Short field:*Obligate! The label of the short field. It is used in the title tag. If there isn't any field for a short, you can take a constant, wrapped by a double quote. Example for a field: short. Example for a constant: "my constant".
   database.field.short        = short 
   # cat=Seo Dynamic Tag - Database*//400;   type=string;          label= AND where:AND where statement (without AND).
   database.andWhere           = deleted = 0 AND hidden = 0 
 
-  # cat=Seo Dynamic Tag - Debugging/enable/100;   type=boolean;   label= all: If enabled, you will get a report for all options from below in the frontend
+  # cat=Seo Dynamic Tag - Debugging/enable/100;   type=boolean;   label= all: If enabled, you will get a report for all options from below at the bottom of the frontend.
   debugging.all         = 0
-  # cat=Seo Dynamic Tag - Debugging/enable/200;   type=boolean;   label= author: If enabled, you will get a report for the meta tag author in the frontend 
+  # cat=Seo Dynamic Tag - Debugging/enable/200;   type=boolean;   label= author: If enabled, you will get a report for the meta tag author at the bottom of the frontend. 
   debugging.author      = 0
-  # cat=Seo Dynamic Tag - Debugging/enable/201;   type=boolean;   label= canonical tag: If enabled, you will get a report for the canonical tag in the frontend
+  # cat=Seo Dynamic Tag - Debugging/enable/201;   type=boolean;   label= canonical tag: If enabled, you will get a report for the canonical tag at the bottom of the frontend.
   debugging.canonical   = 0
-  # cat=Seo Dynamic Tag - Debugging/enable/202;   type=boolean;   label= description: If enabled, you will get a report for the meta tag description in the frontend
+  # cat=Seo Dynamic Tag - Debugging/enable/202;   type=boolean;   label= description: If enabled, you will get a report for the meta tag description at the bottom of the frontend.
   debugging.description = 0
-  # cat=Seo Dynamic Tag - Debugging/enable/203;   type=boolean;   label= keywords: If enabled, you will get a report for the meta tag keywords in the frontend
+  # cat=Seo Dynamic Tag - Debugging/enable/203;   type=boolean;   label= keywords: If enabled, you will get a report for the meta tag keywords at the bottom of the frontend.
   debugging.keywords    = 0
-  # cat=Seo Dynamic Tag - Debugging/enable/204;   type=boolean;   label= title: If enabled, you will get a report for the title in the frontend 
+  # cat=Seo Dynamic Tag - Debugging/enable/204;   type=boolean;   label= title: If enabled, you will get a report for the title at the bottom of the frontend. 
   debugging.title       = 0
 
   # cat=Seo Dynamic Tag - Default values//100;   type=string;     label= Author: Default author, if current record doesn't contain any author. For single views only. Leave it empty, if you don't like a default author.
   default.author  = TYPO3 SEO Dynamic Tag (seo_dynamic tag)
   # cat=Seo Dynamic Tag - Default values//200;   type=string;     label= Description: Default description, if current record doesn't contain any description. For single views only. Leave it empty, if you don't like a default description.
   default.description  = You have a bug in your SEO Dynamic Tag configuration: description is empty!
-  # cat=Seo Dynamic Tag - Default values//201;   type=string;     label= Description prefix: Value will prefixed the description. I.e: My product categorie:
+  # cat=Seo Dynamic Tag - Default values//201;   type=string;     label= Description prefix: Value will prefixed the description. Example: My product categorie:
   default.description.prefix  = 
-  # cat=Seo Dynamic Tag - Default values//202;   type=string;     label= Description appendix: Value will appendixed the description. I.e: - my product categorie
+  # cat=Seo Dynamic Tag - Default values//202;   type=string;     label= Description appendix: Value will appendixed the description. Example: - my product categorie
   default.description.appendix  = 
 
   # cat=Seo Dynamic Tag - Keywords//100;   type=string;           label= Default: Default keywords, if current record doesn't contain any keyword. For single views only. Leave it empty, if you don't like default keywords.

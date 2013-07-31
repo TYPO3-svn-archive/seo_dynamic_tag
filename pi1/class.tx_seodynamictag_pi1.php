@@ -625,6 +625,10 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       // RETURN : Don't handle current value for keywords
     if( ! $this->conf['keywords'] )
     {
+      if( ! empty ( $value ) )
+      {
+        $value = $this->zzKeywordsForcedList( $value );
+      }
         // IF current value isn't empty, prepend forced list
       return $value;
     }

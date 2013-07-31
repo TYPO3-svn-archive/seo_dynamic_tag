@@ -21,11 +21,11 @@ plugin.tx_seodynamictag_pi1 {
         //register    = tx_seodynamictag_description
         query {
           select    (
-            CONCAT(IFNULL({$plugin.tx_seodynamictag.default.description.prefix}, '')
+            CONCAT('{$plugin.tx_seodynamictag.default.description.prefix}'
               , ' '
               , IFNULL(note, '')
               , ' '
-              , IFNULL({$plugin.tx_seodynamictag.default.description.appendix}, '')) as value
+              , '{$plugin.tx_seodynamictag.default.description.appendix}') as value
 )
           from      = tt_products
           where     = uid = $1 AND deleted = 0 AND hidden = 0

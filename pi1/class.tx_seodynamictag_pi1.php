@@ -96,11 +96,17 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     
     switch( true ) 
     {
+      case( $this->conf[ 'special' ] == 'author' ):
+        $strReturn = $this->register( );
+        break;
         // #49442, 130729, dwildt, 3+
       case( $this->conf[ 'special' ] == 'canonical' ):
         $strReturn = $this->canonical( );
         break;
-      case( $this->conf[ 'special' ] == 'register' ):
+      case( $this->conf[ 'special' ] == 'description' ):
+        $strReturn = $this->register( );
+        break;
+      case( $this->conf[ 'special' ] == 'keywords' ):
         $strReturn = $this->register( );
         break;
       case( $this->conf[ 'special' ] == 'title' ):
@@ -292,14 +298,121 @@ class tx_seodynamictag_pi1 extends tslib_pibase
   **********************************************/
 
 /**
- * register( ) 
+ * metaTagAuthor( ) 
  *
  * @return  The content that is displayed on the website
  *
  * @access  private 
  * @version 1.2.0
  */
-  private function register( ) 
+  private function metaTagAuthor( ) 
+  {
+      // EXIT if register is still existing
+    $this->registerExistExit( );
+    
+      // register label
+    $register = $this->conf[ 'register' ];
+
+      // register value
+    $value = $this->zzValueFromSQL( );
+    $value = $this->zzValueCleanUp( $value );
+
+      // Set the regsiter
+    if( $value )
+    {
+      $GLOBALS[ 'TSFE' ]->register[$register] = $value;
+    }
+    
+      // RETURN : debug mode is off
+    if( ! $this->conf[ 'debug' ] ) 
+    {
+      return;
+    }
+      // RETURN : debug mode is off
+
+    if( $value )
+    {
+      $this->debugPrompt  = $this->debugPrompt
+                          . '<h3>Result of ' . __METHOD__ . '</h3>
+        '.$value.'<br />
+        <br />
+        <strong>Info:</strong> This value is stored in the register "'.$register.'"<br />
+        You can use it with this typoscript e.g.:<br />
+        <span style="color:blue;font-weight:bold;font-size:0.8em;padding-left:20px;">page.meta.description.data = register:'.$register.'</span><br />
+        ';
+    }
+    else
+    {
+      $this->debugPrompt  = $this->debugPrompt
+                          . '<h3>Result of ' . __METHOD__ . '</h3>
+        <span style="color:red;font-weight:bold;">The value is empty, there won\'t be any register "'.$register.'"</span>
+        ';
+    }
+  }
+
+/**
+ * metaTagDescription( ) 
+ *
+ * @return  The content that is displayed on the website
+ *
+ * @access  private 
+ * @version 1.2.0
+ */
+  private function metaDescription( ) 
+  {
+      // EXIT if register is still existing
+    $this->registerExistExit( );
+    
+      // register label
+    $register = $this->conf[ 'register' ];
+
+      // register value
+    $value = $this->zzValueFromSQL( );
+    $value = $this->zzValueCleanUp( $value );
+    
+
+      // Set the regsiter
+    if( $value )
+    {
+      $GLOBALS[ 'TSFE' ]->register[$register] = $value;
+    }
+    
+      // RETURN : debug mode is off
+    if( ! $this->conf[ 'debug' ] ) 
+    {
+      return;
+    }
+      // RETURN : debug mode is off
+
+    if( $value )
+    {
+      $this->debugPrompt  = $this->debugPrompt
+                          . '<h3>Result of ' . __METHOD__ . '</h3>
+        '.$value.'<br />
+        <br />
+        <strong>Info:</strong> This value is stored in the register "'.$register.'"<br />
+        You can use it with this typoscript e.g.:<br />
+        <span style="color:blue;font-weight:bold;font-size:0.8em;padding-left:20px;">page.meta.description.data = register:'.$register.'</span><br />
+        ';
+    }
+    else
+    {
+      $this->debugPrompt  = $this->debugPrompt
+                          . '<h3>Result of ' . __METHOD__ . '</h3>
+        <span style="color:red;font-weight:bold;">The value is empty, there won\'t be any register "'.$register.'"</span>
+        ';
+    }
+  }
+
+/**
+ * metaTagKeywords( ) 
+ *
+ * @return  The content that is displayed on the website
+ *
+ * @access  private 
+ * @version 1.2.0
+ */
+  private function metaTagKeywords( ) 
   {
       // EXIT if register is still existing
     $this->registerExistExit( );
@@ -329,7 +442,8 @@ class tx_seodynamictag_pi1 extends tslib_pibase
 
     if( $value )
     {
-      $this->debugPrompt .= '<h3>Result string of the method</h3>
+      $this->debugPrompt  = $this->debugPrompt
+                          . '<h3>Result of ' . __METHOD__ . '</h3>
         '.$value.'<br />
         <br />
         <strong>Info:</strong> This value is stored in the register "'.$register.'"<br />
@@ -339,7 +453,8 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     }
     else
     {
-      $this->debugPrompt .= '<h3>Result of the method</h3>
+      $this->debugPrompt  = $this->debugPrompt
+                          . '<h3>Result of ' . __METHOD__ . '</h3>
         <span style="color:red;font-weight:bold;">The value is empty, there won\'t be any register "'.$register.'"</span>
         ';
     }
@@ -510,11 +625,6 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       // RETURN : Don't handle current value for keywords
     if( ! $this->conf['keywords'] )
     {
-        // IF current value isn't empty, prepend forced list
-      if( ! empty ( $value ) )
-      {
-        $value = $this->zzKeywordsForcedList( $value );
-      }
         // IF current value isn't empty, prepend forced list
       return $value;
     }

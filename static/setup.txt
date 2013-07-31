@@ -59,7 +59,7 @@ plugin.tx_seodynamictag_pi1 {
         includeLibs = typo3conf/ext/seo_dynamic_tag/pi1/class.tx_seodynamictag_pi1.php
         userFunc    = tx_seodynamictag_pi1->main
           // special: don't touch it!
-        special     = register
+        special     = author
           // register: don't touch it!
         register    = tx_seodynamictag_author
         query {
@@ -77,7 +77,7 @@ plugin.tx_seodynamictag_pi1 {
         includeLibs = typo3conf/ext/seo_dynamic_tag/pi1/class.tx_seodynamictag_pi1.php
         userFunc    = tx_seodynamictag_pi1->main
           // special: don't touch it!
-        special     = register
+        special     = description
           // register: don't touch it!
         register    = tx_seodynamictag_description
         query {
@@ -102,7 +102,7 @@ plugin.tx_seodynamictag_pi1 {
         includeLibs = typo3conf/ext/seo_dynamic_tag/pi1/class.tx_seodynamictag_pi1.php
         userFunc    = tx_seodynamictag_pi1->main
           // special: don't touch it!
-        special     = register
+        special     = keywords
           // register: don't touch it!
         register    = tx_seodynamictag_keywords
         query {

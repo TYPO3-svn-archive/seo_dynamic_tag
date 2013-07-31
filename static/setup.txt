@@ -81,7 +81,6 @@ plugin.tx_seodynamictag_pi1 {
           // register: don't touch it!
         register    = tx_seodynamictag_description
         query {
-          select    = CONCAT('{$plugin.tx_seodynamictag.default.description.prefix} ', 
           select    (
             CONCAT(IFNULL({$plugin.tx_seodynamictag.default.description.prefix}, '')
               , ' '

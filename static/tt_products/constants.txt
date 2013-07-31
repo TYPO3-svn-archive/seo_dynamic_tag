@@ -15,9 +15,17 @@ plugin.tx_seodynamictag {
     }
   }
 
-  database >
-    // databse is configured in setup.txt
-  database.dummy = 
+  database {
+    table = See TypoScript > setup.txt
+    var.1 = See TypoScript > setup.txt
+    field {
+      author        = See TypoScript > setup.txt 
+      description   = See TypoScript > setup.txt
+      keywords      = See TypoScript > setup.txt
+      title         = See TypoScript > setup.txt
+      short         = See TypoScript > setup.txt
+    }
+  }
 
   keywords {
     moveToKeywords = 1

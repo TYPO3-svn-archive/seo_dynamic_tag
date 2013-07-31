@@ -24,15 +24,15 @@ plugin.tx_seodynamictag {
   database.table              = 
   # cat=Seo Dynamic Tag - Database*//200;   type=string;          label= Get parameter for uid:*Obligate! The GET parameter with the uid. I.e: tx_ttnews[tt_news] 
   database.var.1              = 
-  # cat=Seo Dynamic Tag - Database*//300;   type=string;          label= Author field:*Obligate! The label of the author field. I.e: author
+  # cat=Seo Dynamic Tag - Database*//300;   type=string;          label= Author field:*Obligate! The label of the author field. It is used in the meta tag author. I.e: author
   database.field.author       = author 
-  # cat=Seo Dynamic Tag - Database*//301;   type=string;          label= Description field:*Obligate! The label of the description field. I.e: description
+  # cat=Seo Dynamic Tag - Database*//301;   type=string;          label= Description field:*Obligate! The label of the description field. It is used in the meta tag description. I.e: description
   database.field.description  = description 
-  # cat=Seo Dynamic Tag - Database*//302;   type=string;          label= Keywords field:*Obligate! The label of the keywords field. I.e: keywords
+  # cat=Seo Dynamic Tag - Database*//302;   type=string;          label= Keywords field:*Obligate! The label of the keywords field. It is used in the meta tag keywords. I.e: keywords
   database.field.keywords     = keywords 
-  # cat=Seo Dynamic Tag - Database*//303;   type=string;          label= Title field:*Obligate! The label of the title field. I.e: title
+  # cat=Seo Dynamic Tag - Database*//303;   type=string;          label= Title field:*Obligate! The label of the title field. It is used in the title tag. I.e: title
   database.field.title     = title 
-  # cat=Seo Dynamic Tag - Database*//304;   type=string;          label= Short field:*Obligate! The label of the short field. I.e: short
+  # cat=Seo Dynamic Tag - Database*//304;   type=string;          label= Short field:*Obligate! The label of the short field. It is used in the title tag. I.e: short
   database.field.short     = short 
 
   # cat=Seo Dynamic Tag - Debugging/enable/100;   type=boolean;   label= all: If enabled, you will get a report for all options from below in the frontend

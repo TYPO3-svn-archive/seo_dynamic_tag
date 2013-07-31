@@ -175,17 +175,16 @@ plugin.tx_seodynamictag_pi1 {
     meta {
       author >
       author {
-        field   >
         ifEmpty = {$plugin.tx_seodynamictag.default.author}
         data    = register:tx_seodynamictag_author
       }
+      description >
       description {
-        field   >
         ifEmpty = {$plugin.tx_seodynamictag.default.description}
         data    = register:tx_seodynamictag_description
       }
+      keywords >
       keywords {
-        field   >
         data    = register:tx_seodynamictag_keywords
         ifEmpty = {$plugin.tx_seodynamictag.keywords.default}
       }

@@ -38,17 +38,17 @@ plugin.tx_seodynamictag {
   database.andWhere           = deleted = 0 AND hidden = 0 
 
   # cat=Seo Dynamic Tag - Debugging/enable/100;   type=boolean;   label= all: If enabled, you will get a report for all options from below in the frontend
-  debugging.all         = 
+  debugging.all         = 0
   # cat=Seo Dynamic Tag - Debugging/enable/200;   type=boolean;   label= author: If enabled, you will get a report for the meta tag author in the frontend 
-  debugging.author      = 
+  debugging.author      = 0
   # cat=Seo Dynamic Tag - Debugging/enable/201;   type=boolean;   label= canonical tag: If enabled, you will get a report for the canonical tag in the frontend
-  debugging.canonical   = 
+  debugging.canonical   = 0
   # cat=Seo Dynamic Tag - Debugging/enable/202;   type=boolean;   label= description: If enabled, you will get a report for the meta tag description in the frontend
-  debugging.description = 
+  debugging.description = 0
   # cat=Seo Dynamic Tag - Debugging/enable/203;   type=boolean;   label= keywords: If enabled, you will get a report for the meta tag keywords in the frontend
-  debugging.keywords    = 
+  debugging.keywords    = 0
   # cat=Seo Dynamic Tag - Debugging/enable/204;   type=boolean;   label= title: If enabled, you will get a report for the title in the frontend 
-  debugging.title       = 
+  debugging.title       = 0
 
   # cat=Seo Dynamic Tag - Default values//100;   type=string;     label= Author: Default author, if current record doesn't contain any author. For single views only. Leave it empty, if you don't like a default author.
   default.author  = TYPO3 SEO Dynamic Tag (seo_dynamic tag)

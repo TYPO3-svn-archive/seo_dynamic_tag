@@ -628,6 +628,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       if( ! empty ( $value ) )
       {
         $value = $this->zzKeywordsForcedList( $value );
+        $value = $this->zzKeywordsUnique( $value );
       }
         // IF current value isn't empty, prepend forced list
       return $value;
@@ -701,6 +702,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     $value = $strKeywords;
 
     $value = $this->zzKeywordsForcedList( $value );
+    $value = $this->zzKeywordsUnique( $value );
     
     unset( $arrPositiveList );
     unset( $arrNegativeList );
@@ -735,6 +737,31 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     $value = rtrim( $value, ',' );
     
     return $value;
+  }
+
+  /**
+   * zzKeywordsUnique( )  : 
+   *
+   * @param   string    $value  :
+   * @return  string    $value  : 
+   * @access    private
+   * @version   1.2.0
+   */
+  private function zzKeywordsUnique( $keywordList ) 
+  {
+    $keywords = explode( ',', $keywordList );
+
+    foreach( $keywords as $key => $word )
+    {
+      $word = trim( $word );
+      $word = strtolower( $word );
+      $keywords[ $key ] = $word;
+    }
+    $keywords = array_unique( $keywords );
+    
+    $keywordList = implode( ',', $keywords );
+
+    return $keywordList;
   }
 
   /**

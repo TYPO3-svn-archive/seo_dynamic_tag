@@ -509,7 +509,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
 
     if( ! $this->conf['keywords'] )
     {
-      $value = $this->zzKeywordsForcedList( $value );
+      //$value = $this->zzKeywordsForcedList( $value );
       return $value;
     }
     

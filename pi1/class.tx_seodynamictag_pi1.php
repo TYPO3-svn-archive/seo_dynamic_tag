@@ -97,17 +97,17 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     switch( true ) 
     {
       case( $this->conf[ 'special' ] == 'author' ):
-        $strReturn = $this->register( );
+        $strReturn = $this->metaTagAuthor( );
         break;
         // #49442, 130729, dwildt, 3+
       case( $this->conf[ 'special' ] == 'canonical' ):
         $strReturn = $this->canonical( );
         break;
       case( $this->conf[ 'special' ] == 'description' ):
-        $strReturn = $this->register( );
+        $strReturn = $this->metaDescription( );
         break;
       case( $this->conf[ 'special' ] == 'keywords' ):
-        $strReturn = $this->register( );
+        $strReturn = $this->metaTagKeywords( );
         break;
       case( $this->conf[ 'special' ] == 'title' ):
         $strReturn = $this->title( );

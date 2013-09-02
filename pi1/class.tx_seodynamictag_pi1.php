@@ -113,7 +113,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
         $strReturn = $this->title( );
         break;
       case( $this->conf[ 'special' ] != '' ):
-        if( $this->conf[ 'debug' ] ) 
+        if( ( int ) $this->conf[ 'debug' ] ) 
         {
           $this->debugPrompt  = $this->debugPrompt
                             . '<h3>Error special</h3>
@@ -127,7 +127,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
         $value = $this->zzStandard( );
     }
     
-    if( $this->conf[ 'debug' ] ) 
+    if( ( int ) $this->conf[ 'debug' ] ) 
     {
       $strReturn  = $strReturn
                   . '</div>';
@@ -168,7 +168,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       //$pageRenderer->addInlineComment( 'Dirk Wildt XYZ' . PHP_EOL . PHP_EOL );
     }
 
-    if( ! $this->conf[ 'debug' ] ) 
+    if( ! ( ( int ) $this->conf[ 'debug' ] ) ) 
     {
       return;
     }
@@ -238,7 +238,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     $path = $cObj->cObjGetSingle( $coa, $conf );
 //var_dump( __METHOD__, __LINE__, $cObj->data, $coa, $conf, $path );    
 
-    if( ! $this->conf[ 'debug' ] ) 
+    if( ! ( ( int ) $this->conf[ 'debug' ] ) ) 
     {
       return $path;
     }
@@ -325,7 +325,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     }
     
       // RETURN : debug mode is off
-    if( ! $this->conf[ 'debug' ] ) 
+    if( ! ( ( int ) $this->conf[ 'debug' ] ) ) 
     {
       return;
     }
@@ -379,7 +379,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     }
     
       // RETURN : debug mode is off
-    if( ! $this->conf[ 'debug' ] ) 
+    if( ! ( ( int ) $this->conf[ 'debug' ] ) ) 
     {
       return;
     }
@@ -435,7 +435,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     }
     
       // RETURN : debug mode is off
-    if( ! $this->conf[ 'debug' ] ) 
+    if( ! ( ( int ) $this->conf[ 'debug' ] ) ) 
     {
       return;
     }
@@ -519,7 +519,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       $GLOBALS[ 'TSFE' ]->page['title'] = $value;
     }
 
-    if( ! $this->conf[ 'debug' ] ) 
+    if( ! ( ( int ) $this->conf[ 'debug' ] ) ) 
     {
       return;
     }
@@ -588,7 +588,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
 //   */
 //  private function zzDebugSetMode( ) 
 //  {
-//    if( ! $this->conf[ 'debug' ] )
+//    if( ! ( ( int ) $this->conf[ 'debug' ] ) )
 //    {
 //      return;
 //    }
@@ -822,7 +822,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
 //    $value = $this->zzKeywords( $value );
 //    $value = $this->zzMaxLength( $value );
         
-    if( ! $this->conf[ 'debug' ] ) 
+    if( ! ( ( int ) $this->conf[ 'debug' ] ) ) 
     {
       return $value; 
     }
@@ -978,7 +978,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
 
     $query = $GLOBALS['TYPO3_DB']->SELECTquery($select_fields,$from_table,$where_clause,$groupBy,$orderBy,$limit);
 
-    if( $this->conf[ 'debug' ] )
+    if( ( int ) $this->conf[ 'debug' ] )
     {
       $this->debugPrompt .= '<h3>The query</h3>
         ' . $query . '<br />' . PHP_EOL;
@@ -1006,7 +1006,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
    */
   private function zzValueFromSQLError( $query ) 
   {
-    if( ! $this->conf[ 'debug' ] )
+    if( ! ( ( int ) $this->conf[ 'debug' ] ) )
     {
       return;
     }

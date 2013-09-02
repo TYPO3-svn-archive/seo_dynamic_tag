@@ -1,14 +1,14 @@
 2.0.1
   130731
   Improvement
-  * #i0004: Controll workflow of keyword handling by the Constant Editor
+  * #i0004: Control workflow of keyword handling by the Constant Editor
 
 2.0.0
   130731
   Features
   * #49442: Canonical tag
   * #i0004: Dynamic page object
-  * #i0001: Integration of the constant editor
+  * #i0001: User interface: integration of the constant editor
             Effected files:
             * ext_tables.php      ( new )
             * static              ( new )

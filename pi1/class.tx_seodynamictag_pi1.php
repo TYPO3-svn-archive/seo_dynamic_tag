@@ -662,11 +662,15 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       // 130730, dwildt, 1-
     //$strPositiveList = str_replace( ' ', null, $this->conf['keywords.']['positiveList'] );
       // 130730, dwildt, 1+
-    $strPositiveList  = strtolower( $this->conf['keywords.']['positiveList'] );
+    // #i0005, 130902, dwildt, -1, 1+
+    //$strPositiveList  = strtolower( $this->conf['keywords.']['positiveList'] );
+    $strPositiveList  = mb_strtolower( $this->conf['keywords.']['positiveList'], 'UTF-8' );
     $strPositiveList  = str_replace( ', ', ',', $strPositiveList );
     $arrPositiveList  = explode( ',', $strPositiveList );
       // 130730, dwildt, 3+
-    $strNegativeList  = strtolower( $this->conf['keywords.']['negativeList'] );
+    // #i0005, 130902, dwildt, -1, 1+
+    //$strNegativeList  = strtolower( $this->conf['keywords.']['negativeList'] );
+    $strNegativeList  = mb_strtolower( $this->conf['keywords.']['negativeList'], 'UTF-8' );
     $strNegativeList  = str_replace( ', ', ',', $strNegativeList );
     $arrNegativeList  = explode( ',', $strNegativeList );
 
@@ -676,10 +680,14 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       $boolKeyword = false;
       switch( true ) 
       {
-        case( in_array( strtolower( $keyKeyword ), $arrNegativeList ) ):
+        // #i0005, 130902, dwildt, -1, 1+
+        //case( in_array( strtolower( $keyKeyword ), $arrNegativeList ) ):
+        case( in_array( mb_strtolower( $keyKeyword, 'UTF-8' ), $arrNegativeList ) ):
           $boolKeyword = false;
           break;
-        case( in_array( strtolower( $keyKeyword ), $arrPositiveList ) ):
+        // #i0005, 130902, dwildt, -1, 1+
+        //case( in_array( strtolower( $keyKeyword ), $arrPositiveList ) ):
+        case( in_array( mb_strtolower( $keyKeyword, 'UTF-8' ), $arrPositiveList ) ):
           $boolKeyword = true;
           break;
         case( strlen( $keyKeyword ) >= $minLength ):
@@ -755,7 +763,9 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     foreach( $keywords as $key => $word )
     {
       $word = trim( $word );
-      $word = strtolower( $word );
+      // #i0005, 130902, dwildt, -1, 1+
+      //$word = strtolower( $word );
+      $word = mb_strtolower( $word, 'UTF-8' );
       $keywords[ $key ] = $word;
     }
     $keywords = array_unique( $keywords );

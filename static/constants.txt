@@ -6,9 +6,9 @@ plugin.tx_seodynamictag {
   canonical.host                    = 
   # cat=Seo Dynamic Tag - Canonical*//201;   type=string;        label= Allowed parameter (list view):Allowed URL parameter for the list view. An empty value is recommended!
   canonical.list.additionalParams   = 
-  # cat=Seo Dynamic Tag - Canonical*//301;   type=string;        label= Allowed parameter (single view)*:*Obligate! Allowed URL parameter for the single view
+  # cat=Seo Dynamic Tag - Canonical*//301;   type=string;        label= Allowed parameter (single view)*:*Obligate! Allowed URL parameter for the single view. Example: &tx_browser_pi1[showUid]={GP:tx_browser_pi1|showUid}
   canonical.single.additionalParams = &table[field]={GP:table|field}
-  # cat=Seo Dynamic Tag - Canonical*//401;   type=boolean;       label= Use cash hash: Recommended. Use a cash hash parameter for a unique URL. Allowed URL parameter for the single view. Example: &tx_browser_pi1[showUid]={GP:tx_browser_pi1|showUid}
+  # cat=Seo Dynamic Tag - Canonical*//401;   type=boolean;       label= Use cash hash: Recommended. Use a cash hash parameter for a unique URL.
   canonical.useCashHash = 1
 
   # cat=Seo Dynamic Tag - Conditions*//100;   type=string;        label= List view begin*:*Obligate! Global condition beginning for the list view. Without outer square brackets (!). Replace 'xxx' with the id of the page with your plugin for the list view. You can use PIDinRootline among others but this is dangerous. Example: globalVar = TSFE:id = 123

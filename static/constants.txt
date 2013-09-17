@@ -8,7 +8,7 @@ plugin.tx_seodynamictag {
   canonical.list.additionalParams   = 
   # cat=Seo Dynamic Tag - Canonical*//301;   type=string;        label= Allowed parameter (single view)*:*Obligate! Allowed URL parameter for the single view
   canonical.single.additionalParams = &table[field]={GP:table|field}
-  # cat=Seo Dynamic Tag - Canonical*//401;   type=boolean;       label= Use cash hash: Recommended. Use a cash hash parameter for a unique URL. Allowed URL parameter for the single view
+  # cat=Seo Dynamic Tag - Canonical*//401;   type=boolean;       label= Use cash hash: Recommended. Use a cash hash parameter for a unique URL. Allowed URL parameter for the single view. Example: &tx_browser_pi1[showUid]={GP:tx_browser_pi1|showUid}
   canonical.useCashHash = 1
 
   # cat=Seo Dynamic Tag - Conditions*//100;   type=string;        label= List view begin*:*Obligate! Global condition beginning for the list view. Without outer square brackets (!). Replace 'xxx' with the id of the page with your plugin for the list view. You can use PIDinRootline among others but this is dangerous. Example: globalVar = TSFE:id = 123
@@ -54,10 +54,10 @@ plugin.tx_seodynamictag {
   default.author  = TYPO3 SEO Dynamic Tag (seo_dynamic tag)
   # cat=Seo Dynamic Tag - Default values//200;   type=string;     label= Description: Default description, if current record doesn't contain any description. For single views only. Leave it empty, if you don't like a default description.
   default.description  = You have a bug in your SEO Dynamic Tag configuration: description is empty!
-  # cat=Seo Dynamic Tag - Default values//201;   type=string;     label= Description prefix: Value will prefixed the description. Example: My product categorie:
-  default.description.prefix  = 
-  # cat=Seo Dynamic Tag - Default values//202;   type=string;     label= Description appendix: Value will appendixed the description. Example: - my product categorie
+  # cat=Seo Dynamic Tag - Default values//201;   type=string;     label= Description appendix: Value will appendixed the description. Example: - my product categorie
   default.description.appendix  = 
+  # cat=Seo Dynamic Tag - Default values//202;   type=string;     label= Description prefix: Value will prefixed the description. Example: My product categorie:
+  default.description.prefix  = 
 
   # cat=Seo Dynamic Tag - Keywords//100;   type=string;           label= Default: Default keywords, if current record doesn't contain any keyword. For single views only. Leave it empty, if you don't like default keywords.
   keywords.default  = TYPO3, SEO, Dynamic Tag, Bug

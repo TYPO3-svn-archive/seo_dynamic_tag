@@ -1,5 +1,10 @@
+2.0.4
+  130918
+  Improvement
+  * #i0009: Manual
+
 2.0.3
-  130914
+  130917
   Improvement
   * #00008: TYPO3 version in ext_emconf.php
   * #i0007: Manual

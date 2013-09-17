@@ -1,6 +1,7 @@
 2.0.3
   130914
   Improvement
+  * #00008: TYPO3 version in ext_emconf.php
   * #i0007: Manual
   * #i0006: Labelling Constant Editor
 

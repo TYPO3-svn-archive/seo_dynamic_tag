@@ -6,7 +6,7 @@ plugin.tx_seodynamictag {
   canonical.host                    = 
   # cat=Seo Dynamic Tag - Canonical*//201;   type=string;        label= Allowed parameter (list view):Allowed URL parameter for the list view. An empty value is recommended!
   canonical.list.additionalParams   = 
-  # cat=Seo Dynamic Tag - Canonical*//301;   type=string;        label= Allowed parameter (list view)*:*Obligate! Allowed URL parameter for the single view
+  # cat=Seo Dynamic Tag - Canonical*//301;   type=string;        label= Allowed parameter (single view)*:*Obligate! Allowed URL parameter for the single view
   canonical.single.additionalParams = &table[field]={GP:table|field}
   # cat=Seo Dynamic Tag - Canonical*//401;   type=boolean;       label= Use cash hash: Recommended. Use a cash hash parameter for a unique URL. Allowed URL parameter for the single view
   canonical.useCashHash = 1

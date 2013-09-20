@@ -1,6 +1,7 @@
 2.1.0
   130920
   Feature
+  * #i0009: Proper lables for static templates
   * #52158: Default meta-tag configuration
 
 2.0.4

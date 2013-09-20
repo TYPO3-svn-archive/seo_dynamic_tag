@@ -5,10 +5,10 @@ if( ! defined ( 'TYPO3_MODE' ) )
 }
 
   //  add static TypoScript
-t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/resetPageMeta',  'SEO Dynamic Tag reset page.meta' );
-t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/',               'SEO Dynamic Tag'                 );
-t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/cal/',           '+SEO Dynamic Tag cal'            );
-t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/tt_news/',       '+SEO Dynamic Tag tt_news'        );
-t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/tt_products/',   '+SEO Dynamic Tag tt_products'    );
+t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/resetPageMeta',  'SEO - reset page.meta' );
+t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/',               'SEO'                   );
+t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/cal/',           '+SEO - cal'            );
+t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/tt_news/',       '+SEO - tt_news'        );
+t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/tt_products/',   '+SEO - tt_products'    );
 
 ?>

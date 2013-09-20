@@ -1,3 +1,8 @@
+2.1.0
+  130920
+  Feature
+  * #52158: Default meta-tag configuration
+
 2.0.4
   130918
   Improvement
@@ -6,7 +11,7 @@
 2.0.3
   130917
   Improvement
-  * #00008: TYPO3 version in ext_emconf.php
+  * #i0008: TYPO3 version in ext_emconf.php
   * #i0007: Manual
   * #i0006: Labelling Constant Editor
 

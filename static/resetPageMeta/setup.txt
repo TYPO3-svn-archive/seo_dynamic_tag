@@ -1,0 +1,30 @@
+  ////////////////////////////////////////////////
+  //
+  // INDEX
+  //
+  // page.meta
+
+
+
+  ////////////////////////////////////////////////
+  //
+  // page.meta
+
+{$plugin.tx_seodynamictag.page.tsProperty} {
+  meta {
+    author >
+    author = {$plugin.tx_seodynamictag.default.author}
+    description >
+    description {
+      field     = {$plugin.tx_seodynamictag.reset.fields.description}
+      ifEmpty   = {$plugin.tx_seodynamictag.default.description}
+    }
+    keywords >
+    keywords {
+      field     = {$plugin.tx_seodynamictag.reset.fields.keywords}
+      keywords  = 1
+      ifEmpty   = {$plugin.tx_seodynamictag.keywords.default}
+    }
+  }
+}
+  // page.meta

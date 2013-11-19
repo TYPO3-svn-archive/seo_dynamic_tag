@@ -160,18 +160,6 @@ plugin.tx_seodynamictag_pi1 {
     {$plugin.tx_seodynamictag.page.object} {
       10.path.typolink.additionalParams = {$plugin.tx_seodynamictag.canonical.list.additionalParams}
     }
-  }
-[{$plugin.tx_seodynamictag.condition.list.end}]
-  // Global condition for the list view
-
-
-
-  ////////////////////////////////////////////////
-  //
-  // Global condition for the single view
-
-[{$plugin.tx_seodynamictag.condition.single.begin}]
-  {$plugin.tx_seodynamictag.page.tsProperty} {
     config {
       //noPageTitle = 2
     }
@@ -192,7 +180,42 @@ plugin.tx_seodynamictag_pi1 {
         ifEmpty = {$plugin.tx_seodynamictag.keywords.default}
       }
     }
+  }
+[{$plugin.tx_seodynamictag.condition.list.end}]
+  // Global condition for the list view
+
+
+
+  ////////////////////////////////////////////////
+  //
+  // Global condition for the single view
+
+[{$plugin.tx_seodynamictag.condition.single.begin}]
+  {$plugin.tx_seodynamictag.page.tsProperty} {
     {$plugin.tx_seodynamictag.page.object} < plugin.tx_seodynamictag_pi1.page.49442
+    {$plugin.tx_seodynamictag.page.object} {
+      10.path.typolink.additionalParams = {$plugin.tx_seodynamictag.canonical.list.additionalParams}
+    }
+    config {
+      //noPageTitle = 2
+    }
+    meta {
+      author >
+      author {
+        ifEmpty = {$plugin.tx_seodynamictag.default.author}
+        data    = register:tx_seodynamictag_author
+      }
+      description >
+      description {
+        ifEmpty = {$plugin.tx_seodynamictag.default.description}
+        data    = register:tx_seodynamictag_description
+      }
+      keywords >
+      keywords {
+        data    = register:tx_seodynamictag_keywords
+        ifEmpty = {$plugin.tx_seodynamictag.keywords.default}
+      }
+    }
   }
 [{$plugin.tx_seodynamictag.condition.single.end}]
   // Global condition for the single view

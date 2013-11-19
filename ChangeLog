@@ -1,3 +1,9 @@
+2.1.1
+  131119
+  Bug
+  * #53767: Meta tags for list view are missing
+            Effected files:
+
 2.1.0
   130920
   Feature

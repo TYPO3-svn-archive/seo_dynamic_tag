@@ -194,7 +194,7 @@ plugin.tx_seodynamictag_pi1 {
   {$plugin.tx_seodynamictag.page.tsProperty} {
     {$plugin.tx_seodynamictag.page.object} < plugin.tx_seodynamictag_pi1.page.49442
     {$plugin.tx_seodynamictag.page.object} {
-      10.path.typolink.additionalParams = {$plugin.tx_seodynamictag.canonical.list.additionalParams}
+      10.path.typolink.additionalParams = {$plugin.tx_seodynamictag.canonical.single.additionalParams}
     }
     config {
       //noPageTitle = 2

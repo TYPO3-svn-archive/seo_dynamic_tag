@@ -1010,7 +1010,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     $this->zzValueFromSQLError( $query ); 
 
     if( $res ) $row = mysql_fetch_row( $res );
-
+var_dump( __METHOD__, __LINE__, $row );
     $value = $row[ 0 ];
 
       // Free SQL result
@@ -1048,6 +1048,8 @@ class tx_seodynamictag_pi1 extends tslib_pibase
                         .   $query . '<br />' . PHP_EOL
                         .   '<br />' . PHP_EOL
                         .   $error . '<br />' . PHP_EOL
+                        .   '<br />' . PHP_EOL
+                        .   'Sorry for the trouble. SEO Dynamic Tag 2.' . PHP_EOL
                         . '</div>' . PHP_EOL
                         ;
   }

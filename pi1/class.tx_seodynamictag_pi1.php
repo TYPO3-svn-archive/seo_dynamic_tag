@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2007-2013 Dirk Wildt <dirk.wildt@think-visually.com>
+*  (c) 2007-2014 Dirk Wildt <dirk.wildt@think-visually.com>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -32,7 +32,7 @@ require_once(PATH_tslib.'class.tslib_pibase.php');
  * @package TYPO3
  * @subpackage  tx_seodynamictag
  * 
- * @version   1.2.0
+ * @version   2.1.2
  * @since     0.0.1
  */
 
@@ -975,7 +975,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
    *
    * @return  string    $value  : 
    * @access    private
-   * @version   1.1.1
+   * @version   2.1.2
    */
   private function zzValueFromSQL( ) 
   {
@@ -996,15 +996,15 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     
     $res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy,$orderBy,$limit);
 
-      // #i0010, 140115, dwildt, ~
-    $error = $GLOBALS['TYPO3_DB']->sql_error( );
-      // Error management
-    if( $error )
-    {
-      $this->debugPrompt .= '<h3 style="color:red;">SQL-ERROR</h3>
-        ' . $error . '<br />' . PHP_EOL;
-    }
-      // Error management
+//      // #i0010, 140115, dwildt, ~
+//    $error = $GLOBALS['TYPO3_DB']->sql_error( );
+//      // Error management
+//    if( $error )
+//    {
+//      $this->debugPrompt .= '<h3 style="color:red;">SQL-ERROR</h3>
+//        ' . $error . '<br />' . PHP_EOL;
+//    }
+//      // Error management
 
         
     $this->zzValueFromSQLError( $query ); 
@@ -1030,10 +1030,10 @@ class tx_seodynamictag_pi1 extends tslib_pibase
    */
   private function zzValueFromSQLError( $query ) 
   {
-    if( ! ( ( int ) $this->conf[ 'debug' ] ) )
-    {
-      return;
-    }
+//    if( ! ( ( int ) $this->conf[ 'debug' ] ) )
+//    {
+//      return;
+//    }
 
     $error  = $GLOBALS['TYPO3_DB']->sql_error( );
     if( ! $error )

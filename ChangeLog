@@ -1,6 +1,8 @@
 2.1.2
-  Feature
-  * #i0010: Error prompt in case of an SQL error
+  140115
+  Bugfix
+  * #i0010: TYPO3 6.x, PHP 5.3.10: unproper result of mysql_fetch_row
+            Replaced with $GLOBALS['TYPO3_DB']->sql_fetch_row( $res )
 
 2.1.1
   131119

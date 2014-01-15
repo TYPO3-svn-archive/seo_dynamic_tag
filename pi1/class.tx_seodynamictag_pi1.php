@@ -996,22 +996,14 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     
     $res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy,$orderBy,$limit);
 
-//      // #i0010, 140115, dwildt, ~
-//    $error = $GLOBALS['TYPO3_DB']->sql_error( );
-//      // Error management
-//    if( $error )
-//    {
-//      $this->debugPrompt .= '<h3 style="color:red;">SQL-ERROR</h3>
-//        ' . $error . '<br />' . PHP_EOL;
-//    }
-//      // Error management
-
-        
     $this->zzValueFromSQLError( $query ); 
 
-    if( $res ) $row = mysql_fetch_row( $res );
-var_dump( __METHOD__, __LINE__, $row );
+      // #i0010, dwildt, 1-
+    //if( $res ) $row = mysql_fetch_row( $res );
+      // #i0010, dwildt, 1+
+    if( $res ) $row = $GLOBALS['TYPO3_DB']->sql_fetch_row( $res );
     $value = $row[ 0 ];
+//var_dump( __METHOD__, __LINE__, $row, $value );
 
       // Free SQL result
     $GLOBALS['TYPO3_DB']->sql_free_result( $res );

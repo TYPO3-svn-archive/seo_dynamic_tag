@@ -1,8 +1,13 @@
+2.1.2
+  Feature
+  * #i0010: Error prompt in case of an SQL error
+
 2.1.1
   131119
   Bug
   * #53767: Meta tags for list view are missing
             Effected files:
+            * setup/static.txt
 
 2.1.0
   130920

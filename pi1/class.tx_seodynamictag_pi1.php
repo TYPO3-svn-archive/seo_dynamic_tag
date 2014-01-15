@@ -995,12 +995,27 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     }
     
     $res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy,$orderBy,$limit);
+
+      // #i0010, 140115, dwildt, ~
+    $error = $GLOBALS['TYPO3_DB']->sql_error( );
+      // Error management
+    if( $error )
+    {
+        // Free SQL result
+      $GLOBALS['TYPO3_DB']->sql_free_result( $res );
+      var_dump( __METHOD__, __LINE__, $error );
+    }
+      // Error management
+
         
     $this->zzValueFromSQLError( $query ); 
 
     if( $res ) $row = mysql_fetch_row( $res );
 
     $value = $row[ 0 ];
+
+      // Free SQL result
+    $GLOBALS['TYPO3_DB']->sql_free_result( $res );
 
     return $value;
   }

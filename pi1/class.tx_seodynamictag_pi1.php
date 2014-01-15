@@ -1001,8 +1001,6 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       // Error management
     if( $error )
     {
-        // Free SQL result
-      $GLOBALS['TYPO3_DB']->sql_free_result( $res );
       $this->debugPrompt .= '<h3 style="color:red;">SQL-ERROR</h3>
         ' . $error . '<br />' . PHP_EOL;
     }

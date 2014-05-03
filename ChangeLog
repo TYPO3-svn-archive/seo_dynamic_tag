@@ -1,3 +1,10 @@
+2.2.0
+  140503
+  Feature
+  * #58437: Fit it into TYPO3 6.1
+  Improvement
+  * #i0011: plugin.tx_seodynamictag.database.field.author got a default value
+
 2.1.2
   140115
   Bugfix
@@ -53,7 +60,7 @@
   Improvement
   * #i0003: The labels of registers got the prefix tx_seodynamic_tag_
             Effected files:
-            * static        
+            * static
               * setup.txt
 
 1.1.1

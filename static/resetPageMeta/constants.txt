@@ -1,10 +1,17 @@
 plugin.tx_seodynamictag {
 
-  # cat=Seo Dynamic Tag - Reset//100;   type=string;          label= author:label of the author field of the page table. Usually: author
+  # cat=Seo Dynamic Tag - Reset Default Values//100;   type=string;     label= Author: Default author, if current record doesn't contain any author. Leave it empty, if you don't like a default author.
+  reset.default.author  = TYPO3 SEO Dynamic Tag (seo_dynamic tag)
+  # cat=Seo Dynamic Tag - Reset Default Values//101;   type=string;     label= Description: Default description, if current record doesn't contain any description. Leave it empty, if you don't like a default description.
+  reset.default.description  = You have a bug in your SEO Dynamic Tag configuration: description is empty!
+  # cat=Seo Dynamic Tag - Reset Default Values//102;   type=string;     label= Keywords: Default keywords, if current record doesn't contain any keyword. Leave it empty, if you don't like a default description.
+  reset.default.keywords  = You have a bug in your SEO Dynamic Tag configuration: description is empty!
+
+  # cat=Seo Dynamic Tag - Reset Fields//200;   type=string;          label= author:label of the author field of the page table. Usually: author
   reset.fields.author = author
-  # cat=Seo Dynamic Tag - Reset//101;   type=string;          label= description:label of the description field of the page table. Usually: description
+  # cat=Seo Dynamic Tag - Reset Fields//201;   type=string;          label= description:label of the description field of the page table. Usually: description
   reset.fields.description = description
-  # cat=Seo Dynamic Tag - Reset//102;   type=string;          label= keywords:label of the keywords field of the page table. Usually: keywords
+  # cat=Seo Dynamic Tag - Reset Fields//202;   type=string;          label= keywords:label of the keywords field of the page table. Usually: keywords
   reset.fields.keywords    = keywords
 
 }

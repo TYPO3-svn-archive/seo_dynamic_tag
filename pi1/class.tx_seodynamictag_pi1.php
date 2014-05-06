@@ -22,7 +22,7 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-require_once(PATH_tslib.'class.tslib_pibase.php');
+//require_once(PATH_tslib.'class.tslib_pibase.php');
 
 
 /**
@@ -31,7 +31,7 @@ require_once(PATH_tslib.'class.tslib_pibase.php');
  * @author  Dirk Wildt <dirk.wildt@think-visually.com>
  * @package TYPO3
  * @subpackage  tx_seodynamictag
- * 
+ *
  * @version   2.1.2
  * @since     0.0.1
  */
@@ -49,7 +49,8 @@ require_once(PATH_tslib.'class.tslib_pibase.php');
  * (This index is automatically created/updated by the extension "extdeveval")
  *
  */
-class tx_seodynamictag_pi1 extends tslib_pibase 
+//class tx_seodynamictag_pi1 extends tslib_pibase
+class tx_seodynamictag_pi1 
 {
 
   public $prefixId      = 'tx_seodynamictag_pi1';    // Same as class name
@@ -59,14 +60,14 @@ class tx_seodynamictag_pi1 extends tslib_pibase
 
   public $conf;
   public $content;
-  
+
   private $arrDebug           = null;
   private $promptSubstitute;  // In debug mode there will be a prompt, if there is any substitution of values
   private $query;             // Array for a sql query
   private $debugPrompt;         // This is the prompt in debugging mode
-  
-  
-  
+
+
+
   /***********************************************
   *
   * Main
@@ -79,22 +80,22 @@ class tx_seodynamictag_pi1 extends tslib_pibase
  * @param string    $content: The PlugIn content
  * @param array   $conf: The PlugIn configuration
  * @return  The content that is displayed on the website
- * 
+ *
  * @access  public
  * @version 1.2.0
  */
-  public function main( $content, $conf ) 
+  public function main( $content, $conf )
   {
     unset( $content );
-    
+
     $this->conf     = $conf;
     $this->content  = $content;
 
 //    $this->zzDebugSetMode( );
     $this->zzSubstitute( );
     $this->zzDebug( $conf );
-    
-    switch( true ) 
+
+    switch( true )
     {
       case( $this->conf[ 'special' ] == 'author' ):
         $strReturn = $this->metaTagAuthor( );
@@ -113,7 +114,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
         $strReturn = $this->title( );
         break;
       case( $this->conf[ 'special' ] != '' ):
-        if( ( int ) $this->conf[ 'debug' ] ) 
+        if( ( int ) $this->conf[ 'debug' ] )
         {
           $this->debugPrompt  = $this->debugPrompt
                             . '<h3>Error special</h3>
@@ -126,19 +127,19 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       default:
         $value = $this->zzStandard( );
     }
-    
-    if( ( int ) $this->conf[ 'debug' ] ) 
+
+    if( ( int ) $this->conf[ 'debug' ] )
     {
       $strReturn  = $strReturn
                   . '</div>';
     }
-    
+
     //var_dump( __METHOD__, __LINE__, $this->debugPrompt.$strReturn.$value );
     return $this->debugPrompt . $strReturn . $value;
   }
- 
-  
-  
+
+
+
   /***********************************************
   *
   * canonical
@@ -151,16 +152,16 @@ class tx_seodynamictag_pi1 extends tslib_pibase
   * @return   void
   * @access   private
   */
-  private function canonical( ) 
+  private function canonical( )
   {
-    if( ! $this->conf[ 'enabled' ] ) 
+    if( ! $this->conf[ 'enabled' ] )
     {
       return;
     }
 
     $host = $this->canonicalGetHost( );
 
-    if( ! empty( $host ) ) 
+    if( ! empty( $host ) )
     {
       $url = $this->canonicalGetUrl( $host );
       $pageRenderer = $GLOBALS[ 'TSFE' ]->getPageRenderer( );
@@ -168,17 +169,17 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       //$pageRenderer->addInlineComment( 'Dirk Wildt XYZ' . PHP_EOL . PHP_EOL );
     }
 
-    if( ! ( ( int ) $this->conf[ 'debug' ] ) ) 
+    if( ! ( ( int ) $this->conf[ 'debug' ] ) )
     {
       return;
     }
 
-    if( $host ) 
+    if( $host )
     {
       $this->debugPrompt .= '<h3>Result string of the method</h3>
         ' . $host . '
         ';
-    } 
+    }
     else
     {
       $this->debugPrompt .= '<h3>Result of the method</h3>
@@ -186,16 +187,16 @@ class tx_seodynamictag_pi1 extends tslib_pibase
         ';
     }
   }
-  
+
 /**
  * canonicalGetHost( )  : Returns the host. The host has an ending slash.
- * 
+ *
  * @return    string    $host :
  * @access    private
  * @internal  #49442
  * @version   1.2.0
  */
-  private function canonicalGetHost( ) 
+  private function canonicalGetHost( )
   {
     switch( true )
     {
@@ -206,7 +207,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       default:
         $host = $GLOBALS[ 'TSFE' ]->baseUrl;
         if( ! empty ( $host ) )
-        { 
+        {
           break;
         }
         $host = $_SERVER[ 'HTTP_HOST' ];
@@ -215,20 +216,20 @@ class tx_seodynamictag_pi1 extends tslib_pibase
 
       // host has to end with a slash
     $host = rtrim( $host, '/' ) . '/';
-    
+
       // RETURN the host
     return $host;
   }
-  
+
 /**
  * canonicalGetPath( ) : Returns the host. The host has an ending slash.
- * 
+ *
  * @return    string    $host :
  * @access    private
  * @internal  #49442
  * @version   1.2.0
  */
-  private function canonicalGetPath( ) 
+  private function canonicalGetPath( )
   {
     $cObj = t3lib_div::makeInstance( 'tslib_cObj' );
     $cObj->start( $GLOBALS[ 'TSFE' ]->page, 'pages' );
@@ -236,20 +237,20 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     $coa  = $this->conf[ 'path' ];
     $conf = $this->conf[ 'path.' ];
     $path = $cObj->cObjGetSingle( $coa, $conf );
-//var_dump( __METHOD__, __LINE__, $cObj->data, $coa, $conf, $path );    
+//var_dump( __METHOD__, __LINE__, $cObj->data, $coa, $conf, $path );
 
-    if( ! ( ( int ) $this->conf[ 'debug' ] ) ) 
+    if( ! ( ( int ) $this->conf[ 'debug' ] ) )
     {
       return $path;
     }
 
-    if( $path ) 
+    if( $path )
     {
       $this->debugPrompt .= '<h3>Result of ' . __METHOD__ . '</h3>
         ' . $path . '
         ';
     }
-    else 
+    else
     {
       $this->debugPrompt .= '<h3>Result of ' . __METHOD__ . '</h3>
         <span style="color:red;font-weight:bold;">Path is empty!</span>
@@ -262,13 +263,13 @@ class tx_seodynamictag_pi1 extends tslib_pibase
 
 /**
  * canonicalGetUrl( )  : Returns the url
- * 
+ *
  * @return    string    $host :
  * @access    private
  * @internal  #49442
  * @version   1.2.0
  */
-  private function canonicalGetUrl( $host ) 
+  private function canonicalGetUrl( $host )
   {
     $path = $this->canonicalGetPath( );
 
@@ -289,8 +290,8 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     return $host . $path;
   }
 
-  
-  
+
+
   /***********************************************
   *
   * Register
@@ -298,18 +299,18 @@ class tx_seodynamictag_pi1 extends tslib_pibase
   **********************************************/
 
 /**
- * metaTagAuthor( ) 
+ * metaTagAuthor( )
  *
  * @return  The content that is displayed on the website
  *
- * @access  private 
+ * @access  private
  * @version 1.2.0
  */
-  private function metaTagAuthor( ) 
+  private function metaTagAuthor( )
   {
       // EXIT if register is still existing
     $this->registerExistExit( );
-    
+
       // register label
     $register = $this->conf[ 'register' ];
 
@@ -323,9 +324,9 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     {
       $GLOBALS[ 'TSFE' ]->register[$register] = $value;
     }
-    
+
       // RETURN : debug mode is off
-    if( ! ( ( int ) $this->conf[ 'debug' ] ) ) 
+    if( ! ( ( int ) $this->conf[ 'debug' ] ) )
     {
       return;
     }
@@ -352,34 +353,34 @@ class tx_seodynamictag_pi1 extends tslib_pibase
   }
 
 /**
- * metaTagDescription( ) 
+ * metaTagDescription( )
  *
  * @return  The content that is displayed on the website
  *
- * @access  private 
+ * @access  private
  * @version 1.2.0
  */
-  private function metaTagDescription( ) 
+  private function metaTagDescription( )
   {
       // EXIT if register is still existing
     $this->registerExistExit( );
-    
+
       // register label
     $register = $this->conf[ 'register' ];
 
       // register value
     $value = $this->zzValueFromSQL( );
     $value = $this->zzValueCleanUp( $value );
-    $value = $this->zzMaxLength( $value );    
+    $value = $this->zzMaxLength( $value );
 
       // Set the regsiter
     if( $value )
     {
       $GLOBALS[ 'TSFE' ]->register[$register] = $value;
     }
-    
+
       // RETURN : debug mode is off
-    if( ! ( ( int ) $this->conf[ 'debug' ] ) ) 
+    if( ! ( ( int ) $this->conf[ 'debug' ] ) )
     {
       return;
     }
@@ -406,18 +407,18 @@ class tx_seodynamictag_pi1 extends tslib_pibase
   }
 
 /**
- * metaTagKeywords( ) 
+ * metaTagKeywords( )
  *
  * @return  The content that is displayed on the website
  *
- * @access  private 
+ * @access  private
  * @version 1.2.0
  */
-  private function metaTagKeywords( ) 
+  private function metaTagKeywords( )
   {
       // EXIT if register is still existing
     $this->registerExistExit( );
-    
+
       // register label
     $register = $this->conf[ 'register' ];
 
@@ -426,16 +427,16 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     $value = $this->zzValueCleanUp( $value );
     $value = $this->zzKeywords( $value );
     $value = $this->zzMaxLength( $value );
-    
+
 
       // Set the regsiter
     if( $value )
     {
       $GLOBALS[ 'TSFE' ]->register[$register] = $value;
     }
-    
+
       // RETURN : debug mode is off
-    if( ! ( ( int ) $this->conf[ 'debug' ] ) ) 
+    if( ! ( ( int ) $this->conf[ 'debug' ] ) )
     {
       return;
     }
@@ -462,22 +463,22 @@ class tx_seodynamictag_pi1 extends tslib_pibase
   }
 
 /**
- * registerExistExit( ) 
+ * registerExistExit( )
  *
  * @return  The content that is displayed on the website
  *
- * @access  private 
+ * @access  private
  * @version 1.1.1
  */
-  private function registerExistExit( ) 
+  private function registerExistExit( )
   {
     $register = $this->conf[ 'register' ];
       // Check, if there is any register with the same name
-    if( ! $GLOBALS[ 'TSFE' ]->register[ $register ] ) 
+    if( ! $GLOBALS[ 'TSFE' ]->register[ $register ] )
     {
       return;
     }
-    
+
     echo '<h1>Register Error!</h1>
       <p>
         You want load a register, which is existing!<br />
@@ -492,9 +493,9 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       <pre>' . var_export( $GLOBALS[ 'TSFE' ]->register, true ) . '</pre>';
     exit;
   }
-  
-  
-  
+
+
+
   /***********************************************
   *
   * title
@@ -502,29 +503,29 @@ class tx_seodynamictag_pi1 extends tslib_pibase
   **********************************************/
 
 /**
-  * title( ) 
+  * title( )
   *
   * @return   void
   * @access   private
   */
-  private function title( ) 
+  private function title( )
   {
 
     $value = $this->zzValueFromSQL( );
     $value = $this->zzValueCleanUp( $value );
     $value = $this->zzMaxLength( $value );
-    
-    if( $value ) 
+
+    if( $value )
     {
       $GLOBALS[ 'TSFE' ]->page['title'] = $value;
     }
 
-    if( ! ( ( int ) $this->conf[ 'debug' ] ) ) 
+    if( ! ( ( int ) $this->conf[ 'debug' ] ) )
     {
       return;
     }
 
-    if( $value ) 
+    if( $value )
     {
       $this->debugPrompt .= '<h3>Result string of the method</h3>
         '.$value.'
@@ -535,9 +536,9 @@ class tx_seodynamictag_pi1 extends tslib_pibase
         ';
     }
   }
-  
-  
-  
+
+
+
   /***********************************************
   *
   * ZZ - Helper
@@ -547,13 +548,13 @@ class tx_seodynamictag_pi1 extends tslib_pibase
   /**
    * zzDebug( ) : Prompts a debug report
    *
-   * @param   array     $conf : configuration before gandling by seo_dynamic_tag     
+   * @param   array     $conf : configuration before gandling by seo_dynamic_tag
    * @return  string            The content that is displayed on the website
-   * 
+   *
    * @access  private
    * @version 1.2.0
    */
-  private function zzDebug( $conf ) 
+  private function zzDebug( $conf )
   {
     if( ! ( ( int ) $this->conf[ 'debug' ] ) )
     {
@@ -569,24 +570,24 @@ class tx_seodynamictag_pi1 extends tslib_pibase
   <h3>TypoScript after passing the method</h3>
   <pre>' . var_export( $this->conf, true ) . '</pre><br />' . PHP_EOL;
 
-    if( $this->promptSubstitute ) 
+    if( $this->promptSubstitute )
     {
       $strReturn  = $strReturn
                   . $this->promptSubstitute . '<br />' . PHP_EOL;
     }
-    
+
     $this->debugPrompt = $strReturn;
   }
 
 //  /**
-//   * zzDebugSetMode( ) : 
+//   * zzDebugSetMode( ) :
 //   *
 //   * @return  void
-//   * 
+//   *
 //   * @access  private
 //   * @version 1.2.0
 //   */
-//  private function zzDebugSetMode( ) 
+//  private function zzDebugSetMode( )
 //  {
 //    if( ! ( ( int ) $this->conf[ 'debug' ] ) )
 //    {
@@ -602,24 +603,24 @@ class tx_seodynamictag_pi1 extends tslib_pibase
 //  <h3>TypoScript after passing the method</h3>
 //  <pre>' . var_export( $this->conf, true ) . '</pre><br />' . PHP_EOL;
 //
-//    if( $this->promptSubstitute ) 
+//    if( $this->promptSubstitute )
 //    {
 //      $strReturn  = $strReturn
 //                  . $this->promptSubstitute . '<br />' . PHP_EOL;
 //    }
-//    
+//
 //    $this->debugPrompt = $strReturn;
 //  }
 
   /**
-   * zzKeywords( )  : 
+   * zzKeywords( )  :
    *
    * @param   string    $value  :
-   * @return  string    $value  : 
+   * @return  string    $value  :
    * @access    private
    * @version   1.2.0
    */
-  private function zzKeywords( $value ) 
+  private function zzKeywords( $value )
   {
     $strKeywords = null;
 
@@ -635,7 +636,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       return $value;
     }
       // RETURN : Don't handle current value for keywords
-    
+
     $value    = str_replace( ', ',     ' ',  $value );
     $value    = str_replace( ' ',      ',',  $value );
     $value    = str_replace( '.',      ',',  $value );
@@ -646,19 +647,19 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     $arrValue = explode( ',', $value );
     $arrValue = array_count_values( $arrValue );
     arsort($arrValue);
-    
+
     $minLength = $this->conf['keywords.']['minLength'];
     if( $minLength === null )
     {
       $minLength = 4;
     }
-    
+
     $intMaxAmount = $this->conf['keywords.']['amount'];
     if( $intMaxAmount === null || ( int ) $intMaxAmount == 0 )
     {
       $intMaxAmount = 10;
     }
-    
+
       // 130730, dwildt, 1-
     //$strPositiveList = str_replace( ' ', null, $this->conf['keywords.']['positiveList'] );
       // 130730, dwildt, 1+
@@ -678,7 +679,7 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     foreach( array_keys( $arrValue ) as $keyKeyword )
     {
       $boolKeyword = false;
-      switch( true ) 
+      switch( true )
       {
         // #i0005, 130902, dwildt, -1, 1+
         //case( in_array( strtolower( $keyKeyword ), $arrNegativeList ) ):
@@ -698,12 +699,12 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       {
         $strKeywords = $strKeywords . $keyKeyword . ',';
       }
-      if( $boolKeyword ) 
+      if( $boolKeyword )
       {
         if( $intAmount++ >= $intMaxAmount ) break;
       }
     }
-    
+
     if( $strKeywords != '' )
     {
       $strKeywords = substr( $strKeywords, 0, strlen( $strKeywords ) - 1 );
@@ -712,22 +713,22 @@ class tx_seodynamictag_pi1 extends tslib_pibase
 
     $value = $this->zzKeywordsForcedList( $value );
     $value = $this->zzKeywordsUnique( $value );
-    
+
     unset( $arrPositiveList );
     unset( $arrNegativeList );
-    
+
     return $value;
   }
 
   /**
-   * zzKeywordsForcedList( )  : 
+   * zzKeywordsForcedList( )  :
    *
    * @param   string    $value  :
-   * @return  string    $value  : 
+   * @return  string    $value  :
    * @access    private
    * @version   1.2.0
    */
-  private function zzKeywordsForcedList( $value ) 
+  private function zzKeywordsForcedList( $value )
   {
       // 130730, dwildt, 5+
     $forcedList  = $this->conf['keywords.']['forcedList'];
@@ -735,28 +736,28 @@ class tx_seodynamictag_pi1 extends tslib_pibase
     {
       return $value;
     }
-    
+
     if( $forcedList )
     {
       $value = $forcedList . ',' . $value;
     }
-    
+
     $value = str_replace( ', ', ',', $value );
     $value = str_replace( ',,', ' ', $value );
     $value = rtrim( $value, ',' );
-    
+
     return $value;
   }
 
   /**
-   * zzKeywordsUnique( )  : 
+   * zzKeywordsUnique( )  :
    *
    * @param   string    $value  :
-   * @return  string    $value  : 
+   * @return  string    $value  :
    * @access    private
    * @version   1.2.0
    */
-  private function zzKeywordsUnique( $keywordList ) 
+  private function zzKeywordsUnique( $keywordList )
   {
     $keywords = explode( ',', $keywordList );
 
@@ -769,46 +770,46 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       $keywords[ $key ] = $word;
     }
     $keywords = array_unique( $keywords );
-    
+
     $keywordList = implode( ',', $keywords );
 
     return $keywordList;
   }
 
   /**
-   * zzMaxLength( )  : 
+   * zzMaxLength( )  :
    *
    * @param   string    $value  :
-   * @return  string    $value  : 
+   * @return  string    $value  :
    * @access    private
    * @version   1.2.0
    */
-  private function zzMaxLength( $value ) 
+  private function zzMaxLength( $value )
   {
     $strPoints      = '...';
     $strPointsSpace = ' ...';
 
-    if( $this->conf['query.']['keywords'] || $this->conf['keywords'] ) 
+    if( $this->conf['query.']['keywords'] || $this->conf['keywords'] )
     {
       $strPoints = $strPointsSpace = '';
     }
-    
+
     $maxLength = $this->conf['query.']['maxLength'];
-    
-    if( $maxLength <= 0 ) 
+
+    if( $maxLength <= 0 )
     {
       return $value;
     }
-    
-    if( strlen( $value ) <= $maxLength ) 
+
+    if( strlen( $value ) <= $maxLength )
     {
       return $value;
     }
-    
+
     $value = substr( $value, 0, $maxLength ) . $strPoints;
 
     $lastSpace = strrpos( $value, ' ' );
-    if( $lastSpace > 0 ) 
+    if( $lastSpace > 0 )
     {
       $value = substr( $value, 0, $lastSpace ) . $strPointsSpace;
     } else {
@@ -818,51 +819,51 @@ class tx_seodynamictag_pi1 extends tslib_pibase
   }
 
 /**
- * zzStandard( ) : 
+ * zzStandard( ) :
  *
  * @return  The content that is displayed on the website
- * 
+ *
  * @access  private
  * @version 1.2.0
  */
-  private function zzStandard( ) 
+  private function zzStandard( )
   {
 
     $value = $this->zzValueFromSQL( );
 //    $value = $this->zzKeywords( $value );
 //    $value = $this->zzMaxLength( $value );
-        
-    if( ! ( ( int ) $this->conf[ 'debug' ] ) ) 
+
+    if( ! ( ( int ) $this->conf[ 'debug' ] ) )
     {
-      return $value; 
+      return $value;
     }
-    
-    
-    if( $value ) 
+
+
+    if( $value )
     {
       $this->debugPrompt .= '<h3>Result string of the method</h3>
                           ' . $value . '<br />
                           ';
-    } 
-    else 
+    }
+    else
     {
       $this->debugPrompt .= '<h3>Result of the method</h3>
                           <span style="color:red;font-weight:bold;">The value is empty!</span>
                           ';
     }
 
-    return $value; 
+    return $value;
   }
 
   /**
    * zzSubstitute( ) : Checks, if there are values which should be substituted
    *
    * @return  The content that is displayed on the website
-   * 
+   *
    * @access  private
    * @version 1.1.1
    */
-  private function zzSubstitute( ) 
+  private function zzSubstitute( )
   {
     // check, if there are values which should be substituted
     if(!is_array($this->conf['query.']['var.'])) return;
@@ -943,41 +944,41 @@ class tx_seodynamictag_pi1 extends tslib_pibase
   }
 
 /**
- * zzValueCleanUp( ) 
+ * zzValueCleanUp( )
  *
  * @param     string      $value
- * @return    string      $value  
+ * @return    string      $value
  *
- * @access  private 
+ * @access  private
  * @version 1.2.0
  */
-  private function zzValueCleanUp( $value ) 
+  private function zzValueCleanUp( $value )
   {
     $value = str_replace( array( "\r\n", "\r", "\n", "<br />", "<br>", "&nbsp;", "</li>", "\t" ), ' ', $value );
-    
-    if( ! $this->conf[ 'query.' ][ 'dontStripTags' ] ) 
+
+    if( ! $this->conf[ 'query.' ][ 'dontStripTags' ] )
     {
       $value = strip_tags( $value );
     }
-    
+
     if(  $this->conf[ 'special' ] == 'title' )
     {
       $value = strip_tags( $value );
     }
-    
+
     $value = str_replace( '  ', ' ', $value );
 
     return $value;
   }
-  
+
   /**
    * zzValueFromSQL( )  : Get the result from the database
    *
-   * @return  string    $value  : 
+   * @return  string    $value  :
    * @access    private
    * @version   2.1.2
    */
-  private function zzValueFromSQL( ) 
+  private function zzValueFromSQL( )
   {
     $select_fields  = $this->conf['query.']['select'];
     $from_table     = $this->conf['query.']['from'];
@@ -993,10 +994,10 @@ class tx_seodynamictag_pi1 extends tslib_pibase
       $this->debugPrompt .= '<h3>The query</h3>
         ' . $query . '<br />' . PHP_EOL;
     }
-    
+
     $res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy,$orderBy,$limit);
 
-    $this->zzValueFromSQLError( $query ); 
+    $this->zzValueFromSQLError( $query );
 
       // #i0010, dwildt, 1-
     //if( $res ) $row = mysql_fetch_row( $res );
@@ -1013,14 +1014,14 @@ class tx_seodynamictag_pi1 extends tslib_pibase
 
   /**
    * zzValueFromSQLError( )  : Get the result from the database
-   * 
+   *
    * @param   string    $query
    *
    * @return  void
    * @access    private
    * @version   1.2.0
    */
-  private function zzValueFromSQLError( $query ) 
+  private function zzValueFromSQLError( $query )
   {
 //    if( ! ( ( int ) $this->conf[ 'debug' ] ) )
 //    {

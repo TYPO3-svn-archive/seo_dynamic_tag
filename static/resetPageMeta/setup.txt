@@ -14,16 +14,25 @@
   meta {
     author >
     author = {$plugin.tx_seodynamictag.default.author}
+    author {
+      override {
+        field = {$plugin.tx_seodynamictag.reset.fields.author}
+      }
+    }
     description >
+    description = {$plugin.tx_seodynamictag.default.description}
     description {
-      field     = {$plugin.tx_seodynamictag.reset.fields.description}
-      ifEmpty   = {$plugin.tx_seodynamictag.default.description}
+      override {
+        field = {$plugin.tx_seodynamictag.reset.fields.description}
+      }
     }
     keywords >
+    keywords = {$plugin.tx_seodynamictag.keywords.default}
     keywords {
-      field     = {$plugin.tx_seodynamictag.reset.fields.keywords}
-      keywords  = 1
-      ifEmpty   = {$plugin.tx_seodynamictag.keywords.default}
+      keywords = 1
+      override {
+        field = {$plugin.tx_seodynamictag.reset.fields.keywords}
+      }
     }
   }
 }

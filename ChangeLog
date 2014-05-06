@@ -2,7 +2,9 @@
   140507
   Feature
   * #58584: Fit it into TYPO3 6.2
-            Improvement of page.meta
+            * Improvement of page.meta
+            * default database table: page
+            * Removing of pibase
 
 2.2.0
   140503

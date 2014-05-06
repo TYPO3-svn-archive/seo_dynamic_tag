@@ -22,6 +22,7 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+// 140507, #58584, dwildt, 1-
 //require_once(PATH_tslib.'class.tslib_pibase.php');
 
 
@@ -49,8 +50,10 @@
  * (This index is automatically created/updated by the extension "extdeveval")
  *
  */
+// 140507, #58584, dwildt, 1-
 //class tx_seodynamictag_pi1 extends tslib_pibase
-class tx_seodynamictag_pi1 
+// 140507, #58584, dwildt, 1+
+class tx_seodynamictag_pi1
 {
 
   public $prefixId      = 'tx_seodynamictag_pi1';    // Same as class name

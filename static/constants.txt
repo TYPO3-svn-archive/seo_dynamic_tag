@@ -21,7 +21,7 @@ plugin.tx_seodynamictag {
   condition.single.end    = global
 
   # cat=Seo Dynamic Tag - Database*//100;   type=string;          label= Table*:*Obligate! The from table in the SQL query. Example: tt_news
-  database.table              =
+  database.table              = page
   # cat=Seo Dynamic Tag - Database*//200;   type=string;          label= Get parameter for uid:*Obligate! The GET parameter with the uid. Example: tx_ttnews[tt_news]
   database.var.1              =
   # cat=Seo Dynamic Tag - Database*//300;   type=string;          label= Author*:*Obligate! Value is used in the meta tag author. Example for a field: author. Example for a constant: "my name".

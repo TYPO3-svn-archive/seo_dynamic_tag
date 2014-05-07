@@ -1,12 +1,15 @@
 plugin.tx_seodynamictag {
-
   database {
     table = pages
     var {
       1 = uid
     }
     field {
-      short = subtitle
+      author      = author
+      description = description
+      title       = title
+      short       = subtitle
     }
-
+    andWhere = deleted = 0 AND hidden = 0
+  }
 }

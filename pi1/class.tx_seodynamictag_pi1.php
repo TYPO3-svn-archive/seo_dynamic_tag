@@ -25,7 +25,6 @@
 // 140507, #58584, dwildt, 1-
 //require_once(PATH_tslib.'class.tslib_pibase.php');
 
-
 /**
  * Plugin 'SEO: tags dynamically' for the 'seo_dynamic_tag' extension.
  *
@@ -51,7 +50,7 @@
  *
  */
 // 140507, #58584, dwildt, 1-
-//class tx_seodynamictag_pi1 extends tslib_pibase
+//class tx_seodynamictag_pi1 extends tslib_2pibase
 // 140507, #58584, dwildt, 1+
 class tx_seodynamictag_pi1
 {
@@ -311,6 +310,11 @@ class tx_seodynamictag_pi1
  */
   private function metaTagAuthor( )
   {
+//var_dump( array_keys( $GLOBALS ) );
+//var_dump( $GLOBALS['_GET'] );
+var_dump( $GLOBALS[_GET] );
+//var_dump( 'XY' );
+//die();
       // EXIT if register is still existing
     $this->registerExistExit( );
 

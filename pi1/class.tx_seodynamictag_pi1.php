@@ -32,7 +32,7 @@
  * @package TYPO3
  * @subpackage  tx_seodynamictag
  *
- * @version   2.1.2
+ * @version   2.3.0
  * @since     0.0.1
  */
 

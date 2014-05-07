@@ -12,7 +12,7 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'SEO dynamic tag 2',
-	'description' => 'Search Engine Optimization for the title tag, the canonical tag and the meta tags author, description and keywords.',
+	'description' => 'Search Engine Optimization (SEO) for the title tag, the canonical tag and the meta tags author, description and keywords.',
 	'category' => 'plugin',
 	'shy' => 0,
 	'version' => '2.3.0',

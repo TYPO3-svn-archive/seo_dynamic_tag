@@ -310,11 +310,6 @@ class tx_seodynamictag_pi1
  */
   private function metaTagAuthor( )
   {
-//var_dump( array_keys( $GLOBALS ) );
-//var_dump( $GLOBALS['_GET'] );
-var_dump( $GLOBALS[_GET] );
-//var_dump( 'XY' );
-//die();
       // EXIT if register is still existing
     $this->registerExistExit( );
 

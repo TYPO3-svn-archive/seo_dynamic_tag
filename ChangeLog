@@ -3,7 +3,9 @@
   Feature
   * #58584: Fit it into TYPO3 6.2
             * Improvement of page.meta
-            * default database table: pages
+            * Moved default values
+              * database.table: [empty] -> pages
+              * database.field.short: short -> subtitle
             * Removing of pibase
 
 2.2.0

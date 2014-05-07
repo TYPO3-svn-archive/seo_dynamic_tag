@@ -33,7 +33,7 @@ plugin.tx_seodynamictag {
   # cat=Seo Dynamic Tag - Database*//303;   type=string;          label= Title*:*Obligate! Value is used in the title tag. A field is recommended! Example for a field: title. Example for a constant: "my title".
   database.field.title        = title
   # cat=Seo Dynamic Tag - Database*//304;   type=string;          label= Short*:*Obligate! Value is used in the title tag. A field is recommended! Example for a field: short. Example for a constant: "my short".
-  database.field.short        = short
+  database.field.short        = subtitle
   # cat=Seo Dynamic Tag - Database*//400;   type=string;          label= AND where:AND where statement (without AND).
   database.andWhere           = deleted = 0 AND hidden = 0
 

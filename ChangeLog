@@ -7,6 +7,7 @@
               * database.table: [empty] -> pages
               * database.field.short: short -> subtitle
             * Removing of pibase
+  * #i0012: New default template for pages
 
 2.2.0
   140503

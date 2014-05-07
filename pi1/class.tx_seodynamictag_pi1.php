@@ -822,6 +822,38 @@ class tx_seodynamictag_pi1
   }
 
 /**
+ * zzPagesHandleEmptyUid( ) :
+ *
+ * @param   string  $key
+ * @param   mixed   $value
+ * @return  $value
+ *
+ * @access  private
+ * @internal #i0012
+ * @version 2.3.0
+ * @since 2.3.0
+ */
+  private function zzPagesHandleEmptyUid( $key, $value )
+  {
+    if( $this->conf['query.']['from'] != 'pages')
+    {
+      return $value;
+    }
+
+    if( $key != 'uid')
+    {
+      return $value;
+    }
+
+    if( ! empty( $value ) )
+    {
+      return $value;
+    }
+
+    return $GLOBALS['TSFE']->id;
+  }
+
+/**
  * zzStandard( ) :
  *
  * @return  The content that is displayed on the website
@@ -897,6 +929,8 @@ class tx_seodynamictag_pi1
         case(1):
           // value isn't an array
           $valueSubstitute = $GLOBALS[$method][$value];
+          // 140507, #i0012, dwildt, 1+
+          $valueSubstitute = $this->zzPagesHandleEmptyUid( $value, $valueSubstitute );
           $strInfo = $strOK;
           if(!$valueSubstitute) {
             $strInfo = $strDanger;

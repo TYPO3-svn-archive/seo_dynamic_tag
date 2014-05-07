@@ -1,0 +1,12 @@
+plugin.tx_seodynamictag {
+
+  database {
+    table = pages
+    var {
+      1 = uid
+    }
+    field {
+      short = subtitle
+    }
+
+}

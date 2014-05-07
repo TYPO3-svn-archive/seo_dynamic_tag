@@ -11,7 +11,7 @@ plugin.tx_seodynamictag {
   # cat=Seo Dynamic Tag - Canonical*//401;   type=boolean;       label= Use cash hash: Recommended. Use a cash hash parameter for a unique URL.
   canonical.useCashHash = 1
 
-  # cat=Seo Dynamic Tag - Conditions*//100;   type=string;        label= List view begin*:*Obligate! Global condition beginning for the list view. Without outer square brackets (!). Replace 'xxx' with the id of the page with your plugin for the list view. You can use PIDinRootline among others but this is dangerous. Example: globalVar = TSFE:id = 123
+  # cat=Seo Dynamic Tag - Conditions*//100;   type=string;        label= List view begin*:*Obligate! Global condition beginning for the list view. Without outer square brackets (!). Replace 'xxx' with the id of the page with your plugin for the list view. You can use PIDinRootline among others but this is dangerous. Examples: globalVar = TSFE:id = 123, PIDinRootline = 1
   condition.list.begin    = globalVar = TSFE:id = xxx
   # cat=Seo Dynamic Tag - Conditions*//101;   type=string;        label= List view end*:*Obligate! Global condition ending. Without outer square brackets (!). Usually: global
   condition.list.end      = global
@@ -21,9 +21,9 @@ plugin.tx_seodynamictag {
   condition.single.end    = global
 
   # cat=Seo Dynamic Tag - Database*//100;   type=string;          label= Table*:*Obligate! The from table in the SQL query. Example: tt_news
-  database.table              = pages
+  database.table              =
   # cat=Seo Dynamic Tag - Database*//200;   type=string;          label= Get parameter for uid:*Obligate! The GET parameter with the uid. Example: tx_ttnews[tt_news]
-  database.var.1              = uid
+  database.var.1              =
   # cat=Seo Dynamic Tag - Database*//300;   type=string;          label= Author*:*Obligate! Value is used in the meta tag author. Example for a field: author. Example for a constant: "my name".
   database.field.author       = "Author is empty. Please maintain TypoScript Constant Editor - Categorie [SEO DYNAMIC TAG _ DATABASE] - Author"
   # cat=Seo Dynamic Tag - Database*//301;   type=string;          label= Description: Value is used in the meta tag description. A field is recommended! Example for a field: description. Example for a constant: "my description".
@@ -33,7 +33,7 @@ plugin.tx_seodynamictag {
   # cat=Seo Dynamic Tag - Database*//303;   type=string;          label= Title*:*Obligate! Value is used in the title tag. A field is recommended! Example for a field: title. Example for a constant: "my title".
   database.field.title        = title
   # cat=Seo Dynamic Tag - Database*//304;   type=string;          label= Short*:*Obligate! Value is used in the title tag. A field is recommended! Example for a field: short. Example for a constant: "my short".
-  database.field.short        = subtitle
+  database.field.short        = short
   # cat=Seo Dynamic Tag - Database*//400;   type=string;          label= AND where:AND where statement (without AND).
   database.andWhere           = deleted = 0 AND hidden = 0
 

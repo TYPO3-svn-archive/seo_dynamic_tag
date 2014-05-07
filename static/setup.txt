@@ -165,7 +165,7 @@ plugin.tx_seodynamictag_pi1 {
     }
     meta {
       author >
-      author = {$plugin.tx_seodynamictag.default.description}
+      author = {$plugin.tx_seodynamictag.default.author}
       author {
         override {
           data = register:tx_seodynamictag_author
@@ -222,7 +222,7 @@ plugin.tx_seodynamictag_pi1 {
         }
       }
       keywords >
-      keywords = {$plugin.tx_seodynamictag.keywords.author}
+      keywords = {$plugin.tx_seodynamictag.keywords.default}
       keywords {
         keywords = 1
         override {

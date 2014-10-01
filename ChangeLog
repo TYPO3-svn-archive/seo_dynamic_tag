@@ -1,9 +1,10 @@
-2.4.1
-  140509
+2.4.2
+  141001
   Improvement
+  * #i0013: Manual
   * #i0012: Icon
 
-2.3.0
+2.4.1
   140507
   Feature
   * #58584: Fit it into TYPO3 6.2

@@ -1,0 +1,39 @@
+  ////////////////////////////////////////////////
+  //
+  // INDEX
+  //
+  // page.meta
+
+
+
+  ////////////////////////////////////////////////
+  //
+  // page.meta
+
+{$plugin.tx_seodynamictag.page.tsProperty} {
+  meta {
+    author >
+    author = {$plugin.tx_seodynamictag.default.author}
+    author {
+      override {
+        field = {$plugin.tx_seodynamictag.reset.fields.author}
+      }
+    }
+    description >
+    description = {$plugin.tx_seodynamictag.default.description}
+    description {
+      override {
+        field = {$plugin.tx_seodynamictag.reset.fields.description}
+      }
+    }
+    keywords >
+    keywords = {$plugin.tx_seodynamictag.keywords.default}
+    keywords {
+      keywords = 1
+      override {
+        field = {$plugin.tx_seodynamictag.reset.fields.keywords}
+      }
+    }
+  }
+}
+  // page.meta

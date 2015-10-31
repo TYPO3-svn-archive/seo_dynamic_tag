@@ -5,11 +5,11 @@ if( ! defined ( 'TYPO3_MODE' ) )
 }
 
   //  add static TypoScript
-t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/',               'SEO [1] Basis'             );
-t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/cal/',           'SEO [2] + cal'             );
-t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/pages/',         'SEO [2] + pages'           );
-t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/tt_news/',       'SEO [2] + tt_news'         );
-t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/tt_products/',   'SEO [2] + tt_products'     );
-t3lib_extMgm::addStaticFile( $_EXTKEY, 'static/resetPageMeta',  'SEO [99] reset page.meta'  );
-
-?>
+t3lib_extMgm::addStaticFile( $_EXTKEY, 'Configuration/TypoScript/Base/',          'SEO [1]'                       );
+t3lib_extMgm::addStaticFile( $_EXTKEY, 'Configuration/TypoScript/ResetPageMeta/', 'SEO [9] Reset page.meta'       );
+t3lib_extMgm::addStaticFile( $_EXTKEY, '2.x/static/',                             'SEO [90] 2.x'                  );
+t3lib_extMgm::addStaticFile( $_EXTKEY, '2.x/static/cal/',                         'SEO [91] + 2.x cal'            );
+t3lib_extMgm::addStaticFile( $_EXTKEY, '2.x/static/pages/',                       'SEO [91] + 2.x pages'          );
+t3lib_extMgm::addStaticFile( $_EXTKEY, '2.x/static/tt_news/',                     'SEO [91] + 2.x tt_news'        );
+t3lib_extMgm::addStaticFile( $_EXTKEY, '2.x/static/tt_products/',                 'SEO [91] + 2.x tt_products'    );
+t3lib_extMgm::addStaticFile( $_EXTKEY, '2.x/static/resetPageMeta/',               'SEO [99] 2.x reset page.meta'  );

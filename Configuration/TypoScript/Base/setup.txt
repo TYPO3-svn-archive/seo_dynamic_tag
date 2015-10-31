@@ -1,0 +1,306 @@
+  ////////////////////////////////////////////////
+  //
+  // INDEX
+  //
+  // plugin.tx_seodynamictag_pi1
+  // Global condition for the single view
+
+
+
+  ////////////////////////////////////////////////
+  //
+  // plugin.tx_seodynamictag_pi1
+
+plugin.tx_seodynamictag_pi1 {
+    // headerData, meta, 49442
+  page =
+  page {
+    headerData {
+        // seo_dynamic_tag: title, canonical tag
+      49442 = COA
+      49442 {
+          // title
+        10 = COA
+        10 {
+          if {
+            isTrue = {$plugin.tx_seodynamictag.database.field.title.prefix}{$plugin.tx_seodynamictag.database.field.title.appendix}
+          }
+          10 = CONTENT
+          10 {
+            table = {$plugin.tx_seodynamictag.database.table}
+            select {
+              pidInList = {$plugin.tx_seodynamictag.database.pidInList}
+              where {
+                data        = GP:{$plugin.tx_seodynamictag.database.gp}
+                noTrimWrap  = |uid = ||
+              }
+            }
+            renderObj = COA
+            renderObj {
+                // prefix
+              10 = TEXT
+              10 {
+                field = {$plugin.tx_seodynamictag.database.field.title.prefix}
+                crop  = {$plugin.tx_seodynamictag.crop.title.prefix} | ... | 1
+                stdWrap {
+                  stripHtml         = 1
+                  htmlSpecialChars  = 1
+                }
+              }
+                // devider
+              20 = TEXT
+              20 {
+                if {
+                  value = 11
+                  equals {
+                    stdWrap {
+                      cObject = COA
+                      cObject {
+                        10 = TEXT
+                        10 {
+                          if {
+                            isTrue {
+                              field = {$plugin.tx_seodynamictag.database.field.title.prefix}
+                            }
+                          }
+                          value = 1
+                        }
+                        20 = TEXT
+                        20 {
+                          if {
+                            isTrue {
+                              field = {$plugin.tx_seodynamictag.database.field.title.appendix}
+                            }
+                          }
+                          value = 1
+                        }
+                      }
+                    }
+                  }
+                }
+                value       = {$plugin.tx_seodynamictag.title.devider.value}
+                noTrimWrap  = {$plugin.tx_seodynamictag.title.devider.noTrimWrap}
+              }
+                // appendix
+              30 = TEXT
+              30 {
+                field       = {$plugin.tx_seodynamictag.database.field.title.appendix}
+                crop        = {$plugin.tx_seodynamictag.crop.title.appendix} | ... | 1
+                required    = 1
+                stdWrap {
+                  stripHtml         = 1
+                  htmlSpecialChars  = 1
+                }
+              }
+            }
+            wrap = <title>|</title>
+          }
+        }
+          // return
+        11 = TEXT
+        11 {
+          char = 10
+        }
+          // canonical tag
+        20 = COA
+        20 {
+          if {
+            isTrue = {$plugin.tx_seodynamictag.canonical.enabled}
+          }
+          10 = TEXT
+          10 {
+            typolink {
+              parameter {
+                data = page:uid
+              }
+              additionalParams = {$plugin.tx_seodynamictag.canonical.single.additionalParams}
+              additionalParams {
+                insertData = 1
+              }
+              forceAbsoluteUrl  = 1
+              returnLast        = url
+              useCacheHash      = {$plugin.tx_seodynamictag.canonical.useCashHash}
+            }
+            wrap = <link rel="canonical" href="|"/>
+          }
+        }
+      }
+    }
+      // author, description, keywords
+    meta =
+    meta {
+      author = {$plugin.tx_seodynamictag.default.author}
+      author {
+        override {
+          cObject = COA
+          cObject {
+            if {
+              isTrue = {$plugin.tx_seodynamictag.database.field.author}
+            }
+            10 = CONTENT
+            10 {
+              table = {$plugin.tx_seodynamictag.database.table}
+              select {
+                pidInList = {$plugin.tx_seodynamictag.database.pidInList}
+                where {
+                  data        = GP:{$plugin.tx_seodynamictag.database.gp}
+                  noTrimWrap  = |uid = ||
+                }
+              }
+              renderObj = TEXT
+              renderObj {
+                field = {$plugin.tx_seodynamictag.database.field.author}
+                crop  = {$plugin.tx_seodynamictag.crop.author} | ... | 1
+                stdWrap {
+                  stripHtml         = 1
+                  htmlSpecialChars  = 1
+                }
+              }
+            }
+          }
+        }
+      }
+      description = {$plugin.tx_seodynamictag.default.description}
+      description {
+        override {
+          cObject = COA
+          cObject {
+            if {
+              isTrue = {$plugin.tx_seodynamictag.database.field.description}
+            }
+            10 = CONTENT
+            10 {
+              table = {$plugin.tx_seodynamictag.database.table}
+              select {
+                pidInList = {$plugin.tx_seodynamictag.database.pidInList}
+                where {
+                  data        = GP:{$plugin.tx_seodynamictag.database.gp}
+                  noTrimWrap  = |uid = ||
+                }
+              }
+              renderObj = TEXT
+              renderObj {
+                field = {$plugin.tx_seodynamictag.database.field.description}
+                crop  = {$plugin.tx_seodynamictag.crop.description} | ... | 1
+                stdWrap {
+                  stripHtml         = 1
+                  htmlSpecialChars  = 1
+                }
+              }
+            }
+          }
+        }
+      }
+      keywords = {$plugin.tx_seodynamictag.keywords.default}
+      keywords {
+        override {
+          cObject = COA
+          cObject {
+            if {
+              isTrue = {$plugin.tx_seodynamictag.database.field.keywords}{$plugin.tx_seodynamictag.database.field.keywords.cover}
+            }
+            10 = CONTENT
+            10 {
+              table = {$plugin.tx_seodynamictag.database.table}
+              select {
+                pidInList = {$plugin.tx_seodynamictag.database.pidInList}
+                where {
+                  data        = GP:{$plugin.tx_seodynamictag.database.gp}
+                  noTrimWrap  = |uid = ||
+                }
+              }
+              renderObj = TEXT
+              renderObj {
+                field = {$plugin.tx_seodynamictag.database.field.keywords}
+                ifEmpty {
+                  cObject = TEXT
+                  cObject {
+                    field = {$plugin.tx_seodynamictag.database.field.keywords.cover}
+                    crop  = {$plugin.tx_seodynamictag.crop.keywords} | | 1
+                    stdWrap {
+                      replacement {
+                          // dot > null
+                        10 =
+                        10 {
+                          search  = .
+                          replace =
+                        }
+                          // return > null
+                        20 =
+                        20 {
+                          search {
+                            char = 10
+                          }
+                          replace =
+                        }
+                          // semicolon > comma
+                        30 =
+                        30 {
+                          search  = ;
+                          replace = ,
+                        }
+                          // space > comma
+                        40 =
+                        40 {
+                          search {
+                            char = 32
+                          }
+                          replace = ,
+                        }
+                          // underscore > space
+                        50 =
+                        50 {
+                          search = _
+                          replace {
+                            char = 32
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                stdWrap {
+                  stripHtml         = 1
+                  htmlSpecialChars  = 1
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+  // plugin.tx_seodynamictag_pi1
+
+
+
+  ////////////////////////////////////////////////
+  //
+  // Global condition for the single view
+
+[{$plugin.tx_seodynamictag.condition.single.begin}]
+  {$plugin.tx_seodynamictag.page.tsProperty} {
+    config {
+      // by seo_dynamic_tag
+      noPageTitle = 2
+    }
+
+    headerData {
+      // seo_dynamic_tag: title, canonical tag
+      49442 < plugin.tx_seodynamictag_pi1.page.headerData.49442
+    }
+    meta {
+      author      >
+      // by seo_dynamic_tag
+      author      < plugin.tx_seodynamictag_pi1.page.meta.author
+      description >
+      // by seo_dynamic_tag
+      description < plugin.tx_seodynamictag_pi1.page.meta.description
+      keywords    >
+      // by seo_dynamic_tag
+      keywords    < plugin.tx_seodynamictag_pi1.page.meta.keywords
+    }
+  }
+[{$plugin.tx_seodynamictag.condition.single.end}]
+  // Global condition for the single view

@@ -1,0 +1,58 @@
+plugin.tx_seodynamictag {
+
+  # cat=Seo Dynamic Tag - Canonical Tag*//100;   type=boolean;    label= Enabled: If you don't like the canonical tag, disable it.
+  canonical.enabled                 =
+  # cat=Seo Dynamic Tag - Canonical Tag*//301;   type=string;     label= Allowed parameter (single view)*:*Obligate! Allowed URL parameter for the single view. Example: &tx_browser_pi1[showUid]={GP:tx_browser_pi1|showUid}
+  canonical.single.additionalParams =
+  # cat=Seo Dynamic Tag - Canonical Tag*//401;   type=boolean;    label= Use cash hash: Recommended. Use a cash hash parameter for a unique URL.
+  canonical.useCashHash             = 1
+
+  # cat=Seo Dynamic Tag - Conditions*//200;   type=string;        label= Single view begin*:*Obligate! Global condition beginning for the single view. Without outer square brackets (!). Replace 'xxx' with the id of the page with your plugin for the single view. You can use PIDinRootline among others but this is dangerous. Example: GP:tx_ttnews|tt_news > 0] && [globalVar = TSFE:id = 123
+  condition.single.begin  = globalVar = GP:table|field > 0] && [globalVar = TSFE:id = xxx
+  # cat=Seo Dynamic Tag - Conditions*//201;   type=string;        label= Single view end*:*Obligate! Global condition ending. Without outer square brackets (!). Usually: global
+  condition.single.end    = global
+
+  # cat=Seo Dynamic Tag - Crop//100;   type=int+;                 label= Description: Crop description after X chars (whole words will cropped).
+  crop.description      = 200
+  # cat=Seo Dynamic Tag - Crop//101;   type=int+;                 label= Keywords: Crop keywords after X chars (whole words will cropped).
+  crop.keywords         = 100
+  # cat=Seo Dynamic Tag - Crop//102;   type=int+;                 label= Title prefix: Crop title prefix after X chars (whole words will cropped).
+  crop.title.prefix     = 100
+  # cat=Seo Dynamic Tag - Crop//103;   type=int+;                 label= Title appendix: Crop title appendix after X chars (whole words will cropped).
+  crop.title.appendix   = 100
+
+  # cat=Seo Dynamic Tag - Database*//100;   type=string;          label= Table*:*Obligate! The from table in the SQL query. Example: tt_news
+  database.table              =
+  # cat=Seo Dynamic Tag - Database*//101;   type=int+;            label= Pid list*:*Obligate! Page id of the folder, which contains the records. This can be a comma seperated list of page ids. I.e: 124, 148, 304
+  database.pidInList          =
+  # cat=Seo Dynamic Tag - Database*//201;   type=string;          label= GP parameter for uid*:*Obligate! The GP parameter with the uid. Example: tx_ttnews|tt_news
+  database.gp                 =
+  # cat=Seo Dynamic Tag - Database*//301;   type=string;          label= Author*:*Obligate! Value is used in the meta tag author. You can use a list of fields, separated by a double slash. I.e: author // actor
+  database.field.author       =
+  # cat=Seo Dynamic Tag - Database*//401;   type=string;          label= Description: Value is used in the meta tag description. You can use a list of fields, separated by a double slash. I.e: description // short // bodytext
+  database.field.description        = description // seo_description
+  # cat=Seo Dynamic Tag - Database*//501;   type=string;          label= Keywords: Value is used in the meta tag keywords. Keywords should be a comma separated list. You can use a list of fields, separated by a double slash. I.e: keywords // seo_keywords.
+  database.field.keywords           = keywords // seo_keywords
+  # cat=Seo Dynamic Tag - Database*//502;   type=string;          label= Keywords cover: A cover field for the keyword field. It will used, if the keyword field is empty. Content of cover fields will processed. For exyample spaces will be replaced by commas. You can use a list of fields, separated by a double slash. I.e: subtitle // title
+  database.field.keywords.cover     = title
+  # cat=Seo Dynamic Tag - Database*//601;   type=string;          label= Title prefix*:*Obligate! Value is used in the prefix of title tag. A field is recommended! You can use a list of fields, separated by a double slash. I.e: subtitle // title
+  database.field.title.prefix       = title
+  # cat=Seo Dynamic Tag - Database*//701;   type=string;          label= title appendix*:*Obligate! Value is used in appendix the title tag. A field is recommended! Example for a field: short. Example for a constant: "my short".
+  database.field.title.appendix     = short // bodytext
+
+  # cat=Seo Dynamic Tag - Default values//100;   type=string;     label= Author: Default author, if current record doesn't contain any author. For single views only. Leave it empty, if you don't like a default author.
+  default.author      = TYPO3 SEO Dynamic Tag (seo_dynamic tag)
+  # cat=Seo Dynamic Tag - Default values//103;   type=string;     label= Description: Default description, if current record doesn't contain any description. For single views only. Leave it empty, if you don't like a default description.
+  default.description = You have a bug in your SEO Dynamic Tag configuration: description is empty!
+  # cat=Seo Dynamic Tag - Default values//102;   type=string;     label= Keywords: Default keywords, if current record doesn't contain any keyword. For single views only. Leave it empty, if you don't like default keywords.
+  default.keywords    = TYPO3, SEO, SEO Dynamic Tag
+
+  # cat=Seo Dynamic Tag - Title devider//100;   type=string;      label= Devider: Devider between title prefix and title appendix
+  title.devider.value       = :
+  # cat=Seo Dynamic Tag - Title devider//101;   type=string;      label= No trim wrap: No trim wrap for the title devider (TypoScript style)
+  title.devider.noTrimWrap  = || |
+
+  # cat=Seo Dynamic Tag - page object*//100;   type=string;        label= Label*:*Obligate! The label of your page in your TypoScript configuration. Usually: page
+  page.tsProperty = page
+
+}

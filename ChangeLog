@@ -1,3 +1,23 @@
+3.0.0
+  Improvement
+  * #i0016: PHP code is removed. Configuration with TypoScript alone.
+            DOWNGRADE
+            * Please include the 2.x templates
+            UPGRADE
+            * BE AWARE
+              * You have to adapt your TypoScript configuration!
+              * Templates are lost for
+                * cal
+                * pages
+                * resetPageMeta
+                * tt_news
+                * tt_products
+
+2.4.4
+  151031
+  Bugfix
+  * #i0015: DRS url prompt
+
 2.4.3
   141004
   Improvement

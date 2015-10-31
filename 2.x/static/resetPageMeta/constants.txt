@@ -1,10 +1,10 @@
 plugin.tx_seodynamictag {
 
   # cat=Seo Dynamic Tag - Reset Fields//200;   type=string;          label= author:label of the author field of the page table. Usually: author
-  reset.fields.author = author
+  reset.fields.author       = author
   # cat=Seo Dynamic Tag - Reset Fields//201;   type=string;          label= description:label of the description field of the page table. Usually: description
-  reset.fields.description = description
+  reset.fields.description  = description
   # cat=Seo Dynamic Tag - Reset Fields//202;   type=string;          label= keywords:label of the keywords field of the page table. Usually: keywords
-  reset.fields.keywords    = keywords
+  reset.fields.keywords     = keywords
 
 }

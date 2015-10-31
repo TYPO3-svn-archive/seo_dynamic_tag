@@ -1,0 +1,82 @@
+plugin.tx_seodynamictag {
+
+  # cat=Seo Dynamic Tag 2.x - Canonical*//100;   type=boolean;       label= Enabled: If you don't like the canonical tag, disable it.
+  canonical.enabled                 = 1
+  # cat=Seo Dynamic Tag 2.x - Canonical*//101;   type=string;        label= Host: Host. Leave it empty, if you are using the host of the frontend. Example: http://easy-typo3.com/
+  canonical.host                    =
+  # cat=Seo Dynamic Tag 2.x - Canonical*//201;   type=string;        label= Allowed parameter (list view):Allowed URL parameter for the list view. An empty value is recommended!
+  canonical.list.additionalParams   =
+  # cat=Seo Dynamic Tag 2.x - Canonical*//301;   type=string;        label= Allowed parameter (single view)*:*Obligate! Allowed URL parameter for the single view. Example: &tx_browser_pi1[showUid]={GP:tx_browser_pi1|showUid}
+  canonical.single.additionalParams = &table[field]={GP:table|field}
+  # cat=Seo Dynamic Tag 2.x - Canonical*//401;   type=boolean;       label= Use cash hash: Recommended. Use a cash hash parameter for a unique URL.
+  canonical.useCashHash = 1
+
+  # cat=Seo Dynamic Tag 2.x - Conditions*//100;   type=string;        label= List view begin*:*Obligate! Global condition beginning for the list view. Without outer square brackets (!). Replace 'xxx' with the id of the page with your plugin for the list view. You can use PIDinRootline among others but this is dangerous. Examples: globalVar = TSFE:id = 123, PIDinRootline = 1
+  condition.list.begin    = globalVar = TSFE:id = xxx
+  # cat=Seo Dynamic Tag 2.x - Conditions*//101;   type=string;        label= List view end*:*Obligate! Global condition ending. Without outer square brackets (!). Usually: global
+  condition.list.end      = global
+  # cat=Seo Dynamic Tag 2.x - Conditions*//200;   type=string;        label= Single view begin*:*Obligate! Global condition beginning for the single view. Without outer square brackets (!). Replace 'xxx' with the id of the page with your plugin for the single view. You can use PIDinRootline among others but this is dangerous. Example: GP:tx_ttnews|tt_news > 0] && [globalVar = TSFE:id = 123
+  condition.single.begin  = globalVar = GP:table|field > 0] && [globalVar = TSFE:id = xxx
+  # cat=Seo Dynamic Tag 2.x - Conditions*//201;   type=string;        label= Single view end*:*Obligate! Global condition ending. Without outer square brackets (!). Usually: global
+  condition.single.end    = global
+
+  # cat=Seo Dynamic Tag 2.x - Database*//100;   type=string;          label= Table*:*Obligate! The from table in the SQL query. Example: tt_news
+  database.table              =
+  # cat=Seo Dynamic Tag 2.x - Database*//200;   type=string;          label= Get parameter for uid:*Obligate! The GET parameter with the uid. Example: tx_ttnews[tt_news]
+  database.var.1              =
+  # cat=Seo Dynamic Tag 2.x - Database*//300;   type=string;          label= Author*:*Obligate! Value is used in the meta tag author. Example for a field: author. Example for a constant: "my name".
+  database.field.author       = "Author is empty. Please maintain TypoScript Constant Editor - Categorie [SEO DYNAMIC TAG _ DATABASE] - Author"
+  # cat=Seo Dynamic Tag 2.x - Database*//301;   type=string;          label= Description: Value is used in the meta tag description. A field is recommended! Example for a field: description. Example for a constant: "my description".
+  database.field.description  = description
+  # cat=Seo Dynamic Tag 2.x - Database*//302;   type=string;          label= Keywords: Value is used in the meta tag keywords. A field is recommended! Example for a field: keywords. Example for a constant: "my,keyword".
+  database.field.keywords     = keywords
+  # cat=Seo Dynamic Tag 2.x - Database*//303;   type=string;          label= Title*:*Obligate! Value is used in the title tag. A field is recommended! Example for a field: title. Example for a constant: "my title".
+  database.field.title        = title
+  # cat=Seo Dynamic Tag 2.x - Database*//304;   type=string;          label= Short*:*Obligate! Value is used in the title tag. A field is recommended! Example for a field: short. Example for a constant: "my short".
+  database.field.short        = short
+  # cat=Seo Dynamic Tag 2.x - Database*//400;   type=string;          label= AND where:AND where statement (without AND).
+  database.andWhere           = deleted = 0 AND hidden = 0
+
+  # cat=Seo Dynamic Tag 2.x - Debugging/enable/100;   type=boolean;   label= all: If enabled, you will get a report for all options from below at the bottom of the frontend.
+  debugging.all         = 0
+  # cat=Seo Dynamic Tag 2.x - Debugging/enable/200;   type=boolean;   label= author: If enabled, you will get a report for the meta tag author at the bottom of the frontend.
+  debugging.author      = 0
+  # cat=Seo Dynamic Tag 2.x - Debugging/enable/201;   type=boolean;   label= canonical tag: If enabled, you will get a report for the canonical tag at the bottom of the frontend.
+  debugging.canonical   = 0
+  # cat=Seo Dynamic Tag 2.x - Debugging/enable/202;   type=boolean;   label= description: If enabled, you will get a report for the meta tag description at the bottom of the frontend.
+  debugging.description = 0
+  # cat=Seo Dynamic Tag 2.x - Debugging/enable/203;   type=boolean;   label= keywords: If enabled, you will get a report for the meta tag keywords at the bottom of the frontend.
+  debugging.keywords    = 0
+  # cat=Seo Dynamic Tag 2.x - Debugging/enable/204;   type=boolean;   label= title: If enabled, you will get a report for the title at the bottom of the frontend.
+  debugging.title       = 0
+
+  # cat=Seo Dynamic Tag 2.x - Default values//100;   type=string;     label= Author: Default author, if current record doesn't contain any author. For single views only. Leave it empty, if you don't like a default author.
+  default.author  = TYPO3 SEO Dynamic Tag (seo_dynamic tag)
+  # cat=Seo Dynamic Tag 2.x - Default values//200;   type=string;     label= Description: Default description, if current record doesn't contain any description. For single views only. Leave it empty, if you don't like a default description.
+  default.description  = You have a bug in your SEO Dynamic Tag configuration: description is empty!
+  # cat=Seo Dynamic Tag 2.x - Default values//201;   type=string;     label= Description appendix: Value will appendixed the description. Example: - my product categorie
+  default.description.appendix  =
+  # cat=Seo Dynamic Tag 2.x - Default values//202;   type=string;     label= Description prefix: Value will prefixed the description. Example: My product categorie:
+  default.description.prefix  =
+
+  # cat=Seo Dynamic Tag 2.x - Keywords//100;   type=string;           label= Default: Default keywords, if current record doesn't contain any keyword. For single views only. Leave it empty, if you don't like default keywords.
+  keywords.default  = TYPO3, SEO, Dynamic Tag, Bug
+  # cat=Seo Dynamic Tag 2.x - Keywords//101;   type=int;              label= Amount: Maximum amount of keywords. Recommended: less is more!
+  keywords.amount  = 10
+  # cat=Seo Dynamic Tag 2.x - Keywords//102;   type=int;              label= Minimum length: Minimum length of a single keyword
+  keywords.minLength  = 6
+  # cat=Seo Dynamic Tag 2.x - Keywords//200;   type=string;           label= Move to keywords: Move source to keywords. Recommended, if your field for keywords doesn't contain a keyword list. This is the case, if you are using a field like bodytext or description for generating keywords. That isn't the case, if you using a field like keywords for keywords.
+  keywords.moveToKeywords  = 1
+  # cat=Seo Dynamic Tag 2.x - Keywords//303;   type=string;           label= Positive list: List with keywords, which will used, if they are part of the keyword list but are shorter than the minimum word length. List is not independent of amount of keywords.
+  keywords.positiveList  = TYPO3, SEO
+  # cat=Seo Dynamic Tag 2.x - Keywords//304;   type=string;           label= Negative list: List with keywords, which will excluded from the list of found keywords.
+  keywords.negativeList  =
+  # cat=Seo Dynamic Tag 2.x - Keywords//305;   type=string;           label= Forced list: List with keywords, which will prepend to the list of keywords. List is independent of amount of keywords and minimum length for a keyword.
+  keywords.forcedList  =
+
+  # cat=Seo Dynamic Tag 2.x - page object//100;   type=string;        label= Label*:*Obligate! The label of your page in your TypoScript configuration. Usually: page
+  page.tsProperty = page
+  # cat=Seo Dynamic Tag 2.x - page object//200;   type=int;           label= SEO element*:*Obligate! The seo_dynamic_tag element of your page object like page.49442. 49442 is the number of the issue on TYPO3 forge and should be unique.
+  page.object = 49442
+
+}

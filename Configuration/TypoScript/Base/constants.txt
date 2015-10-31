@@ -47,10 +47,14 @@ plugin.tx_seodynamictag {
   # cat=Seo Dynamic Tag - Default values//102;   type=string;     label= Keywords: Default keywords, if current record doesn't contain any keyword. For single views only. Leave it empty, if you don't like default keywords.
   default.keywords    = TYPO3, SEO, SEO Dynamic Tag
 
-  # cat=Seo Dynamic Tag - Title devider//100;   type=string;      label= Devider: Devider between title prefix and title appendix
+  # cat=Seo Dynamic Tag - Title//100;   type=string;      label= Prefix: String will prepended to the title tag.
+  title.prefix              =
+  # cat=Seo Dynamic Tag - Title//200;   type=string;      label= Devider: Devider between title prefix and title appendix
   title.devider.value       = :
-  # cat=Seo Dynamic Tag - Title devider//101;   type=string;      label= No trim wrap: No trim wrap for the title devider (TypoScript style)
+  # cat=Seo Dynamic Tag - Title//201;   type=string;      label= Devider wrap: No trim wrap for the title devider (TypoScript style)
   title.devider.noTrimWrap  = || |
+  # cat=Seo Dynamic Tag - Title//300;   type=string;      label= Appendix: String will appended to the title tag.
+  title.appendix            =
 
   # cat=Seo Dynamic Tag - page object*//100;   type=string;        label= Label*:*Obligate! The label of your page in your TypoScript configuration. Usually: page
   page.tsProperty = page

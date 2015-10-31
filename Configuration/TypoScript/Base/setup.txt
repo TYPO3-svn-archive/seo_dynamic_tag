@@ -22,81 +22,107 @@ plugin.tx_seodynamictag_pi1 {
           // title
         10 = COA
         10 {
-          if {
-            isTrue = {$plugin.tx_seodynamictag.database.field.title.prefix}{$plugin.tx_seodynamictag.database.field.title.appendix}
-          }
-            // {$plugin.tx_seodynamictag.database.table}
-          10 = CONTENT
+            // prefix
+          10 = TEXT
           10 {
-            table = {$plugin.tx_seodynamictag.database.table}
-            select {
-              pidInList = {$plugin.tx_seodynamictag.database.pidInList}
-              where {
-                data        = GP:{$plugin.tx_seodynamictag.database.gp}
-                noTrimWrap  = |uid = ||
-              }
+            value       = {$plugin.tx_seodynamictag.title.prefix}
+            noTrimWrap  = || |
+            required    = 1
+            stdWrap {
+              stripHtml         = 1
+              htmlSpecialChars  = 1
             }
-              // prefix, devider, appendix
-            renderObj = COA
-            renderObj {
-                // prefix
-              10 = TEXT
-              10 {
-                field = {$plugin.tx_seodynamictag.database.field.title.prefix}
-                crop  = {$plugin.tx_seodynamictag.crop.title.prefix} | ... | 1
-                stdWrap {
-                  stripHtml         = 1
-                  htmlSpecialChars  = 1
+          }
+            // Dynamic title part
+          20 = COA
+          20 {
+            if {
+              isTrue = {$plugin.tx_seodynamictag.database.field.title.prefix}{$plugin.tx_seodynamictag.database.field.title.appendix}
+            }
+              // {$plugin.tx_seodynamictag.database.table}
+            10 = CONTENT
+            10 {
+              table = {$plugin.tx_seodynamictag.database.table}
+              select {
+                pidInList = {$plugin.tx_seodynamictag.database.pidInList}
+                where {
+                  data        = GP:{$plugin.tx_seodynamictag.database.gp}
+                  noTrimWrap  = |uid = ||
                 }
               }
-                // devider
-              20 = TEXT
-              20 {
-                if {
-                  value = 11
-                  equals {
-                    stdWrap {
-                      cObject = COA
-                      cObject {
-                        10 = TEXT
-                        10 {
-                          if {
-                            isTrue {
-                              field = {$plugin.tx_seodynamictag.database.field.title.prefix}
+                // prefix, devider, appendix
+              renderObj = COA
+              renderObj {
+                  // prefix
+                10 = TEXT
+                10 {
+                  field = {$plugin.tx_seodynamictag.database.field.title.prefix}
+                  crop  = {$plugin.tx_seodynamictag.crop.title.prefix} | ... | 1
+                  stdWrap {
+                    stripHtml         = 1
+                    htmlSpecialChars  = 1
+                  }
+                }
+                  // devider
+                20 = TEXT
+                20 {
+                  if {
+                    value = 11
+                    equals {
+                      stdWrap {
+                        cObject = COA
+                        cObject {
+                          10 = TEXT
+                          10 {
+                            if {
+                              isTrue {
+                                field = {$plugin.tx_seodynamictag.database.field.title.prefix}
+                              }
                             }
+                            value = 1
                           }
-                          value = 1
-                        }
-                        20 = TEXT
-                        20 {
-                          if {
-                            isTrue {
-                              field = {$plugin.tx_seodynamictag.database.field.title.appendix}
+                          20 = TEXT
+                          20 {
+                            if {
+                              isTrue {
+                                field = {$plugin.tx_seodynamictag.database.field.title.appendix}
+                              }
                             }
+                            value = 1
                           }
-                          value = 1
                         }
                       }
                     }
                   }
+                  value       = {$plugin.tx_seodynamictag.title.devider.value}
+                  noTrimWrap  = {$plugin.tx_seodynamictag.title.devider.noTrimWrap}
                 }
-                value       = {$plugin.tx_seodynamictag.title.devider.value}
-                noTrimWrap  = {$plugin.tx_seodynamictag.title.devider.noTrimWrap}
-              }
-                // appendix
-              30 = TEXT
-              30 {
-                field       = {$plugin.tx_seodynamictag.database.field.title.appendix}
-                crop        = {$plugin.tx_seodynamictag.crop.title.appendix} | ... | 1
-                required    = 1
-                stdWrap {
-                  stripHtml         = 1
-                  htmlSpecialChars  = 1
+                  // appendix
+                30 = TEXT
+                30 {
+                  field       = {$plugin.tx_seodynamictag.database.field.title.appendix}
+                  crop        = {$plugin.tx_seodynamictag.crop.title.appendix} | ... | 1
+                  required    = 1
+                  stdWrap {
+                    stripHtml         = 1
+                    htmlSpecialChars  = 1
+                  }
                 }
               }
             }
-            wrap = <title>|</title>
           }
+            // appendix
+          30 = TEXT
+          30 {
+            value       = {$plugin.tx_seodynamictag.title.appendix}
+            //noTrimWrap  = | ||
+            required    = 1
+            stdWrap {
+              stripHtml         = 1
+              htmlSpecialChars  = 1
+            }
+          }
+          wrap = <title>|</title>
         }
           // return
         11 = TEXT

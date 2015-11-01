@@ -47,6 +47,11 @@ plugin.tx_seodynamictag {
   # cat=Seo Dynamic Tag - Default values//102;   type=string;     label= Keywords: Default keywords, if current record doesn't contain any keyword. For single views only. Leave it empty, if you don't like default keywords.
   default.keywords    = TYPO3, SEO, SEO Dynamic Tag
 
+  # cat=Seo Dynamic Tag - Keywords//100;   type=string;      label= Prefix: String will prepended to the keywords tag.
+  keywords.prefix              =
+  # cat=Seo Dynamic Tag - Keywords//300;   type=string;      label= Appendix: String will appended to the keywords tag.
+  keywords.appendix            =
+
   # cat=Seo Dynamic Tag - Title//100;   type=string;      label= Prefix: String will prepended to the title tag.
   title.prefix              =
   # cat=Seo Dynamic Tag - Title//200;   type=string;      label= Devider: Devider between title prefix and title appendix

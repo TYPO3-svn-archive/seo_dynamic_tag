@@ -39,7 +39,7 @@ plugin.tx_seodynamictag_pi1 {
             if {
               isTrue = {$plugin.tx_seodynamictag.database.field.title.prefix}{$plugin.tx_seodynamictag.database.field.title.appendix}
             }
-              // {$plugin.tx_seodynamictag.database.table}
+              // {$plugin.tx_seodynamictag.database.table}, prefix, devider, appendix
             10 = CONTENT
             10 {
               table = {$plugin.tx_seodynamictag.database.table}
@@ -160,11 +160,13 @@ plugin.tx_seodynamictag_pi1 {
       author = {$plugin.tx_seodynamictag.default.author}
       author {
         override {
+            // {$plugin.tx_seodynamictag.database.table}.{$plugin.tx_seodynamictag.database.field.author}
           cObject = COA
           cObject {
             if {
               isTrue = {$plugin.tx_seodynamictag.database.field.author}
             }
+              // {$plugin.tx_seodynamictag.database.table}.{$plugin.tx_seodynamictag.database.field.author}
             10 = CONTENT
             10 {
               table = {$plugin.tx_seodynamictag.database.table}
@@ -175,6 +177,7 @@ plugin.tx_seodynamictag_pi1 {
                   noTrimWrap  = |uid = ||
                 }
               }
+                // {$plugin.tx_seodynamictag.database.field.author}
               renderObj = TEXT
               renderObj {
                 field = {$plugin.tx_seodynamictag.database.field.author}
@@ -191,11 +194,13 @@ plugin.tx_seodynamictag_pi1 {
       description = {$plugin.tx_seodynamictag.default.description}
       description {
         override {
+            // {$plugin.tx_seodynamictag.database.table}.{$plugin.tx_seodynamictag.database.field.description}
           cObject = COA
           cObject {
             if {
               isTrue = {$plugin.tx_seodynamictag.database.field.description}
             }
+              // {$plugin.tx_seodynamictag.database.table}.{$plugin.tx_seodynamictag.database.field.description}
             10 = CONTENT
             10 {
               table = {$plugin.tx_seodynamictag.database.table}
@@ -222,13 +227,22 @@ plugin.tx_seodynamictag_pi1 {
       keywords = {$plugin.tx_seodynamictag.keywords.default}
       keywords {
         override {
+            // {$plugin.tx_seodynamictag.database.table}.{$plugin.tx_seodynamictag.database.field.keywords}
           cObject = COA
           cObject {
             if {
               isTrue = {$plugin.tx_seodynamictag.database.field.keywords}{$plugin.tx_seodynamictag.database.field.keywords.cover}
             }
-            10 = CONTENT
+              // prefix: {$plugin.tx_seodynamictag.keywords.prefix}
+            10 = TEXT
             10 {
+              value     = {$plugin.tx_seodynamictag.keywords.prefix}
+              wrap      = |,
+              required  = 1
+            }
+              // {$plugin.tx_seodynamictag.database.table}.{$plugin.tx_seodynamictag.database.field.keywords}
+            20 = CONTENT
+            20 {
               table = {$plugin.tx_seodynamictag.database.table}
               select {
                 pidInList = {$plugin.tx_seodynamictag.database.pidInList}
@@ -237,10 +251,12 @@ plugin.tx_seodynamictag_pi1 {
                   noTrimWrap  = |uid = ||
                 }
               }
+                // {$plugin.tx_seodynamictag.database.field.keywords} || {$plugin.tx_seodynamictag.database.field.keywords.cover}
               renderObj = TEXT
               renderObj {
                 field = {$plugin.tx_seodynamictag.database.field.keywords}
                 ifEmpty {
+                    // {$plugin.tx_seodynamictag.database.field.keywords.cover}
                   cObject = TEXT
                   cObject {
                     field = {$plugin.tx_seodynamictag.database.field.keywords.cover}
@@ -310,6 +326,13 @@ plugin.tx_seodynamictag_pi1 {
                   htmlSpecialChars  = 1
                 }
               }
+            }
+              // appendix: {$plugin.tx_seodynamictag.keywords.appendix}
+            30 = TEXT
+            30 {
+              value     = {$plugin.tx_seodynamictag.keywords.appendix}
+              wrap      = ,|
+              required  = 1
             }
           }
         }

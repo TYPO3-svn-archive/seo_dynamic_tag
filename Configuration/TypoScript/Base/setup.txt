@@ -19,9 +19,14 @@ plugin.tx_seodynamictag_pi1 {
         // seo_dynamic_tag: title, canonical tag
       49442 = COA
       49442 {
-          // title
-        10 = COA
+          // return
+        10 = TEXT
         10 {
+          char = 10
+        }
+          // title
+        20 = COA
+        20 {
             // prefix
           10 = TEXT
           10 {
@@ -125,13 +130,13 @@ plugin.tx_seodynamictag_pi1 {
           wrap = <title>|</title>
         }
           // return
-        11 = TEXT
-        11 {
+        30 = TEXT
+        30 {
           char = 10
         }
           // canonical tag
-        20 = COA
-        20 {
+        40 = COA
+        40 {
           if {
             isTrue = {$plugin.tx_seodynamictag.canonical.enabled}
           }

@@ -247,37 +247,55 @@ plugin.tx_seodynamictag_pi1 {
                     crop  = {$plugin.tx_seodynamictag.crop.keywords} | | 1
                     stdWrap {
                       replacement {
-                          // dot > null
+                          // bracket ( > null
                         10 =
                         10 {
+                          search  = (
+                          replace =
+                        }
+                          // bracket ) > null
+                        20 =
+                        20 {
+                          search  = )
+                          replace =
+                        }
+                          // dot > null
+                        30 =
+                        30 {
                           search  = .
                           replace =
                         }
+                          // pipe > nul
+                        40 =
+                        40 {
+                          search = |
+                          replace =
+                        }
                           // return > null
-                        20 =
-                        20 {
+                        50 =
+                        50 {
                           search {
                             char = 10
                           }
                           replace =
                         }
                           // semicolon > comma
-                        30 =
-                        30 {
+                        60 =
+                        60 {
                           search  = ;
                           replace = ,
                         }
                           // space > comma
-                        40 =
-                        40 {
+                        70 =
+                        70 {
                           search {
                             char = 32
                           }
                           replace = ,
                         }
                           // underscore > space
-                        50 =
-                        50 {
+                        80 =
+                        80 {
                           search = _
                           replace {
                             char = 32

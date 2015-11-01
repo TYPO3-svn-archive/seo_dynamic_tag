@@ -200,9 +200,16 @@ plugin.tx_seodynamictag_pi1 {
             if {
               isTrue = {$plugin.tx_seodynamictag.database.field.description}
             }
-              // {$plugin.tx_seodynamictag.database.table}.{$plugin.tx_seodynamictag.database.field.description}
-            10 = CONTENT
+              // prefix: {$plugin.tx_seodynamictag.description.prefix}
+            10 = TEXT
             10 {
+              value       = {$plugin.tx_seodynamictag.description.prefix}
+              noTrimWrap  = || |
+              required    = 1
+            }
+              // {$plugin.tx_seodynamictag.database.table}.{$plugin.tx_seodynamictag.database.field.description}
+            20 = CONTENT
+            20 {
               table = {$plugin.tx_seodynamictag.database.table}
               select {
                 pidInList = {$plugin.tx_seodynamictag.database.pidInList}
@@ -219,6 +226,27 @@ plugin.tx_seodynamictag_pi1 {
                   stripHtml         = 1
                   htmlSpecialChars  = 1
                 }
+              }
+            }
+              // appendix: {$plugin.tx_seodynamictag.description.appendix}
+            30 = COA
+            30 {
+              if {
+                isTrue = {$plugin.tx_seodynamictag.description.appendix}
+              }
+                // devider: {$plugin.tx_seodynamictag.description.appendix}
+              10 = TEXT
+              10 {
+                value       = {$plugin.tx_seodynamictag.description.devider.value}
+                noTrimWrap  = {$plugin.tx_seodynamictag.description.devider.noTrimWrap}
+                required    = 1
+              }
+                // appendix: {$plugin.tx_seodynamictag.description.appendix}
+              20 = TEXT
+              20 {
+                value     = {$plugin.tx_seodynamictag.description.appendix}
+                wrap      = |
+                required  = 1
               }
             }
           }

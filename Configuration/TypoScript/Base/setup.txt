@@ -391,6 +391,7 @@ plugin.tx_seodynamictag_pi1 {
     }
 
     headerData {
+      49442 >
       // seo_dynamic_tag: title, canonical tag
       49442 < plugin.tx_seodynamictag_pi1.page.headerData.49442
     }

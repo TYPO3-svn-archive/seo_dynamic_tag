@@ -383,6 +383,8 @@ plugin.tx_seodynamictag_pi1 {
   //
   // Global condition for the single view
 
+{$plugin.tx_seodynamictag.page.tsProperty}.headerData.49442 >
+
 [{$plugin.tx_seodynamictag.condition.single.begin}]
   {$plugin.tx_seodynamictag.page.tsProperty} {
     config {

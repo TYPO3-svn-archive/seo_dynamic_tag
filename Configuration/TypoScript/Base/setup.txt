@@ -11,6 +11,8 @@
   //
   // plugin.tx_seodynamictag_pi1
 
+plugin.tx_seodynamictag_pi1 >
+
 plugin.tx_seodynamictag_pi1 {
     // headerData, meta, 49442
   page =

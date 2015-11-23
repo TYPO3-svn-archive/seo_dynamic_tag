@@ -21,7 +21,7 @@ plugin.tx_seodynamictag_pi1 {
         // seo_dynamic_tag: title, canonical tag
       49442 = COA
       49442 {
-          // return
+          // line feed
         10 = TEXT
         10 {
           char = 10
@@ -131,7 +131,7 @@ plugin.tx_seodynamictag_pi1 {
           }
           wrap = <title>|</title>
         }
-          // return
+          // line feed
         30 = TEXT
         30 {
           char = 10
@@ -201,7 +201,7 @@ plugin.tx_seodynamictag_pi1 {
       description = {$plugin.tx_seodynamictag.default.description}
       description {
         override {
-            // {$plugin.tx_seodynamictag.database.table}.{$plugin.tx_seodynamictag.database.field.description}
+            // {$plugin.tx_seodynamictag.database.table}: {$plugin.tx_seodynamictag.database.field.description}
           cObject = COA
           cObject {
             if {
@@ -214,7 +214,7 @@ plugin.tx_seodynamictag_pi1 {
               noTrimWrap  = || |
               required    = 1
             }
-              // {$plugin.tx_seodynamictag.database.table}.{$plugin.tx_seodynamictag.database.field.description}
+              // {$plugin.tx_seodynamictag.database.table}: {$plugin.tx_seodynamictag.database.field.description}
             20 = CONTENT
             20 {
               table = {$plugin.tx_seodynamictag.database.table}
@@ -256,13 +256,16 @@ plugin.tx_seodynamictag_pi1 {
                 required  = 1
               }
             }
+            stdWrap {
+              ifEmpty = {$plugin.tx_seodynamictag.default.description}
+            }
           }
         }
       }
       keywords = {$plugin.tx_seodynamictag.keywords.default}
       keywords {
         override {
-            // {$plugin.tx_seodynamictag.database.table}.{$plugin.tx_seodynamictag.database.field.keywords}
+            // {$plugin.tx_seodynamictag.database.table}: {$plugin.tx_seodynamictag.database.field.keywords}
           cObject = COA
           cObject {
             if {
@@ -322,7 +325,7 @@ plugin.tx_seodynamictag_pi1 {
                           search = |
                           replace =
                         }
-                          // return > null
+                          // line feed > null
                         50 =
                         50 {
                           search {
